@@ -49,7 +49,7 @@
       border-radius:1.25rem; 
       box-shadow:0 12px 24px rgba(0,0,0,0.15); 
       object-fit: cover;
-      cursor: pointer; /* viser at det er klikkbart */
+      cursor: pointer;
     }
 
     /* Lightbox */
@@ -113,9 +113,17 @@
     .socials a { color:var(--emerald); font-size:1.25rem; text-decoration:none; }
 
     @media (max-width:768px){
-      .hero{ grid-template-columns:1fr; text-align:center;}
-      nav{ display:none;}
-      .hero-images img { max-width:70%; } /* gjør bildene mindre på mobil */
+      .hero { grid-template-columns:1fr; text-align:center;}
+      nav { display:none; }
+      .hero-images {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .hero-images img {
+        max-width: 45%;   /* to bilder ved siden av hverandre på mobil */
+        flex: 1 1 45%;
+      }
     }
   </style>
 </head>
