@@ -49,6 +49,24 @@
       border-radius:1.25rem; 
       box-shadow:0 12px 24px rgba(0,0,0,0.15); 
       object-fit: cover;
+      cursor: pointer; /* viser at det er klikkbart */
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 1rem;
     }
 
     /* Features */
@@ -75,10 +93,6 @@
 
     /* CTA */
     .cta-section { background:var(--emerald); color:white; text-align:center; padding:4rem 1rem; position:relative; }
-    .cta-section::before { 
-      content:""; position:absolute; top:-50px; left:0; width:100%; height:50px; 
-      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150"><path fill="%23ffffff" fill-opacity="1" d="M0,96L1440,0L1440,0L0,0Z"></path></svg>') no-repeat center/cover;
-    }
     .cta-section h2 { font-size:2rem; margin-bottom:1rem; }
     .cta-section p { margin-bottom:2rem; }
     .store-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
@@ -101,7 +115,7 @@
     @media (max-width:768px){
       .hero{ grid-template-columns:1fr; text-align:center;}
       nav{ display:none;}
-      .hero-images img { max-width:100%; }
+      .hero-images img { max-width:70%; } /* gjør bildene mindre på mobil */
     }
   </style>
 </head>
@@ -132,10 +146,15 @@
       <a href="#cta" class="btn">Last ned appen</a>
     </div>
     <div class="hero-images">
-      <img src="images/app-mockup.png" alt="App preview">
-      <img src="images/screenshot.jpg" alt="App screenshot">
+      <img src="images/app-mockup.png" alt="App preview" onclick="openFullscreen(this)">
+      <img src="images/screenshot.jpg" alt="App screenshot" onclick="openFullscreen(this)">
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeFullscreen()">
+    <img id="lightbox-img" src="">
+  </div>
 
   <!-- Features -->
   <section id="funksjoner" class="features">
@@ -231,5 +250,16 @@
       <a href="#">💼</a>
     </div>
   </footer>
+
+  <!-- Lightbox Script -->
+  <script>
+    function openFullscreen(img) {
+      document.getElementById("lightbox-img").src = img.src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+    function closeFullscreen() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
 </body>
 </html>
