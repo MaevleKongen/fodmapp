@@ -63,7 +63,7 @@
     header { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
     .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 64px; }
-    .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
     .logo img { height: 40px; }
     nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; }
     nav a:hover { color: var(--emerald); }
@@ -182,10 +182,10 @@
   <!-- Header -->
   <header>
     <div class="container nav-bar">
-      <div class="logo">
+      <a href="#" class="logo">
         <img src="images/logo.png" alt="FODMAPP logo">
         FODMAPP
-      </div>
+      </a>
       <nav>
         <a href="#funksjoner">Funksjoner</a>
         <a href="#how">Hvordan det fungerer</a>
@@ -222,24 +222,15 @@
       <h2>Funksjoner</h2>
       <div class="grid">
         <div class="card">
-          <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            AI Chat
-          </h3>
+          <h3>AI Chat</h3>
           <p>Still spørsmål og få råd om lavFODMAP fra en AI-assistent – raskt og enkelt.</p>
         </div>
         <div class="card">
-          <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2z"/></svg>
-            AI Kamera
-          </h3>
+          <h3>AI Kamera</h3>
           <p>Bruk kameraet for å analysere mat og menyer, og få anbefalinger i sanntid.</p>
         </div>
         <div class="card">
-          <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.105.895-2 2-2s2 .895 2 2- .895 2-2 2-2-.895-2-2zM12 15v2m-6 2h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Personvern
-          </h3>
+          <h3>Personvern</h3>
           <p>Data lagres ikke. Bilder slettes etter bruk for maksimal sikkerhet.</p>
         </div>
       </div>
