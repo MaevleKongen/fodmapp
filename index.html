@@ -108,7 +108,6 @@
     .card { background:white; border:1px solid #e5e7eb; border-radius:0.75rem; padding:2rem; text-align:left; transition:transform .3s, box-shadow .3s; }
     .card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
     .card h3 { margin-bottom:0.75rem; font-size:1.25rem; color:var(--emerald); display: flex; align-items: center; gap: 0.5rem; }
-    .card svg { width: 24px; height: 24px; color: var(--emerald-dark); }
 
     /* How it works */
     .how-it-works { padding:6rem 1rem; text-align:center; background:#ecfdf5; }
@@ -119,7 +118,13 @@
 
     /* Demo video */
     .demo-video { padding:6rem 1rem; text-align:center; }
-    .demo-video video { max-width: 100%; border-radius: 1rem; box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+    .demo-video video {
+      max-width: 48%;
+      border-radius: 1.25rem;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      display: block;
+      margin: 0 auto;
+    }
 
     /* FAQ (Accordion) */
     .faq { padding:6rem 1rem; background:white; }
@@ -166,6 +171,7 @@
       nav { display:none; }
       .hero-images { display: flex; justify-content: center; gap: 0.5rem; }
       .hero-images img { max-width: 45%; flex: 1 1 45%; }
+      .demo-video video { max-width: 100%; }
       .faq-item { margin: 1rem; }
       section { padding: 4rem 1.5rem; }
     }
