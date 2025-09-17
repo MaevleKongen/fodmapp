@@ -73,6 +73,18 @@
     .faq-item h3 { font-size:1.125rem; margin-bottom:0.5rem; color:var(--emerald-dark); }
     .faq-item p { color:var(--gray); }
 
+    /* CTA */
+    .cta-section { background:var(--emerald); color:white; text-align:center; padding:4rem 1rem; position:relative; }
+    .cta-section::before { 
+      content:""; position:absolute; top:-50px; left:0; width:100%; height:50px; 
+      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150"><path fill="%23ffffff" fill-opacity="1" d="M0,96L1440,0L1440,0L0,0Z"></path></svg>') no-repeat center/cover;
+    }
+    .cta-section h2 { font-size:2rem; margin-bottom:1rem; }
+    .cta-section p { margin-bottom:2rem; }
+    .store-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+    .store-buttons img { height:60px; transition:transform .3s ease; }
+    .store-buttons img:hover { transform:scale(1.05); }
+
     /* Contact */
     .contact { padding:4rem 0; background:#f0fdf4; }
     .contact h2 { text-align:center; font-size:2rem; margin-bottom:2rem; }
@@ -105,6 +117,7 @@
         <a href="#funksjoner">Funksjoner</a>
         <a href="#how">Hvordan det fungerer</a>
         <a href="#faq">FAQ</a>
+        <a href="#cta">Last ned</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <a href="#cta" class="btn">Kom i gang</a>
@@ -187,10 +200,20 @@
     </div>
   </section>
 
+  <!-- CTA -->
+  <section id="cta" class="cta-section">
+    <h2>Last ned FODMAPP i dag</h2>
+    <p>Tilgjengelig på iOS og Android snart. Meld deg på for tidlig tilgang.</p>
+    <div class="store-buttons">
+      <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Last ned på App Store"></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Få den på Google Play"></a>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="kontakt" class="contact">
     <h2>Kontakt oss</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form>
       <input type="text" name="name" placeholder="Navn" required>
       <input type="email" name="email" placeholder="E-post" required>
       <textarea name="message" rows="5" placeholder="Melding" required></textarea>
@@ -201,7 +224,7 @@
   <!-- Footer -->
   <footer>
     <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
-    <p>Kontakt: <a href="mailto:post@fodmapp.no">post@fodmapp.no</a></p>
+    <p>Kontakt: <a href="mailto:hei@fodmapp.app">hei@fodmapp.app</a></p>
     <div class="socials">
       <a href="#">🌐</a>
       <a href="#">📸</a>
