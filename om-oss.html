@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om oss – FODMAPP</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <meta name="description" content="Lær mer om hvem vi er, og hvorfor vi har laget FODMAPP.">
+
+  <style>
+    :root {
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --dark: #1e293b;
+      --gray: #475569;
+      --light: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+    html { scroll-behavior: smooth; }
+    header { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1rem; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
+    .logo img { height: 40px; }
+    nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; text-decoration:none;}
+    nav a:hover { color: var(--emerald); }
+    .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
+    .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
+
+    .about-hero { padding:6rem 1rem; text-align:center; background: linear-gradient(135deg, #f0fdf4, #f9fafb); }
+    .about-hero h1 { font-size:2.5rem; margin-bottom:1rem; }
+    .about-hero p { font-size:1.125rem; color:var(--gray); max-width:700px; margin:0 auto; }
+
+    .about-section { padding:5rem 1rem; }
+    .about-section h2 { font-size:2rem; margin-bottom:1rem; text-align:center; }
+    .about-section p { max-width:800px; margin:0 auto 2rem auto; text-align:center; color:var(--gray); }
+
+    .team { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; margin-top:3rem; }
+    .member { background:white; border:1px solid #e5e7eb; border-radius:0.75rem; padding:1.5rem; text-align:center; transition:transform .3s, box-shadow .3s; }
+    .member:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+    .member img { width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:1rem; }
+    .member h3 { margin-bottom:0.25rem; color:var(--emerald-dark); }
+    .member p { font-size:0.9rem; color:var(--gray); }
+
+    footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="FODMAPP logo">
+        FODMAPP
+      </a>
+      <nav>
+        <a href="index.html#funksjoner">Funksjoner</a>
+        <a href="index.html#how">Hvordan det fungerer</a>
+        <a href="index.html#demo">Demo</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="om-oss.html">Om oss</a>
+      </nav>
+      <a href="index.html#cta" class="btn">Kom i gang</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <h1>Om oss</h1>
+    <p>Vi startet FODMAPP for å gjøre hverdagen enklere for mennesker som følger lavFODMAP-dietten. Vår visjon er å kombinere teknologi og helse på en trygg, brukervennlig og inspirerende måte.</p>
+  </section>
+
+  <!-- Historie / Visjon -->
+  <section class="about-section">
+    <h2>Vår historie</h2>
+    <p>FODMAPP ble grunnlagt i Norge i 2025 med et mål om å gjøre kosthold enklere for personer med IBS og mageplager. Vi vet hvor utfordrende det kan være å navigere lavFODMAP-dietten, og derfor har vi utviklet en app som kombinerer AI-chat og kamerateknologi for å gi raske og trygge svar.</p>
+  </section>
+
+  <section class="about-section">
+    <h2>Vår visjon</h2>
+    <p>Vi tror at teknologi kan være en støtte i hverdagen – ikke en byrde. Med FODMAPP ønsker vi å gi brukere trygghet i matvalgene sine, slik at de kan fokusere på det som virkelig betyr noe: å leve et godt liv uten unødvendige bekymringer rundt mat.</p>
+  </section>
+
+  <!-- Team -->
+  <section class="about-section">
+    <h2>Møt teamet</h2>
+    <div class="team">
+      <div class="member">
+        <img src="images/team1.jpg" alt="Team medlem 1">
+        <h3>Kari Nordmann</h3>
+        <p>Gründer & Ernæringsrådgiver</p>
+      </div>
+      <div class="member">
+        <img src="images/team2.jpg" alt="Team medlem 2">
+        <h3>Ola Hansen</h3>
+        <p>Utvikler & Teknologiansvarlig</p>
+      </div>
+      <div class="member">
+        <img src="images/team3.jpg" alt="Team medlem 3">
+        <h3>Anne Berg</h3>
+        <p>Designer & Brukeropplevelse</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
+    <p>Kontakt: <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
+  </footer>
+</body>
+</html>
