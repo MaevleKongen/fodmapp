@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tips – FODMAPP</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <meta name="description" content="Tips for hvordan du bruker FODMAPP best mulig.">
+
+  <style>
+    :root {
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --dark: #1e293b;
+      --gray: #475569;
+      --light: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+    html { scroll-behavior: smooth; }
+    header { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
+    .logo img { height: 40px; }
+    nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; text-decoration:none;}
+    nav a:hover { color: var(--emerald); }
+    .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
+    .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
+
+    .tips-hero { padding:6rem 1rem; text-align:center; background: linear-gradient(135deg, #f0fdf4, #f9fafb); }
+    .tips-hero h1 { font-size:2.5rem; margin-bottom:1rem; }
+    .tips-hero p { font-size:1.125rem; color:var(--gray); max-width:700px; margin:0 auto; }
+
+    .tips-section { padding:5rem 1rem; }
+    .tips-section h2 { font-size:2rem; margin-bottom:2rem; text-align:center; }
+    .tips-grid { display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+    .tip-card { background:white; border:1px solid #e5e7eb; border-radius:0.75rem; padding:2rem; transition:transform .3s, box-shadow .3s; }
+    .tip-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+    .tip-card h3 { margin-bottom:0.75rem; font-size:1.25rem; color:var(--emerald-dark); }
+    .tip-card p { color:var(--gray); }
+
+    .cta-section { background:var(--emerald); color:white; text-align:center; padding:6rem 1rem; }
+    .cta-section h2 { font-size:2rem; margin-bottom:1rem; }
+    .cta-section p { margin-bottom:2rem; }
+
+    footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="FODMAPP logo">
+        FODMAPP
+      </a>
+      <nav>
+        <a href="index.html#funksjoner">Funksjoner</a>
+        <a href="index.html#how">Hvordan det fungerer</a>
+        <a href="index.html#demo">Demo</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="tips.html">Tips</a>
+      </nav>
+      <a href="index.html#cta" class="btn">Kom i gang</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="tips-hero">
+    <h1>Tips for å bruke FODMAPP</h1>
+    <p>Få mest mulig ut av appen med disse enkle rådene. Jo bedre du kjenner funksjonene, desto enklere blir det å følge lavFODMAP-dietten i hverdagen.</p>
+  </section>
+
+  <!-- Tips -->
+  <section class="tips-section">
+    <div class="container">
+      <h2>Beste praksis</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>📸 Ta tydelige bilder</h3>
+          <p>Sørg for godt lys og at hele matvaren eller menyen er synlig når du bruker kamera-funksjonen.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🤖 Bruk AI-chatten aktivt</h3>
+          <p>Still spørsmål som "Kan jeg spise dette?" eller "Hva er et lavFODMAP-alternativ?" for raske og presise svar.</p>
+        </div>
+        <div class="tip-card">
+          <h3>⭐ Lag deg rutiner</h3>
+          <p>Bruk appen hver gang du er i tvil – jo mer du bruker den, desto tryggere blir du i matvalgene dine.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🔒 Husk personvern</h3>
+          <p>Bilder slettes automatisk etter bruk. Du kan trygt bruke appen uten å bekymre deg for lagring av data.</p>
+        </div>
+        <div class="tip-card">
+          <h3>📂 Lag en egen "favorittliste"</h3>
+          <p>Skriv ned de matvarene som fungerer for deg i notater på mobilen din, så blir hverdagen enklere.</p>
+        </div>
+        <div class="tip-card">
+          <h3>📶 Bruk WiFi der det er mulig</h3>
+          <p>Appen fungerer best med stabil internettforbindelse, spesielt når du bruker kamera-funksjonen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Klar til å teste tipsene?</h2>
+    <p>Last ned appen i dag og gjør lavFODMAP enklere.</p>
+    <a href="index.html#cta" class="btn">Last ned nå</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
+    <p>Kontakt: <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
+  </footer>
+</body>
+</html>
