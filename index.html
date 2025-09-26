@@ -65,7 +65,7 @@
     .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
 
     /* Hamburger */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; margin-right: 1rem; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; margin-left: 1rem; }
     .hamburger span { height: 3px; width: 25px; background: var(--dark); margin: 4px 0; border-radius: 5px; transition: 0.3s; }
     .mobile-nav { display: none; flex-direction: column; background: white; padding: 1rem; }
     .mobile-nav a { margin: 0.5rem 0; color: var(--gray); font-weight: 500; text-decoration: none; }
@@ -139,8 +139,8 @@
       .hero { grid-template-columns:1fr; text-align:center;}
       .hero-buttons { justify-content:center; }
       nav { display:none; }
-      .hamburger { display:flex; order:1; }
-      .btn { order:2; }
+      .btn { order:1; }
+      .hamburger { display:flex; order:2; }
       .hero-images img { max-width: 45%; flex: 1 1 45%; }
       .faq-item { margin: 1rem; }
       section { padding: 4rem 1.5rem; }
@@ -165,10 +165,10 @@
         <a href="#kontakt">Kontakt</a>
         <a href="om-oss.html">Om oss</a>
       </nav>
+      <a href="#cta" class="btn">Last ned appen</a>
       <div class="hamburger" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
       </div>
-      <a href="#cta" class="btn">Last ned appen</a>
     </div>
     <div id="mobileNav" class="mobile-nav">
       <a href="#funksjoner">Funksjoner</a>
