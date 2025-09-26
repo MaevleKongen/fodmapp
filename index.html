@@ -61,8 +61,28 @@
     nav { display: flex; }
     nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; text-decoration: none; }
     nav a:hover { color: var(--emerald); }
+
+    /* Buttons */
     .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
     .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
+
+    /* Minimalist mobile button */
+    .btn-mobile-download {
+      display: none;
+      background: var(--emerald);
+      color: white;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    .btn-mobile-download:hover {
+      background: var(--emerald-dark);
+    }
 
     /* Hamburger */
     .hamburger { display: none; flex-direction: column; cursor: pointer; margin-left: 1rem; }
@@ -103,7 +123,7 @@
     .demo-video { padding:6rem 1rem; text-align:center; }
     .demo-video video { max-width: 27%; height: auto; border-radius: 1.25rem; box-shadow: 0 12px 24px rgba(0,0,0,0.15); display: block; margin: 0 auto; }
 
-    /* FAQ (Accordion) */
+    /* FAQ */
     .faq { padding:6rem 1rem; background:white; }
     .faq h2 { text-align:center; font-size:2rem; margin-bottom:2rem; }
     .faq-item { max-width:700px; margin:1rem auto; padding: 1rem; border-radius: 0.5rem; background: #f9fafb; border: 1px solid #e5e7eb; cursor: pointer; }
@@ -132,15 +152,14 @@
 
     /* Footer */
     footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
-    .socials { margin-top:1rem; display:flex; gap:1rem; justify-content:center; }
-    .socials a { color:var(--emerald); font-size:1.25rem; text-decoration:none; }
 
     @media (max-width:768px){
       .hero { grid-template-columns:1fr; text-align:center;}
       .hero-buttons { justify-content:center; }
       nav { display:none; }
-      .btn { order:1; }
-      .hamburger { display:flex; order:2; }
+      .btn { display:none; }
+      .btn-mobile-download { display:flex; }
+      .hamburger { display:flex; }
       .hero-images img { max-width: 45%; flex: 1 1 45%; }
       .faq-item { margin: 1rem; }
       section { padding: 4rem 1.5rem; }
@@ -165,7 +184,10 @@
         <a href="#kontakt">Kontakt</a>
         <a href="om-oss.html">Om oss</a>
       </nav>
+      <!-- Desktop button -->
       <a href="#cta" class="btn">Last ned appen</a>
+      <!-- Mobile button -->
+      <a href="#cta" class="btn-mobile-download" title="Last ned appen">⬇</a>
       <div class="hamburger" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
       </div>
