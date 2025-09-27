@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Om oss – FODMAPP</title>
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Meta description -->
   <meta name="description" content="Lær mer om hvem vi er, og hvorfor vi har laget FODMAPP.">
 
   <style>
@@ -18,25 +22,81 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
     html { scroll-behavior: smooth; }
+
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Header */
     header { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 1rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
     .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 64px; }
     .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
     .logo img { height: 40px; }
+    nav { display: flex; }
     nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; text-decoration:none;}
     nav a:hover { color: var(--emerald); }
-    .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
-    .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
 
+    /* Desktop-knapp */
+    .btn {
+      display:inline-block;
+      padding:0.6rem 1.2rem;
+      border-radius:0.5rem;
+      font-weight:600;
+      background: var(--emerald);
+      color:white;
+      transition:all .3s ease;
+    }
+    .btn:hover {
+      background: var(--emerald-dark);
+      transform: translateY(-2px);
+      box-shadow:0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Mobil-knapp */
+    .btn-mobile-download {
+      display: none;
+      background: var(--emerald);
+      color: white;
+      border-radius: 0.5rem;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    .btn-mobile-download:hover { background: var(--emerald-dark); }
+    .btn-mobile-download svg { width: 20px; height: 20px; stroke: white; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger span { height: 3px; width: 25px; background: var(--dark); margin: 4px 0; border-radius: 5px; transition: 0.3s; }
+    .mobile-nav { display: none; flex-direction: column; background: white; padding: 1rem; }
+    .mobile-nav a { margin: 0.5rem 0; color: var(--gray); font-weight: 500; text-decoration: none; }
+    .mobile-nav a:hover { color: var(--emerald); }
+
+    /* Hero */
     .about-hero { padding:6rem 1rem; text-align:center; background: linear-gradient(135deg, #f0fdf4, #f9fafb); }
     .about-hero h1 { font-size:2.5rem; margin-bottom:1rem; }
     .about-hero p { font-size:1.125rem; color:var(--gray); max-width:700px; margin:0 auto; }
 
+    /* Content sections */
     .about-section { padding:5rem 1rem; }
     .about-section h2 { font-size:2rem; margin-bottom:1rem; text-align:center; }
     .about-section p { max-width:800px; margin:0 auto 2rem auto; text-align:center; color:var(--gray); }
 
+    /* Footer */
     footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
+
+    /* Mobilvisning */
+    @media (max-width:768px){
+      nav { display:none; }
+      .btn { display:none; }
+      .btn-mobile-download { display:flex; }
+      .hamburger { display:flex; }
+      section { padding: 4rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -52,26 +112,49 @@
         <a href="index.html#how">Hvordan det fungerer</a>
         <a href="index.html#demo">Demo</a>
         <a href="index.html#faq">FAQ</a>
+        <a href="index.html#cta">Last ned</a>
         <a href="index.html#kontakt">Kontakt</a>
         <a href="about.html">Om oss</a>
       </nav>
-      <a href="index.html#cta" class="btn">Kom i gang</a>
+      <!-- Desktop knapp -->
+      <a href="index.html#cta" class="btn">Last ned appen</a>
+      <!-- Mobil: nedlastingsknapp først -->
+      <div style="display: flex; align-items: center;">
+        <a href="index.html#cta" class="btn-mobile-download" title="Last ned appen">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-6l-5 5-5-5m5-5v10" />
+          </svg>
+        </a>
+        <div class="hamburger" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+    <div id="mobileNav" class="mobile-nav">
+      <a href="index.html#funksjoner">Funksjoner</a>
+      <a href="index.html#how">Hvordan det fungerer</a>
+      <a href="index.html#demo">Demo</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#cta">Last ned</a>
+      <a href="index.html#kontakt">Kontakt</a>
+      <a href="about.html">Om oss</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="about-hero">
+  <section class="about-hero fade-in">
     <h1>Om oss</h1>
     <p>Vi startet FODMAPP for å gjøre hverdagen enklere for mennesker som følger lavFODMAP-dietten. Vår visjon er å kombinere teknologi og helse på en trygg, brukervennlig og inspirerende måte.</p>
   </section>
 
-  <!-- Historie / Visjon -->
-  <section class="about-section">
+  <!-- Historie -->
+  <section class="about-section fade-in">
     <h2>Vår historie</h2>
     <p>FODMAPP ble grunnlagt i Norge i 2025 med et mål om å gjøre kosthold enklere for personer med IBS og mageplager. Vi vet hvor utfordrende det kan være å navigere lavFODMAP-dietten, og derfor har vi utviklet en app som kombinerer AI-chat og kamerateknologi for å gi raske og trygge svar.</p>
   </section>
 
-  <section class="about-section">
+  <!-- Visjon -->
+  <section class="about-section fade-in">
     <h2>Vår visjon</h2>
     <p>Vi tror at teknologi kan være en støtte i hverdagen – ikke en byrde. Med FODMAPP ønsker vi å gi brukere trygghet i matvalgene sine, slik at de kan fokusere på det som virkelig betyr noe: å leve et godt liv uten unødvendige bekymringer rundt mat.</p>
   </section>
@@ -79,7 +162,27 @@
   <!-- Footer -->
   <footer>
     <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
+    <p>Bygget med kjærlighet i Norge 🇳🇴</p>
     <p>Kontakt: <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Toggle mobile nav
+    function toggleMobileNav() {
+      const nav = document.getElementById("mobileNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
 </body>
 </html>
