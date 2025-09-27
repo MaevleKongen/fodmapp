@@ -23,7 +23,7 @@
     body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
     html { scroll-behavior: smooth; }
 
-    /* Fade-in animation */
+    /* Fade-in */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -34,7 +34,7 @@
     .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
     .logo img { height: 40px; }
     nav { display: flex; }
-    nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; text-decoration:none;}
+    nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; text-decoration:none;}
     nav a:hover { color: var(--emerald); }
 
     /* Desktop-knapp */
@@ -86,6 +86,14 @@
     .about-section h2 { font-size:2rem; margin-bottom:1rem; text-align:center; }
     .about-section p { max-width:800px; margin:0 auto 2rem auto; text-align:center; color:var(--gray); }
 
+    /* CTA */
+    .cta-section { background:var(--emerald); color:white; text-align:center; padding:6rem 1rem; }
+    .cta-section h2 { font-size:2rem; margin-bottom:1rem; }
+    .cta-section p { margin-bottom:2rem; }
+    .store-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+    .store-buttons img { height:60px; transition:transform .3s ease; }
+    .store-buttons img:hover { transform:scale(1.05); }
+
     /* Footer */
     footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
 
@@ -118,7 +126,7 @@
       </nav>
       <!-- Desktop knapp -->
       <a href="index.html#cta" class="btn">Last ned appen</a>
-      <!-- Mobil: nedlastingsknapp først -->
+      <!-- Mobil knapp + hamburger -->
       <div style="display: flex; align-items: center;">
         <a href="index.html#cta" class="btn-mobile-download" title="Last ned appen">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -159,6 +167,16 @@
     <p>Vi tror at teknologi kan være en støtte i hverdagen – ikke en byrde. Med FODMAPP ønsker vi å gi brukere trygghet i matvalgene sine, slik at de kan fokusere på det som virkelig betyr noe: å leve et godt liv uten unødvendige bekymringer rundt mat.</p>
   </section>
 
+  <!-- CTA -->
+  <section id="cta" class="cta-section fade-in">
+    <h2>Last ned FODMAPP i dag</h2>
+    <p>Tilgjengelig på iOS og Android</p>
+    <div class="store-buttons">
+      <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Last ned på App Store" loading="lazy"></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Få den på Google Play" loading="lazy"></a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
@@ -168,7 +186,7 @@
 
   <!-- Scripts -->
   <script>
-    // Fade-in on scroll
+    // Fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -178,7 +196,7 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Toggle mobile nav
+    // Mobile nav toggle
     function toggleMobileNav() {
       const nav = document.getElementById("mobileNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
