@@ -95,13 +95,14 @@
       justify-content: center;
       font-size: 1.2rem;
       text-decoration: none;
+      margin-left: 0.5rem;
     }
     .btn-mobile-download:hover {
       background: var(--emerald-dark);
     }
 
     /* Hamburger */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; margin-left: 1rem; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; margin-left: 0.5rem; }
     .hamburger span { height: 3px; width: 25px; background: var(--dark); margin: 4px 0; border-radius: 5px; transition: 0.3s; }
     .mobile-nav { display: none; flex-direction: column; background: white; padding: 1rem; }
     .mobile-nav a { margin: 0.5rem 0; color: var(--gray); font-weight: 500; text-decoration: none; }
@@ -210,10 +211,12 @@
       </nav>
       <!-- Desktop button -->
       <a href="#cta" class="btn">Last ned appen</a>
-      <!-- Mobile button -->
-      <a href="#cta" class="btn-mobile-download" title="Last ned appen">⬇</a>
-      <div class="hamburger" onclick="toggleMobileNav()">
-        <span></span><span></span><span></span>
+      <!-- Mobile: moved download button next to hamburger -->
+      <div style="display: flex; align-items: center;">
+        <div class="hamburger" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </div>
+        <a href="#cta" class="btn-mobile-download" title="Last ned appen">⬇</a>
       </div>
     </div>
     <div id="mobileNav" class="mobile-nav">
