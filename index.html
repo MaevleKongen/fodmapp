@@ -62,16 +62,28 @@
     nav a { margin-left: 1.5rem; color: var(--gray); font-weight: 500; position: relative; text-decoration: none; }
     nav a:hover { color: var(--emerald); }
 
-    /* Buttons */
-    .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
-    .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
+    /* Desktop-knapp (standard) */
+    .btn {
+      display:inline-block;
+      padding:0.6rem 1.2rem;
+      border-radius:0.5rem;
+      font-weight:600;
+      background: var(--emerald);
+      color:white;
+      transition:all .3s ease;
+    }
+    .btn:hover {
+      background: var(--emerald-dark);
+      transform: translateY(-2px);
+      box-shadow:0 4px 8px rgba(0,0,0,0.15);
+    }
 
     /* Brukerhåndbok-knapp */
     .btn-manual {
       background: var(--emerald-dark);
     }
 
-    /* Minimalist mobile button */
+    /* Mobil-knapp (skjult som standard) */
     .btn-mobile-download {
       display: none;
       background: var(--emerald);
@@ -79,7 +91,6 @@
       border-radius: 50%;
       width: 42px;
       height: 42px;
-      display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
@@ -158,12 +169,13 @@
     /* Footer */
     footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
 
+    /* Mobilvisning */
     @media (max-width:768px){
       .hero { grid-template-columns:1fr; text-align:center;}
       .hero-buttons { justify-content:center; }
       nav { display:none; }
-      .btn { display:none; }
-      .btn-mobile-download { display:flex; }
+      .btn { display:none; } /* Skjul desktop-knapp på mobil */
+      .btn-mobile-download { display:flex; } /* Vis mobil-knapp */
       .hamburger { display:flex; }
       .hero-images img { max-width: 45%; flex: 1 1 45%; }
       .faq-item { margin: 1rem; }
