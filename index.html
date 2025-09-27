@@ -66,6 +66,11 @@
     .btn { display:inline-block; padding:0.6rem 1.2rem; border-radius:0.5rem; font-weight:600; background: var(--emerald); color:white; transition:all .3s ease;}
     .btn:hover { background: var(--emerald-dark); transform: translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.15); }
 
+    /* Brukerhåndbok-knapp */
+    .btn-manual {
+      background: var(--emerald-dark);
+    }
+
     /* Minimalist mobile button */
     .btn-mobile-download {
       display: none;
@@ -164,6 +169,13 @@
       .faq-item { margin: 1rem; }
       section { padding: 4rem 1.5rem; }
       .demo-video video { max-width: 75%; height: auto; }
+
+      /* Unhide Brukerhåndbok-knappen på mobil */
+      .btn-manual {
+        display: inline-block !important;
+        margin: 1rem auto 0 auto;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -209,7 +221,7 @@
       <h1>LavFODMAP gjort enkelt med Kamera og Chat</h1>
       <p>FODMAPP kombinerer samtale- og kamerateknologi for å gjøre matvalg enklere – hjemme, på butikken og på restaurant.</p>
       <div class="hero-buttons">
-        <a href="manual.html" class="btn" style="background:var(--emerald-dark);">Brukerhåndbok</a>
+        <a href="manual.html" class="btn btn-manual">Brukerhåndbok</a>
       </div>
     </div>
     <div class="hero-images">
