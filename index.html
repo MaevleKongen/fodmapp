@@ -209,7 +209,6 @@
         <a href="#how">Hvordan det fungerer</a>
         <a href="#demo">Demo</a>
         <a href="#faq">FAQ</a>
-        <a href="#cta">Last ned</a>
         <a href="#kontakt">Kontakt</a>
         <a href="about.html">Om oss</a>
       </nav>
@@ -245,8 +244,9 @@
       <h1>LavFODMAP gjort enkelt med Kamera og Chat</h1>
       <p>FODMAPP kombinerer samtale- og kamerateknologi for å gjøre matvalg enklere – hjemme, på butikken og på restaurant.</p>
       <div class="hero-buttons">
-        <a href="manual.html" class="btn btn-manual">Brukerhåndbok</a>
+        <a href="#cta" class="btn btn-manual">Last ned appen</a>
       </div>
+
     </div>
     <div class="hero-images">
       <img src="images/app-mockup.png" alt="App preview" loading="lazy" onclick="openFullscreen(this)">
@@ -293,6 +293,73 @@
       </div>
     </div>
   </section>
+
+<!-- Kamera-funksjoner -->
+<section class="features fade-in">
+  <div class="container">
+    <h2>Kamera funksjoner</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>📸 Sjekk enkeltmatvarer</h3>
+        <p>Pek kameraet mot en frukt, grønnsak eller annen råvare, så får du raskt vite om den er lav eller høy FODMAP.</p>
+      </div>
+      <div class="card">
+        <h3>📦 Strekkodeskanning</h3>
+        <p>Bruk strekkodeknappen til å scanne strekkoden på et produkt, og appen sjekker ingrediensene for deg. Enkelt og raskt, både hjemme og på reise.</p>
+      </div>
+      <div class="card">
+        <h3>🍽️ Flere matvarer på bordet</h3>
+        <p>Ta et bilde av et helt måltid eller flere ingredienser samtidig, så hjelper appen deg å skille mellom lav- og høyFODMAP-mat.</p>
+      </div>
+      <div class="card">
+        <h3>📋 Restaurantmenyer</h3>
+        <p>Ta bilde av menyen – på norsk eller et hvilket som helst annet språk – og få forslag til hvilke retter som er trygge. Du får også råd om hva du kan be servitøren endre.</p>
+      </div>
+      <div class="card">
+        <h3>🥗 Kjøleskap og ingredienser</h3>
+        <p>Ta bilde av innholdet i kjøleskapet, så får du forslag til oppskrifter basert på det du har – tilpasset lavFODMAP.</p>
+      </div>
+      <div class="card">
+        <h3>🔎 Innholdslister</h3>
+        <p>Skann ingredienslisten på en pakke – uansett språk – og få en vurdering av om den er lav eller høy FODMAP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Chat -->
+<section class="features fade-in">
+  <div class="container">
+    <h2>AI chat funksjoner</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>💬 Still spørsmål</h3>
+        <p>Spør for eksempel: "Kan jeg spise hummus?" eller "Hva kan jeg lage til middag i dag?". Chatten gir deg raske og presise svar.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Lynrask evaluering</h3>
+        <p>For raskest mulig svar kan du bare skrive navnet på det du lurer på – for eksempel "eple" – og få umiddelbar FODMAP-vurdering.</p>
+      </div>
+      <div class="card">
+        <h3>🥘 Ukemeny og handleliste</h3>
+        <p>Be om forslag til en lavFODMAP ukemeny – så får du et ferdig opplegg med frokost, lunsj og middag. Be om handleliste til dette, så får du liste over alt du trenger.</p>
+      </div>
+      <div class="card">
+        <h3>🍲 Oppskrifter</h3>
+        <p>Spør etter lavFODMAP-oppskrifter basert på ingrediensene du har hjemme, og få skreddersydde forslag.</p>
+      </div>
+      <div class="card">
+        <h3>🌿 Symptomhåndtering</h3>
+        <p>Be om tips til hvordan du kan lindre vanlige IBS-plager som oppblåsthet, mageknip eller urolig mage. Chatten kan gi forslag til skånsomme tiltak og gode vaner i hverdagen.</p>
+      </div>
+      <div class="card">
+        <h3>🧘 Stressmestring</h3>
+        <p>Spør om øvelser og teknikker som kan hjelpe deg å roe ned i hverdagen. Du kan også få forslag til verktøy for å forebygge og mestre stress over tid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Demo Video -->
   <section id="demo" class="demo-video fade-in">
@@ -387,6 +454,13 @@
       const nav = document.getElementById("mobileNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
+
+    // Lukk mobilmenyen automatisk når man trykker på en lenke
+    document.querySelectorAll('#mobileNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById("mobileNav").style.display = "none";
+      });
+    });
   </script>
 </body>
 </html>
