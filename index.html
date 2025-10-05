@@ -130,10 +130,15 @@
 /* Grid-oppsett – fire på rad på store skjermer */
 .features .grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; /* litt mer luft mellom boksene */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* 👈 økt fra 245 til 260 */
+  justify-content: center; /* sentrerer rutenettet */
+  align-items: stretch;
   padding: 1rem 0;
 }
+
+
+
 
 /* Kortene */
 .card {
@@ -143,6 +148,10 @@
   padding: 2rem;
   text-align: left;
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
 }
 
 .card:hover {
@@ -157,7 +166,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;       /* 👈 hindrer linjeskift i tittelen */
+  justify-content: center;   /* 👈 sentrerer ikonet og teksten horisontalt */
+  text-align: center;        /* 👈 sørger for visuell balanse */
 }
+
 
 .card svg {
   width: 24px;
@@ -218,9 +231,24 @@
     padding:0.75rem 1rem;
   }
 
-  /* Demo video */
-  .demo-video { padding:6rem 1rem; text-align:center; }
-  .demo-video video { max-width: 27%; height: auto; border-radius: 1.25rem; box-shadow: 0 12px 24px rgba(0,0,0,0.15); display: block; margin: 0 auto; }
+/* Demo video */
+.demo-video {
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+.demo-video h2 {
+  margin-bottom: 2rem; /* 👈 legger bare inn mellomrom mellom teksten og videoen */
+}
+
+.demo-video video {
+  max-width: 27%;
+  height: auto;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
 
 
 /* 🎥 Video-galleri – full responsiv tilpasning */
@@ -408,7 +436,7 @@
           <p>Ta bilde av matvarer, menyer, kjøleskapet eller en ingrediensliste – og få direkte FODMAP-vurdering.</p>
         </div>
           <div class="card">
-          <h3>🏷️🔍Strekkodeskanning</h3>
+          <h3>🔍Strekkodeskanning</h3>
           <p>Appen kan skanne matvarer i alle land og analysere ingrediensene etter lavFODMAP-prinsippene – slik at du alltid vet hva du trygt kan spise, uansett hvor du er.</p>
         </div>        
           <div class="card">
@@ -420,14 +448,16 @@
   </section>
 
   <!-- Demo Video -->
-  <section id="demo" class="demo-video fade-in">
-    <div class="container">
-      <h2>Se hvordan FODMAPP hjelper deg</h2>
-      <video autoplay loop muted controls allowfullscreen>="images/demo.png" loading="lazy">
-        <source src="videos/demo1.mp4" type="video/mp4"> Nettleseren din støtter ikke video.
-      </video>
-    </div>
-  </section>
+<section id="demo" class="demo-video fade-in">
+  <div class="container">
+    <h2>Se hvordan FODMAPP hjelper deg</h2>
+    <video autoplay loop muted controls playsinline poster="images/demo.png" loading="lazy">
+      <source src="videos/demo1.mp4" type="video/mp4">
+      Nettleseren din støtter ikke video.
+    </video>
+  </div>
+</section>
+
 
   <!-- Kamera-funksjoner -->
 <!-- Kamera-funksjoner -->
