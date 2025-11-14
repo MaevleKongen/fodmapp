@@ -1,1 +1,360 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personvernerklæring – FODMAPP</title>
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <meta name="description" content="Personvernerklæring for FODMAPP-appen.">
+
+  <style>
+    :root {
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --dark: #1e293b;
+      --gray: #475569;
+      --light: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+    html { scroll-behavior: smooth; }
+
+    /* Fade-in */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Header */
+    header { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-weight: bold; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--dark); }
+    .logo img { height: 40px; }
+
+    nav { display: flex; }
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--gray);
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap; /* Sikrer én linje */
+    }
+    nav a:hover { color: var(--emerald); }
+
+    /* Desktop-knapp */
+    .btn {
+      display:inline-block;
+      padding:0.6rem 1.2rem;
+      border-radius:0.5rem;
+      font-weight:600;
+      background: var(--emerald);
+      color:white;
+      transition:all .3s ease;
+      white-space: nowrap; /* Hindrer linjeskift i knappen */
+    }
+    .btn:hover {
+      background: var(--emerald-dark);
+      transform: translateY(-2px);
+      box-shadow:0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Mobil-knapp */
+    .btn-mobile-download {
+      display: none;
+      background: var(--emerald);
+      color: white;
+      border-radius: 0.5rem;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    .btn-mobile-download:hover { background: var(--emerald-dark); }
+    .btn-mobile-download svg { width: 20px; height: 20px; stroke: white; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger span { height: 3px; width: 25px; background: var(--dark); margin: 4px 0; border-radius: 5px; transition: 0.3s; }
+    .mobile-nav { display: none; flex-direction: column; background: white; padding: 1rem; }
+    .mobile-nav a { margin: 0.5rem 0; color: var(--gray); font-weight: 500; text-decoration: none; }
+    .mobile-nav a:hover { color: var(--emerald); }
+
+    /* Hero */
+    .tips-hero { padding:6rem 1rem; text-align:center; background: linear-gradient(135deg, #f0fdf4, #f9fafb); }
+    .tips-hero h1 { font-size:2.5rem; margin-bottom:1rem; }
+    .tips-hero p { font-size:1.125rem; color:var(--gray); max-width:700px; margin:0 auto; }
+
+    /* Privacy content */
+    .privacy-section { padding:5rem 1rem; }
+    .privacy-wrapper { max-width: 800px; margin: 0 auto; }
+    .privacy-card {
+      background:white;
+      border:1px solid #e5e7eb;
+      border-radius:0.75rem;
+      padding:2rem 1.5rem;
+      box-shadow:0 8px 20px rgba(0,0,0,0.02);
+    }
+    .privacy-card h2 {
+      margin-top:1.5rem;
+      margin-bottom:0.5rem;
+      font-size:1.25rem;
+      color:var(--emerald-dark);
+    }
+    .privacy-card h3 {
+      margin-top:1rem;
+      margin-bottom:0.35rem;
+      font-size:1.05rem;
+      color:var(--dark);
+    }
+    .privacy-card p {
+      color:var(--gray);
+      margin-bottom:0.75rem;
+    }
+    .privacy-card ul {
+      margin:0.25rem 0 1rem 1.5rem;
+      color:var(--gray);
+    }
+
+    .privacy-meta {
+      font-size:0.9rem;
+      color:var(--gray);
+      margin-bottom:1.5rem;
+    }
+
+    /* CTA */
+    .cta-section { background:var(--emerald); color:white; text-align:center; padding:6rem 1rem; }
+    .cta-section h2 { font-size:2rem; margin-bottom:1rem; }
+    .cta-section p { margin-bottom:2rem; }
+    .store-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+    .store-buttons img { height:60px; transition:transform .3s ease; }
+    .store-buttons img:hover { transform:scale(1.05); }
+
+    /* Footer */
+    footer { background:white; border-top:1px solid #e5e7eb; padding:2rem 1rem; text-align:center; font-size:0.875rem; color:var(--gray); }
+    footer a { color: var(--gray); text-decoration:none; }
+    footer a:hover { color: var(--emerald); }
+
+    /* Mobil */
+    @media (max-width:768px){
+      nav { display:none; }
+      .btn { display:none; }
+      .btn-mobile-download { display:flex; }
+      .hamburger { display:flex; }
+      section { padding: 4rem 1.5rem; }
+      .privacy-card { padding:1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="FODMAPP logo"> FODMAPP
+      </a>
+
+      <nav>
+        <a href="index.html#funksjoner">Funksjoner</a>
+        <a href="index.html#how">Hvordan det fungerer</a>
+        <a href="index.html#demo">Demo</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#cta">Last ned</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="about.html">Om oss</a>
+        <a href="manual.html">Manual</a>
+      </nav>
+
+      <a href="index.html#cta" class="btn">Last ned appen</a>
+
+      <div style="display: flex; align-items: center;">
+        <a href="index.html#cta" class="btn-mobile-download">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-6l-5 5-5-5m5-5v10" />
+          </svg>
+        </a>
+
+        <div class="hamburger" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav">
+      <a href="index.html#funksjoner">Funksjoner</a>
+      <a href="index.html#how">Hvordan det fungerer</a>
+      <a href="index.html#demo">Demo</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#cta">Last ned</a>
+      <a href="index.html#kontakt">Kontakt</a>
+      <a href="about.html">Om oss</a>
+      <a href="manual.html">Manual</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="tips-hero fade-in">
+    <h1>🔒 Personvernerklæring for FODMAPP</h1>
+    <p>Her forklarer vi hvordan vi behandler personopplysninger når du bruker FODMAPP-appen.</p>
+  </section>
+
+  <!-- Privacy content -->
+  <section class="privacy-section fade-in">
+    <div class="container">
+      <div class="privacy-wrapper">
+        <div class="privacy-card">
+
+          <p class="privacy-meta"><strong>Sist oppdatert:</strong> 15. oktober 2025</p>
+
+          <!-- (Alle personverntekster du la inn tidligere beholdes uendret) -->
+
+          <h2>1. Om appen</h2>
+          <p>FODMAP-appen er utviklet for å hjelpe brukere med å navigere i FODMAP-dietten og få veiledning om matvarer,
+            oppskrifter og symptomlindring. Appen benytter kunstig intelligens (AI) for å gi tilpasset informasjon, og
+            bruker bildeanalyse for å gjenkjenne matvarer, menyer og ingredienslister.
+          </p>
+          <p>
+            Appen bruker Firebase (Google) for sikker datalagring. AI-funksjonene drives av
+            Gemini (Google AI).
+          </p>
+
+          <h2>2. Hvilke data vi samler inn</h2>
+          <p>
+            Appen samler inn et minimum av data for å fungere som tiltenkt. Dette kan omfatte:
+          </p>
+
+          <h3>a) Brukerdata</h3>
+          <ul>
+            <li>E-postadresse eller innloggingsmetode (dersom du oppretter konto)</li>
+            <li>Språkinnstilling og appversjon</li>
+            <li>Brukerens samtykke til vilkår og personvern</li>
+          </ul>
+
+          <h3>b) Bilde- og kameraopplysninger</h3>
+          <ul>
+            <li>Bilder du tar eller laster opp for analyse (matvarer, menyer, strekkoder, kjøleskap osv.).</li>
+          </ul>
+          <p>➜ Disse bildene lagres midlertidig i Firebase og slettes automatisk etter bruk.</p>
+          <p>➜ Bildene brukes kun for analyseformål i sanntid av AI-systemet (Gemini).</p>
+
+          <h3>c) AI-interaksjoner</h3>
+          <ul>
+            <li>Tekst du skriver i AI-chatten (for spørsmål om mat, symptomer, oppskrifter osv.).</li>
+          </ul>
+          <p>➜ Teksten sendes midlertidig til Gemini for behandling og svar.</p>
+          <p>➜ Vi lagrer ikke samtalelogger lokalt eller deler dem videre.</p>
+
+          <h3>d) Tekniske data (anonymt)</h3>
+          <ul>
+            <li>Enhetsinformasjon (modell, operativsystem, appversjon)</li>
+            <li>Feilrapporter (via Firebase Crashlytics)</li>
+            <li>Statistikk for appbruk (via Firebase Analytics, anonymisert)</li>
+          </ul>
+
+          <h2>3. Hvordan vi bruker informasjonen</h2>
+          <p>Vi bruker informasjonen din til å:</p>
+          <ul>
+            <li>Levere kjernefunksjonene i appen (AI-chat og AI-kamera)</li>
+            <li>Forbedre brukeropplevelsen og påliteligheten</li>
+            <li>Sikre teknisk drift og oppdage feil</li>
+            <li>Tilpasse innhold etter språk og preferanser</li>
+          </ul>
+          <p>
+            Vi bruker ikke personopplysninger til markedsføring, profilering eller tredjepartsreklame.
+          </p>
+
+          <h2>4. Deling av data</h2>
+          <p>
+            Vi deler ikke personopplysninger med tredjeparter, med unntak av:
+          </p>
+          <ul>
+            <li>Google Firebase: For sikker midlertidig lagring av bilder og tekniske data</li>
+            <li>Google Gemini AI: For sanntidsbehandling av tekst og bilder</li>
+          </ul>
+          <p>
+            Begge disse tjenestene følger EUs personvernforordning (GDPR) og har strenge krav til datasikkerhet.
+          </p>
+
+          <h2>5. Lagring og sletting</h2>
+          <ul>
+            <li>Bilder slettes automatisk fra Firebase kort tid etter analyse (vanligvis innen 24 timer).</li>
+            <li>Eventuelle innloggingsdata oppbevares så lenge du har en aktiv konto.</li>
+            <li>Du kan når som helst be om å få slettet kontoen din og all tilknyttet informasjon.</li>
+          </ul>
+
+          <h2>6. Sikkerhet</h2>
+          <p>
+            Vi benytter kryptert forbindelse (HTTPS) og sikrer all kommunikasjon mellom app, server og AI-tjenester.
+            Tilgangen til data er begrenset til systemer og utviklere med nødvendig autorisasjon.
+          </p>
+
+          <h2>7. Dine rettigheter</h2>
+          <p>Som bruker har du rett til å:</p>
+          <ul>
+            <li>Få innsyn i hvilke data som eventuelt er lagret om deg</li>
+            <li>Be om retting eller sletting av data</li>
+            <li>Trekke tilbake samtykke til databehandling</li>
+            <li>Klage til Datatilsynet dersom du mener personopplysninger håndteres i strid med lovverket</li>
+          </ul>
+          <p>For spørsmål om personvern, kontakt oss på:</p>
+          <p>📧 <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
+
+          <h2>8. Endringer i personvernerklæringen</h2>
+          <p>
+            Vi kan oppdatere denne erklæringen ved behov, for eksempel ved endringer i teknologi eller regelverk.
+            Når det skjer, vil du få beskjed i appen og kunne lese oppdatert versjon før videre bruk.
+          </p>
+
+          <h2>9. Kontaktinformasjon</h2>
+          <p><strong>Utvikler:</strong> Telemark Software Solutions AS</p>
+          <p><strong>E-post:</strong> <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
+          <p><strong>Nettside:</strong> <a href="https://www.fodmapp.com" target="_blank" rel="noopener noreferrer">www.fodmapp.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="cta-section fade-in">
+    <h2>Klar til å ta kontroll på FODMAP-dietten?</h2>
+    <p>Last ned appen i dag og få trygg og enkel veiledning – med personvernet ditt ivaretatt.</p>
+    <div class="store-buttons">
+      <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store"></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FODMAPP. Alle rettigheter forbeholdt.</p>
+    <p>Bygget med kjærlighet i Norge 🇳🇴</p>
+
+    <p>
+      <a href="privacy.html">Personvern</a> •
+      <a href="terms.html">Brukervilkår</a>
+    </p>
+
+    <p>Kontakt: <a href="mailto:post@fodmapp.com">post@fodmapp.com</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function toggleMobileNav() {
+      const nav = document.getElementById("mobileNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+
+</body>
+</html>
 
