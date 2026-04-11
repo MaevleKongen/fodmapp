@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://fodmapp.com/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fodmapp.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/about.html?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/about.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/about.html?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/about.html?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/about.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/about.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/about.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/about.html?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/about.html?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/about.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/about.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/about.html?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/about.html?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/about.html?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/about.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/about.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/about.html?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/about.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/about.html?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/about.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/about.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/about.html?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/about.html?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fodmapp.com/manual.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/manual.html"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/manual.html?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/manual.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/manual.html?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/manual.html?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/manual.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/manual.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/manual.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/manual.html?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/manual.html?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/manual.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/manual.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/manual.html?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/manual.html?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/manual.html?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/manual.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/manual.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/manual.html?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/manual.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/manual.html?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/manual.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/manual.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/manual.html?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/manual.html?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fodmapp.com/privacypolicy.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/privacypolicy.html"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/privacypolicy.html?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/privacypolicy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/privacypolicy.html?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/privacypolicy.html?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/privacypolicy.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/privacypolicy.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/privacypolicy.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/privacypolicy.html?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/privacypolicy.html?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/privacypolicy.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/privacypolicy.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/privacypolicy.html?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/privacypolicy.html?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/privacypolicy.html?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/privacypolicy.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/privacypolicy.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/privacypolicy.html?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/privacypolicy.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/privacypolicy.html?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/privacypolicy.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/privacypolicy.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/privacypolicy.html?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/privacypolicy.html?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://fodmapp.com/termsandconditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/termsandconditions.html"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/termsandconditions.html?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/termsandconditions.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/termsandconditions.html?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/termsandconditions.html?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/termsandconditions.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/termsandconditions.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/termsandconditions.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/termsandconditions.html?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/termsandconditions.html?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/termsandconditions.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/termsandconditions.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/termsandconditions.html?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/termsandconditions.html?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/termsandconditions.html?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/termsandconditions.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/termsandconditions.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/termsandconditions.html?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/termsandconditions.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/termsandconditions.html?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/termsandconditions.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/termsandconditions.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/termsandconditions.html?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/termsandconditions.html?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://fodmapp.com/delete.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fodmapp.com/delete.html"/>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://fodmapp.com/delete.html?lang=nb"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fodmapp.com/delete.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://fodmapp.com/delete.html?lang=sv"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fodmapp.com/delete.html?lang=da"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fodmapp.com/delete.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fodmapp.com/delete.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fodmapp.com/delete.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://fodmapp.com/delete.html?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/delete.html?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://fodmapp.com/delete.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fodmapp.com/delete.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fodmapp.com/delete.html?lang=pl"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://fodmapp.com/delete.html?lang=lt"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://fodmapp.com/delete.html?lang=fi"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://fodmapp.com/delete.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fodmapp.com/delete.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/delete.html?lang=zh-Hant"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://fodmapp.com/delete.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://fodmapp.com/delete.html?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://fodmapp.com/delete.html?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fodmapp.com/delete.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://fodmapp.com/delete.html?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://fodmapp.com/delete.html?lang=nl"/>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
