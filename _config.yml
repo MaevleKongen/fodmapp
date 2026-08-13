@@ -1,0 +1,19 @@
+# GitHub Pages serves everything in this repository at fodmapp.com.
+# Anything listed here is kept out of the published site.
+#
+# _internal/ holds working documents: the compliance checklist, the app
+# verification brief and report, the translation queue, and the i18n tooling.
+# They describe gaps we have not closed yet, so they must not be readable
+# from the web. Jekyll already skips underscore-prefixed directories; this
+# makes it explicit and covers anything added alongside them.
+#
+# If a .nojekyll file is ever added to this repository, Jekyll is bypassed
+# entirely and this file stops taking effect — the _internal directory would
+# then be served. Remove the directory instead of adding .nojekyll.
+
+exclude:
+  - _internal
+  - README.md
+  - LICENSE
+
+keep_files: []
