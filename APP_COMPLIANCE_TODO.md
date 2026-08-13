@@ -12,12 +12,11 @@ for at tekstene skal stemme med virkeligheten.
 
 ## 1. Må fikses før publisering
 
-- [ ] **Organisasjonsnummer og forretningsadresse.**
-      GDPR art. 13(1)(a) og ehandelsloven § 8 krever at behandlingsansvarlig kan identifiseres.
-      Nettsiden har i dag bare navn, e-post og domene. Sett inn org.nr og adresse i:
-      - `js/i18n.js` → nøkkelen `tc_s1p` (alle 23 språk)
-      - `js/i18n.js` → nøkkelen `pp_s17p` (alle 23 språk)
-      - de tilsvarende engelske standardtekstene i `termsandconditions.html` og `privacypolicy.html`
+- [x] ~~**Organisasjonsnummer og forretningsadresse.**~~ **Gjort.**
+      Org.nr. 936 367 194 og Østli 15, 3718 Skien er lagt inn som identitetsblokk i
+      `tc_s1p` og `pp_s17p` på alle 23 språk, med oversatte etiketter.
+      Nummeret og gateadressen er pakket i `<span dir="ltr">` fordi arabisk ellers
+      snudde sifferrekkene og viste «194 367 936».
 
 - [ ] **Verifiser AI-kjeden, og skriv den riktig.**
       Erklæringen sier i dag at AI-integrasjonen leveres «gjennom apputviklingsplattformen vår
