@@ -1,9 +1,13 @@
 # Etterarbeid: app- og selskapsside
 
-Vilkårene og personvernerklæringen på nettsiden er oppdatert (versjon 2.0, 13. august 2026)
-og deretter rettet mot **verifiseringsrapporten av 13. august 2026** (Firebase- og
-FlutterFlow-gjennomgang av appen). Dette dokumentet lister det som **ikke** kan gjøres fra
-nettside-repoet, men som må på plass for at tekstene skal stemme med virkeligheten.
+Vilkårene og personvernerklæringen på nettsiden er oppdatert (versjon 2.0, nå datert
+**20. august 2026**) og rettet mot **verifiseringsrapporten av 13. august 2026** pluss
+en ny full gjennomgang **20. august 2026** (chat slettes automatisk etter 24 timer i
+app + serverrutine; Firebase Analytics er aktiv igjen med annonse-ID deklarert i Play
+og hendelser knyttet til bruker-ID; Resend er i drift og navngitt; velkomstmail aktiv;
+Firebase Performance og CDN-er omtalt; Monash-referanser fjernet fra hele produktet).
+Dette dokumentet lister det som **ikke** kan gjøres fra nettside-repoet, men som må på
+plass for at tekstene skal stemme med virkeligheten.
 
 > Tekstene er skrevet for å være juridisk solide og selskapsvennlige innenfor lovens rammer,
 > men de er ikke kvalitetssikret av advokat. Med helseopplysninger i 23 markeder bør en
@@ -13,19 +17,26 @@ nettside-repoet, men som må på plass for at tekstene skal stemme med virkeligh
 
 ## 0. BLOKKERER PUBLISERING
 
-- [ ] **Oversettelse av de 21 endrede nøklene til de øvrige 22 språkene.**
-      Se `TRANSLATION_QUEUE.md`. Engelsk er rettet mot rapporten; de andre språkene
-      har foreløpig **fortsatt de gamle, nå uriktige påstandene**:
-      bilder lagres i 24 timer, egen påminnelse før trekk, 14 måneders bruksstatistikk,
-      FlutterFlow som databehandler for AI, sletting kun via e-post.
+- [ ] **Oversettelse av de 24 endrede nøklene til de 21 gjenstående språkene.**
+      Se `TRANSLATION_QUEUE.md` (oppdatert 20. aug). **Engelsk og norsk er ferdige**
+      og reflekterer 20. august-tilstanden; de 21 andre språkene har fortsatt gamle,
+      nå uriktige påstander (bl.a. bilder lagres 24 t, egen påminnelse før trekk,
+      14 mnd bruksstatistikk, FlutterFlow som databehandler, sletting kun via e-post,
+      og ingen omtale av 24-timers chatsletting).
       **Branchen må ikke merges til `main` før dette er gjort** — GitHub Pages publiserer
       fra `main`, så alt som ligger der er live på fodmapp.com.
 
-- [ ] **Appens interne vilkårstekst er fortsatt versjonen fra 22. april** (rapportens X1).
-      13 punkter, hardkodet i i18n på 23 språk. Inneholder blant annet 24-timerspåstanden
-      om bilder (nøkkel `hnikm6tl`, pkt. 7) og «symptomlindring» i pkt. 4 (MDR, se punkt 6).
-      Den må byttes ut med v2.0 samtidig med nettsiden, og `config.termsVersion` må bumpes.
-      Re-godkjenningsmekanismen finnes og virker (`maaGodtaVilkaar`-gate på hjemmesiden).
+- [x] **Appens interne vilkårstekst byttet til v2.0** (20. aug 2026, rapportens X1):
+      TermsAndConditions-siden i appen viser nå de samme 22 punktene som nettsiden,
+      på norsk og engelsk med engelsk fallback for de 21 øvrige språkene
+      (custom-funksjonene `vilkaarDelTittel`/`vilkaarDelTekst` — oversettes i samme
+      økt som nettside-køen). Godta-knappen logger nå også tidspunkt og
+      aldersbekreftelse (`settVilkaarAkseptert`).
+      **GJENSTÅR: bump `config.termsVersion` til neste heltall** i Firestore (config-dokumentet
+      med `type == 'app'`) — men FØRST etter at (a) neste app-release med den nye
+      vilkårssiden er ute OG (b) nettsiden er publisert. Bumper du før, re-godkjenner
+      gamle appversjoner den gamle teksten. Re-godkjenningsgaten (`maaGodtaVilkaar`)
+      virker og trigges av bumpen.
 
 - [ ] **Publiser tekstene samtidig med eller etter neste app-release.**
       Fiksene i Del E av rapporten (samtykkegate, tilbaketrekking, chatsletting,
