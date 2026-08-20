@@ -379,6 +379,7 @@
   <link rel="alternate" hreflang="tr" href="https://fodmapp.com/">
   <link rel="alternate" hreflang="id" href="https://fodmapp.com/">
   <link rel="alternate" hreflang="nl" href="https://fodmapp.com/">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
   <header id="siteHeader">
@@ -660,8 +661,22 @@
     function closeFullscreen(){document.getElementById('lightbox').style.display='none'}
     // FAQ
     document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('active')});item.classList.toggle('active')})});
-    // Scroll reveal
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    // Scroll reveal. threshold MUST stay 0: it is the ratio of the visible area
+    // to the ELEMENT's own area, so a wrapper taller than the viewport can never
+    // reach a non-zero threshold and would sit at opacity:0 forever. That blanked
+    // privacypolicy/termsandconditions, whose entire body is one tall wrapper.
+    (function(){const els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));const show=function(el){el.classList.add('visible')};
+    if(!('IntersectionObserver' in window)){els.forEach(show);return}
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)show(e.target)})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>obs.observe(el));
+    // Failsafe: text must never stay invisible if the observer never fires.
+    const sweep=function(){els.forEach(function(el){const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)show(el)})};
+    // Sweep again as layout settles: at parse time the rects can still be
+    // empty, and 'load' alone waits on slow third-party images.
+    sweep();document.addEventListener('DOMContentLoaded',sweep);window.addEventListener('load',sweep);
+    window.addEventListener('scroll',sweep,{passive:true});window.addEventListener('resize',sweep);
+    setTimeout(sweep,200);setTimeout(sweep,1000);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sweep);})();
     // Header scroll state
     (function(){const h=document.getElementById('siteHeader');window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>10),{passive:true})})();
     // Mobile nav

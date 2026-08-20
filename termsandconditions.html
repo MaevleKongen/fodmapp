@@ -31,6 +31,7 @@
   <link rel="alternate" hreflang="tr" href="https://fodmapp.com/termsandconditions.html">
   <link rel="alternate" hreflang="id" href="https://fodmapp.com/termsandconditions.html">
   <link rel="alternate" hreflang="nl" href="https://fodmapp.com/termsandconditions.html">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
   <header><div class="container nav-bar"><a href="index.html" class="logo"><img src="images/logo.png" alt="FODMAPP logo"> FODMAPP</a><nav><a href="index.html#features" data-i18n="nav_features">Features</a><a href="index.html#how" data-i18n="nav_how">How it works</a><a href="index.html#demo" data-i18n="nav_demo">Demo</a><a href="index.html#faq">FAQ</a><a href="index.html#contact" data-i18n="nav_contact">Contact</a><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a></nav><div class="nav-right"><div class="lang-btn" onclick="openLangModal()">🌐</div><a href="index.html#cta" class="btn-nav" data-i18n="nav_download">Download app ↓</a><a href="index.html#cta" class="btn-mobile-download"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-6l-5 5-5-5m5-5v10"/></svg></a><div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div></div></div><div id="mobileNav" class="mobile-nav"><a href="index.html#features" onclick="closeMobileNav()" data-i18n="nav_features">Features</a><a href="index.html#how" onclick="closeMobileNav()" data-i18n="nav_how">How it works</a><a href="index.html#demo" onclick="closeMobileNav()" data-i18n="nav_demo">Demo</a><a href="index.html#faq" onclick="closeMobileNav()">FAQ</a><a href="index.html#contact" onclick="closeMobileNav()" data-i18n="nav_contact">Contact</a><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a></div></header>
@@ -92,8 +93,22 @@
   </div>
   <script src="js/i18n.js"></script>
   <script>
-    // Scroll reveal
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    // Scroll reveal. threshold MUST stay 0: it is the ratio of the visible area
+    // to the ELEMENT's own area, so a wrapper taller than the viewport can never
+    // reach a non-zero threshold and would sit at opacity:0 forever. That blanked
+    // privacypolicy/termsandconditions, whose entire body is one tall wrapper.
+    (function(){const els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));const show=function(el){el.classList.add('visible')};
+    if(!('IntersectionObserver' in window)){els.forEach(show);return}
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)show(e.target)})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>obs.observe(el));
+    // Failsafe: text must never stay invisible if the observer never fires.
+    const sweep=function(){els.forEach(function(el){const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)show(el)})};
+    // Sweep again as layout settles: at parse time the rects can still be
+    // empty, and 'load' alone waits on slow third-party images.
+    sweep();document.addEventListener('DOMContentLoaded',sweep);window.addEventListener('load',sweep);
+    window.addEventListener('scroll',sweep,{passive:true});window.addEventListener('resize',sweep);
+    setTimeout(sweep,200);setTimeout(sweep,1000);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sweep);})();
     // Mobile nav
     function toggleMobileNav(){const n=document.getElementById('mobileNav');n.style.display=n.style.display==='flex'?'none':'flex'}
     function closeMobileNav(){document.getElementById('mobileNav').style.display='none'}
