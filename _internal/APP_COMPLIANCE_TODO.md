@@ -17,7 +17,7 @@ plass for at tekstene skal stemme med virkeligheten.
 
 ## 0. BLOKKERER PUBLISERING
 
-- [ ] **Oversettelse av de 24 endrede nøklene til de 21 gjenstående språkene.**
+- [ ] **Oversettelse av de 26 endrede nøklene til de 21 gjenstående språkene.**
       Se `TRANSLATION_QUEUE.md` (oppdatert 20. aug). **Engelsk og norsk er ferdige**
       og reflekterer 20. august-tilstanden; de 21 andre språkene har fortsatt gamle,
       nå uriktige påstander (bl.a. bilder lagres 24 t, egen påminnelse før trekk,
@@ -131,8 +131,9 @@ Til dokumentasjon. Ingen handling.
 
 ## 3. E-post — før noe sendes
 
-- [ ] **Velkomstmailen er kodet, men ikke aktiv.** Resend-konto, DNS, `RESEND_API_KEY`
-      og deploy mangler. Den deployede webhooken er sannsynligvis en eldre versjon uten
+- [x] **Velkomstmailen er AKTIV (20. aug 2026).** Eieren har bekreftet Resend-konto,
+      DNS og `RESEND_API_KEY`; webhooken er redeployet 20. aug med rettede maler
+      («Ubegrenset AI-analyse» fjernet fra alle 23 språk). Historikk: eldre versjon uten
       koden. Tekstene sier «kan blant annet omfatte» og lover den derfor ikke — men
       ikke send noe før dette står.
 - [ ] **Malene sier «Ubegrenset AI-analyse».** Det er feil: Plus har månedskvote
