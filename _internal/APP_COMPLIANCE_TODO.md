@@ -71,6 +71,19 @@ Til dokumentasjon. Ingen handling.
 
 ## 2. Må fikses i appen — reelle hull
 
+- [ ] **Feilrapporter/appvurderinger: «inntil 2 år» krever en manuell slettingsrutine.**
+      Ingen mekanisme finnes (`allow delete: if false` i rules, og `slett_alle_mine_data`
+      treffer feil samlingsnavn `bug_reports` vs `bugReports`). Enten bygg en årlig
+      opprydding (f.eks. scheduled function), eller før en kalenderrutine. Verifisert 20. aug.
+
+- [ ] **GCS-lifecycle-regelen (48-timers bildesletting for eldre appversjoner) må
+      bekreftes i Cloud Console** — påstanden i tekstene hviler på eierens opplysning;
+      ingen regel er synlig i repoet. (Fra rapportens manuelle liste, gjentatt her.)
+
+- [ ] **Kosmetisk app-tekstfeil:** zh-strengen i `trekk_ai_samtykke.dart` inneholder det
+      russiske ordet «протокол» midt i kinesisk tekst. Fikses i oversettelsesøkta.
+
+
 - [ ] **Betalingsveggen nevner verken prøveperiode, autofornyelse eller kvote.**
       Rapportens X8. Den gamle paywallen er aktiv 19 steder og har i tillegg hardkodet
       «Spar 37 %» der den reelle besparelsen er ~47 %.

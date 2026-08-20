@@ -1,4 +1,4 @@
-# Oversettelseskø — 24 nøkler til 21 språk
+# Oversettelseskø — 26 nøkler til 21 språk
 
 **Midlertidig arbeidsfil. Slett den når køen er tom.**
 
@@ -26,11 +26,11 @@ referanse for tone/terminologi på skandinaviske språk.
 | `pp_s2p` | privacypolicy | Kortversjonen: **chat slettes automatisk etter 24 t**; bilder lagres ikke; nyhetsbrev i innstillingene; sletting i appen |
 | `pp_s3p` | privacypolicy | Utvidet a/c/d/e/f + ny g) posisjon. **e) omskrevet 20. aug:** Analytics-hendelser knyttet til bruker-ID, **annonse-ID på Android**, Firebase Performance, onboarding-steg. c) chat-24t-note |
 | `pp_s5p` | privacypolicy | **NY 20. aug:** «trial-/betalingspåminnelser» fjernet fra tjenestemelding-grunnlaget (vi sender ingen) |
-| `pp_s6p` | privacypolicy | AI-kjeden (Firebase AI Logic/Vertex AI, FlutterFlow ute); **Lagring og sletting omskrevet 20. aug: chat 24 t (app + serverrutine hver time)** |
+| `pp_s6p` | privacypolicy | AI-kjeden (Firebase AI Logic/Vertex AI, FlutterFlow ute); **Lagring og sletting omskrevet 20. aug: chat 24 t (app + serverrutine hver time); runde 2: AI-analyse inntil 30 dager (ikke 90), chat-konteksten presisert (toleranseprofil, protokollstatus, siste AI-analyse, skanninger)** |
 | `pp_s7p` | privacypolicy | Ingen egen trial-påminnelse; nyhetsbrev av som standard; **velkomstmail omtales nå som aktiv (Resend i drift)** |
 | `pp_s8p` | privacypolicy | Databehandlerliste: FlutterFlow ut; Firebase AI Logic/Vertex AI, Overpass, **Resend (navngitt) og CDN-punkt (LottieFiles/Google Fonts) inn; «performance monitoring» i Firebase-punktet** |
 | `pp_s9p` | privacypolicy | Database i EU, AI + noen serverfunksjoner utenfor EØS |
-| `pp_s10p` | privacypolicy | **Egen rad: chat slettes etter 24 t.** Bilder lagres ikke/48 t; Analytics 2 mnd; brukstellere; feilrapporter |
+| `pp_s10p` | privacypolicy | **Egen rad: chat slettes etter 24 t.** Bilder lagres ikke/48 t; Analytics 2 mnd; brukstellere; feilrapporter; **runde 2: markedsføringssamtykke-raden følger kontoen (3-årsformuleringen fjernet)** |
 | `tc_s10p` | terms | Ingen egen påminnelse før trekk; nyhetsbrev i innstillingene; ingen server-push; **velkomstmail aktiv** |
 | `tc_s14p` | terms | Tredjepartsliste: Firebase AI Logic/Vertex AI, Overpass, **Resend, innholdsnettverk** |
 | `tc_s15p` | terms | Sletting av konto skjer i appen |
@@ -46,6 +46,8 @@ referanse for tone/terminologi på skandinaviske språk.
 | `del_s4p2` | delete | Feilrapporter/vurderinger slettes ikke automatisk |
 | `q2a` | index (FAQ) | **Chat 24 t**; bilder lagres ikke; sletting i appen |
 | `q6a` | index (FAQ) | Kun tallfiks: «over 23 språk» → «23 språk» (fjern det lokale «over»-ordet) |
+| `pp_s15p` | privacypolicy | **NY 20. aug (runde 2):** nettsiden laster også bilder/butikkmerker fra Apple/Wikimedia (IP-overføring) |
+| `cookie_msg` | alle sider | **NY 20. aug (runde 2):** personvernlenken (`<a href=\"privacypolicy.html\">…</a>`) må inn i banner-teksten — applyLang overskriver innerHTML og mistet lenken |
 | `t4p` | manual | **Chat 24 t**; bilder lagres ikke |
 
 ## Språk å oversette til (21)
