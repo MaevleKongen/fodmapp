@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FODMAPP Manual – AI Chat, Camera & Barcode Scanner">
   <meta name="twitter:description" content="Learn how to use FODMAPP's AI chat, camera analysis, and 4.4M+ product barcode scanner to manage your low-FODMAP diet.">
-  <meta name="twitter:image" content="https://fodmapp.com/images/app-mockup.png">
+  <meta name="twitter:image" content="https://fodmapp.com/images/og-fodmapp.png">
   <!-- Hreflang for multilingual SEO -->
   <link rel="canonical" href="https://fodmapp.com/manual.html">
   <link rel="alternate" hreflang="x-default" href="https://fodmapp.com/manual.html">
@@ -41,56 +41,107 @@
   <link rel="alternate" hreflang="id" href="https://fodmapp.com/manual.html">
   <link rel="alternate" hreflang="nl" href="https://fodmapp.com/manual.html">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="stylesheet" href="css/r210.css">
 </head>
 <body>
   <header><div class="container nav-bar"><a href="index.html" class="logo"><img src="images/logo.png" alt="FODMAPP logo"> FODMAPP</a><nav><a href="index.html#features" data-i18n="nav_features">Features</a><a href="index.html#how" data-i18n="nav_how">How it works</a><a href="index.html#demo" data-i18n="nav_demo">Demo</a><a href="index.html#faq">FAQ</a><a href="index.html#contact" data-i18n="nav_contact">Contact</a><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a></nav><div class="nav-right"><div class="lang-btn" onclick="openLangModal()">🌐</div><a href="index.html#cta" class="btn-nav" data-i18n="nav_download">Download app ↓</a><a href="index.html#cta" class="btn-mobile-download"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-6l-5 5-5-5m5-5v10"/></svg></a><div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div></div></div><div id="mobileNav" class="mobile-nav"><a href="index.html#features" onclick="closeMobileNav()" data-i18n="nav_features">Features</a><a href="index.html#how" onclick="closeMobileNav()" data-i18n="nav_how">How it works</a><a href="index.html#demo" onclick="closeMobileNav()" data-i18n="nav_demo">Demo</a><a href="index.html#faq" onclick="closeMobileNav()">FAQ</a><a href="index.html#contact" onclick="closeMobileNav()" data-i18n="nav_contact">Contact</a><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a></div></header>
   <div class="lang-overlay" id="langOverlay" onclick="closeLangModal(event)"><div class="lang-modal" onclick="event.stopPropagation()"><button class="lang-modal-close" onclick="closeLangModalForce()">✕</button><h3 data-i18n="lang_title">Choose language</h3><div class="lang-grid" id="langGrid"></div></div></div>
 
-  <section class="page-hero"><div class="container reveal"><h1 data-i18n="man_h1">FODMAPP Manual</h1><p data-i18n="man_intro">FODMAPP gives you three powerful tools to navigate the low-FODMAP diet: the AI camera for photo analysis, the barcode scanner, and the AI chat assistant. Here's how to use each one.</p></div></section>
+  <section class="page-hero"><div class="container reveal"><h1 data-i18n="man_h1">FODMAPP Manual</h1><p data-i18n="man_intro">FODMAPP helps you scan your food, log your gut and see what keeps coming up. Here you'll find everything the app can do and how to use it.</p><!-- r210:nav --><nav class="man-nav"><a href="#skann" data-i18n="man210_nav_skann">Scan</a><a href="#strekkode" data-i18n="man210_nav_strekkode">Barcode</a><a href="#logg" data-i18n="man210_nav_logg">Logging</a><a href="#analyse" data-i18n="man210_nav_analyse">Analysis and report</a><a href="#chat" data-i18n="man210_nav_chat">AI chat</a><a href="#toalettkart" data-i18n="man210_nav_toalett">Toilet map</a><a href="#innstillinger" data-i18n="man210_nav_innst">Settings</a><a href="#tips" data-i18n="man210_nav_tips">Tips</a></nav><!-- /r210:nav --></div></section>
 
   <!-- AI CHAT SECTION -->
-  <section class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_cam_tag">📸 AI Camera</span><h2 class="section-title" data-i18n="man_cam_title">Everything you can photograph</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_cam_sub">Point the camera, take a photo – and get an instant FODMAP analysis with a score from 0 to 100.</p></div>
-    <div class="tips-grid">
-      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="cam1h">🥕 Single food item</h3><p data-i18n="cam1p">Photograph a fruit, vegetable, or ingredient to instantly find out if it's low or high FODMAP – with portion advice and safe alternatives.</p></div>
-      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="cam2h">🍲 Meals and dishes</h3><p data-i18n="cam2p">Photo an entire meal and the AI identifies all ingredients, assesses each one, and checks for FODMAP stacking – where several moderate items together exceed the safe limit.</p></div>
-      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="cam3h">📋 Restaurant menus</h3><p data-i18n="cam3p">Photo a menu in any language and get suggestions for safe dishes, with specific tips on what to ask the waiter to change or leave out.</p></div>
-      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="cam4h">🧊 Fridge contents</h3><p data-i18n="cam4p">Photo your fridge and the AI lists all recognisable ingredients with FODMAP status, then creates two low-FODMAP recipe suggestions based on what you have.</p></div>
-      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="cam5h">🥤 Drinks</h3><p data-i18n="cam5p">Photograph a drink – juice, smoothie, or soft drink – and get a full FODMAP assessment including information about sweeteners and safe portion sizes.</p></div>
-      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="cam6h">🔢 FODMAP score 0–100</h3><p data-i18n="cam6p">Every camera analysis gives you a FODMAP score from 0 to 100. Green (80–100) means safe, yellow (55–79) means moderate caution, and red (below 55) means high FODMAP content – so you can decide at a glance.</p></div>
+  <section id="skann" class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_cam_tag">📸 AI Camera</span><h2 class="section-title" data-i18n="man_cam_title">Everything you can photograph</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_cam_sub">Point the camera at the dish, the menu, the buffet or the fridge, and see the FODMAP level of every ingredient, dish and product.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="cam1h">🍲 Dish</h3><p data-i18n="cam1p">Snap your plate. The food scanner recognizes the ingredients, estimates the amounts and shows which are low, moderate and high in FODMAP, with swap ideas for a lower level.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="cam3h">📋 Restaurant menu</h3><p data-i18n="cam3p">Snap a menu in any language. The dishes appear in your language with their FODMAP level, and under “To the waiter” you get a ready-made note in the menu's language to show.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="web_f80_cam7h">🥗 Hot and cold buffets</h3><p data-i18n="web_f80_cam7p">Take one photo of the whole buffet table. The AI finds the dishes and shows which are low, moderate and high in FODMAP, so you get the full picture fast.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="cam4h">🧊 Fridge</h3><p data-i18n="cam4p">Snap your fridge. FODMAPP finds the foods, and you can add anything the AI missed. Then you get recipes made only from the low-FODMAP foods, scaled to the number of servings.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="cam6h">🔢 Levels and FODMAP groups</h3><p data-i18n="cam6p">Every scan shows the level with a color and three bars: low, moderate or high. You also see the amount and which FODMAP group sets the level, such as fructans.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="man210_rediger_h">✏️ Edit and reassess</h3><p data-i18n="man210_rediger_p">Something off? Tap “Edit”, add or remove ingredients, change the amounts and ask the AI to reassess.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="web_f80_cam8h">🍽️ Log what you ate</h3><p data-i18n="web_f80_cam8p">Tap “Log as eaten” once you've eaten what you scanned. You choose the portion afterwards, and the meal goes straight into your diary.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="web_f80_cam9h">🗂️ My scans</h3><p data-i18n="web_f80_cam9p">All your scans are gathered in one place, with search. Filter by dish, menu, buffet, fridge or barcode, and open an earlier result again.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="man210_maal_h">📏 Amounts in your units</h3><p data-i18n="man210_maal_p">Amounts are shown in metric or US units, based on your country.</p></div>
     </div>
   </div></section>
-<section class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_bc_tag">🏷️ Barcode Scanner</span><h2 class="section-title" data-i18n="man_bc_title">Instant product checks in the store</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_bc_sub">Point the camera at any product's barcode and get a full FODMAP assessment in seconds.</p></div>
-    <div class="tips-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+<section id="strekkode" class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_bc_tag">🏷️ Barcode Scanner</span><h2 class="section-title" data-i18n="man_bc_title">Instant product checks in the store</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_bc_sub">Point the camera at any product's barcode and get a full FODMAP assessment in seconds.</p></div>
+    <div class="tips-grid karusell" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
       <div class="tip-card reveal reveal-d1"><h3 data-i18n="bc1h">🌍 Over 4.4 million products</h3><p data-i18n="bc1p">The barcode scanner taps into Open Food Facts – one of the world's largest open food databases with over 4.4 million products from countries around the globe. Whether you're at home or travelling abroad, chances are the product is already in the database.</p></div>
-      <div class="tip-card reveal reveal-d2"><h3 data-i18n="bc2h">📊 AI-powered ingredient analysis</h3><p data-i18n="bc2p">When you scan a barcode, the app fetches the full ingredient list and analyses every single ingredient with advanced AI – giving you a complete, reliable FODMAP verdict.</p></div>
-      <div class="tip-card reveal reveal-d3"><h3 data-i18n="bc3h">✅ Safe shopping made easy</h3><p data-i18n="bc3p">Use the scanner before putting anything in your trolley. It works with packaged products from any country – perfect when travelling or shopping at international stores.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="bc2h">📊 AI-powered ingredient analysis</h3><p data-i18n="bc2p">When you scan the barcode, the app fetches the ingredient list on the pack and assesses every ingredient, with serving size and lower-FODMAP alternatives.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="bc3h">✅ Shopping made easier</h3><p data-i18n="bc3p">Use the scanner before putting anything in your trolley. It works with packaged products from any country – perfect when travelling or shopping at international stores.</p></div>
     </div>
   </div></section>
-<section class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_chat_tag">💬 AI Chat</span><h2 class="section-title" data-i18n="man_chat_title">What can you ask the AI?</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_chat_sub">Type a question and get an answer in seconds – in your own language, 24/7.</p></div>
-    <div class="tips-grid">
-      <div class="tip-card reveal reveal-d1"><h3 data-i18n="ch1h">🥦 Evaluate any food</h3><p data-i18n="ch1p">Type a food, dish, or product name and get an instant FODMAP rating with explanation, portion advice, and safe alternatives.</p></div>
-      <div class="tip-card reveal reveal-d2"><h3 data-i18n="ch2h">🍽️ Analyse restaurant dishes</h3><p data-i18n="ch2p">Describe a restaurant dish and the AI assesses each ingredient, explains the FODMAP risks, and suggests how to order it low-FODMAP.</p></div>
+<!-- r210:logg -->
+<section id="logg" class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man210_logg_tag">📝 Logging</span><h2 class="section-title" data-i18n="man210_logg_title">Log your gut in two minutes</h2><p class="section-sub" data-i18n="man210_logg_sub">Food diary and symptom diary in one. The more often you log, the more the app can show you.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="man210_symp_h">😣 Symptom log</h3><p data-i18n="man210_symp_p">Record pain and stress from 0 to 10, symptoms like bloating and cramps, sleep, medication and menstruation. You can add your own symptoms and a note.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="man210_god_h">✅ No symptoms today</h3><p data-i18n="man210_god_p">Save a good day with one tap. It counts as a logged day in the diary and the analysis.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="man210_kopi_h">📋 Copy previous log</h3><p data-i18n="man210_kopi_p">Is today like last time? Copy your previous log and adjust what's different.</p></div>
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="man210_toalett_h">🚽 Bathroom visits</h3><p data-i18n="man210_toalett_p">Log bathroom visits with the Bristol scale from 1 to 7, and add details like urgency if you want.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="man210_maaltid_h">🍽️ Meals</h3><p data-i18n="man210_maaltid_p">Type in what you've eaten, or log a scan as eaten.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="man210_paaminn_h">🔔 Reminder</h3><p data-i18n="man210_paaminn_p">Pick a time, and the app reminds you to log.</p></div>
+    </div>
+  </div></section>
+
+<section id="analyse" class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man210_analyse_tag">✨ AI Analysis and report</span><h2 class="section-title" data-i18n="man210_analyse_title">See what keeps coming up</h2><p class="section-sub" data-i18n="man210_analyse_sub">The Pain diary, AI Analysis and the report are based on what you've logged.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="man210_dagbok_h">📔 Pain diary</h3><p data-i18n="man210_dagbok_p">See your days by week, month or year, with average pain, a color-coded calendar, a chart for pain and stress, and which symptoms keep coming back.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="man210_ny_h">✨ New AI analysis</h3><p data-i18n="man210_ny_p">Choose the last 14 or 30 days. Once you've logged at least 10 days in the period, you get a summary of your logs. You can run three analyses per day.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="man210_gaar_h">📊 Most often before symptoms</h3><p data-i18n="man210_gaar_p">The app itself counts which foods with moderate or high FODMAP content you ate in the 24 hours before logged symptoms, ranked and with the number of times.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="man210_graf_h">📈 Pain and stress</h3><p data-i18n="man210_graf_p">A chart shows the highest pain and stress per day in the period, side by side.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="man210_sporchat_h">💬 Ask the chat about the analysis</h3><p data-i18n="man210_sporchat_p">Go through the results with the AI chat, and read the answers to common questions about how the numbers are counted.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="man210_tidl_h">🗂️ Previous analyses</h3><p data-i18n="man210_tidl_p">Your analyses are saved, so you can open an older analysis again.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="man210_rapport_h">📄 Report for your doctor</h3><p data-i18n="man210_rapport_p">Choose the period yourself and share a PDF with symptoms, bowel movements, meals and medication with your doctor or dietitian.</p></div>
+    </div>
+  </div></section>
+<!-- /r210:logg -->
+<section id="chat" class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_chat_tag">💬 AI Chat</span><h2 class="section-title" data-i18n="man_chat_title">What can you ask the AI?</h2><p style="color:var(--slate);font-size:1rem;max-width:580px;margin:0 auto 2.5rem" data-i18n="man_chat_sub">Type a question and get an answer in seconds – in your own language, 24/7.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="ch1h">🥦 Evaluate any food</h3><p data-i18n="ch1p">Type a food, a dish or a product name and get a FODMAP assessment with an explanation, portion advice and low-FODMAP alternatives.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="ch2h">🍽️ Analyse restaurant dishes</h3><p data-i18n="ch2p">Describe a restaurant dish, and the AI assesses each ingredient, explains the FODMAP content and suggests how to order a low-FODMAP version.</p></div>
       <div class="tip-card reveal reveal-d3"><h3 data-i18n="ch3h">📅 Weekly meal plans</h3><p data-i18n="ch3p">Ask for a full low-FODMAP weekly menu with breakfast, lunch, dinner, and snacks – the AI creates a varied and balanced plan with recipes.</p></div>
       <div class="tip-card reveal reveal-d1"><h3 data-i18n="ch4h">🛒 Shopping lists</h3><p data-i18n="ch4p">After your meal plan, ask for a shopping list. The AI generates one based on the menu so you always have the right ingredients at home.</p></div>
       <div class="tip-card reveal reveal-d2"><h3 data-i18n="ch5h">❓ FODMAP questions</h3><p data-i18n="ch5p">Ask what FODMAP is, which types exist (fructans, galactans, polyols, fructose, lactose), how the diet works, or anything else related to FODMAP.</p></div>
-      <div class="tip-card reveal reveal-d3"><h3 data-i18n="ch6h">🧘 Stress management</h3><p data-i18n="ch6p">Stress can worsen IBS symptoms. Ask the AI for relaxation techniques, breathing exercises, and practical tips for long-term stress management.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="ch6h">🧘 Stress management</h3><p data-i18n="ch6p">Ask the AI for relaxation techniques, breathing exercises and practical tips for handling stress in everyday life.</p></div>
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="web_f80_ch7h">💡 Suggestions for you</h3><p data-i18n="web_f80_ch7p">The chat suggests questions based on your scans and meals, such as low-FODMAP alternatives to something you've scanned or a recipe for something you've eaten.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="web_f80_ch8h">🙋 Knows you from the start</h3><p data-i18n="web_f80_ch8p">The answers you give when you start using the app are used as background in the chat, so you don't have to repeat yourself. You can change them anytime.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="web_f80_ch9h">🕒 Deleted after 24 hours</h3><p data-i18n="web_f80_ch9p">Messages stay in the chat for 24 hours and are then deleted automatically.</p></div>
     </div>
   </div></section>
 
   <!-- GENERAL TIPS -->
-  <section class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_tag">✦ Tips</span><h2 class="section-title" data-i18n="man_title">Good to know</h2></div>
-    <div class="tips-grid">
+<!-- r210:toa -->
+<section id="toalettkart" class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man210_toa_tag">🚻 Toilet map</span><h2 class="section-title" data-i18n="man210_toa_title">Find a toilet nearby</h2><p class="section-sub" data-i18n="man210_toa_sub">Toilet data from OpenStreetMap, maps from Google.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="man210_naer_h">📍 Near you</h3><p data-i18n="man210_naer_p">The map and the list show toilets around you, with distances.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="man210_sok_h">🔎 Search the area</h3><p data-i18n="man210_sok_p">Move the map and search for toilets in the area you're viewing.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="man210_filter_h">🎛️ Filters</h3><p data-i18n="man210_filter_p">Filter by free, wheelchair access, changing table and open now.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="man210_vei_h">🧭 Directions</h3><p data-i18n="man210_vei_p">Get directions to the toilet with one tap.</p></div>
+    </div>
+  </div></section>
+
+<section id="innstillinger" class="tips-section" style="background:var(--white)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man210_innst_tag">⚙️ Settings</span><h2 class="section-title" data-i18n="man210_innst_title">Make the app yours</h2><p class="section-sub" data-i18n="man210_innst_sub">You'll find language, setup, data and subscription under Settings in the app.</p></div>
+    <div class="tips-grid karusell">
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="man210_spraak_h">🌍 20+ languages</h3><p data-i18n="man210_spraak_p">Use the app in your language. The scans, the analysis and the chat answer in the language you've chosen.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="man210_oppsett_h">🧭 Your setup</h3><p data-i18n="man210_oppsett_p">You can change the answers you gave when you got started, such as your gut type and the symptoms you already knew about, anytime.</p></div>
+      <div class="tip-card reveal reveal-d3"><h3 data-i18n="man210_tilbake_h">💬 Feedback</h3><p data-i18n="man210_tilbake_p">Found a bug or have a wish? Go to Settings, find “Feedback” and tap “Report a problem or send a wish”. When what you reported is in place, you'll be notified in the app.</p></div>
+      <div class="tip-card reveal reveal-d1"><h3 data-i18n="man210_data_h">🔒 Your data</h3><p data-i18n="man210_data_p">You can export or delete all your data whenever you like, right from the app.</p></div>
+      <div class="tip-card reveal reveal-d2"><h3 data-i18n="man210_plus_h">⭐ FODMAPP Plus</h3><p data-i18n="man210_plus_p">Everything is unlocked for the first 14 days. After that, FODMAPP Plus keeps every feature open. The subscription renews automatically and can be canceled in the App Store or Google Play.</p></div>
+    </div>
+  </div></section>
+<!-- /r210:toa -->
+  <section id="tips" class="tips-section" style="background:var(--cream)"><div class="container"><div class="text-center reveal"><span class="section-tag" data-i18n="man_tag">✦ Tips</span><h2 class="section-title" data-i18n="man_title">Good to know</h2></div>
+    <div class="tips-grid karusell">
       <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="t1h">📸 Take clear photos</h3><p data-i18n="t1p">Make sure there's good lighting and the entire food item or menu is visible in the camera frame for the best analysis.</p></div>
-      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="t2h">📶 Internet connection</h3><p data-i18n="t2p">The camera and barcode features require an internet connection. WiFi gives the fastest and most reliable response.</p></div>
+      <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="t2h">📶 Internet connection</h3><p data-i18n="t2p">The scans, the analysis and the chat need internet. Wi-Fi gives the fastest answers.</p></div>
       <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="t3h">⭐ Build routines</h3><p data-i18n="t3p">Use the app whenever you're in doubt – at home, at the supermarket, or at a restaurant. The more you use it, the more confident you'll become.</p></div>
-      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="t4h">🔒 Privacy first</h3><p data-i18n="t4p">Photos are not stored on our servers &ndash; they are sent straight to the AI for analysis and discarded afterwards. Your AI chat conversations are deleted automatically after 24 hours. Your food and symptom entries are stored on your account so you can look back at them, and you can delete them in the app whenever you want.</p></div>
+      <div class="tip-card reveal reveal-d1" style="background:var(--white)"><h3 data-i18n="t4h">🔒 Privacy first</h3><p data-i18n="t4p">Photos you take for analysis are stored only temporarily while the AI analyses them, and are deleted automatically within one hour. Your AI chat conversations are deleted automatically after 24 hours. Your food and symptom entries are stored on your account so you can look back at them, and you can delete them in the app whenever you want.</p></div>
       <div class="tip-card reveal reveal-d2" style="background:var(--white)"><h3 data-i18n="t5h">📏 Portion size matters</h3><p data-i18n="t5p">FODMAP content depends on how much you eat. Try to include the portion size when chatting with the AI – it makes the answer more accurate.</p></div>
-      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="t6h">🗓️ Use the app throughout the process</h3><p data-i18n="t6p">The FODMAP diet has three phases: elimination, reintroduction, and personalisation. FODMAPP supports you through all of them.</p></div>
+      <div class="tip-card reveal reveal-d3" style="background:var(--white)"><h3 data-i18n="t6h">🗓️ Use the app in everyday life</h3><p data-i18n="t6p">The low-FODMAP diet is often followed in consultation with a doctor or dietitian. FODMAPP helps you scan your food, log your gut and see what keeps coming up.</p></div>
     </div>
   </div></section>
 
   <section id="cta" class="cta-section reveal"><h2 data-i18n="man_cta_h">Ready to get started?</h2><p data-i18n="man_cta_p">Download FODMAPP today and make the low-FODMAP diet simpler.</p><div class="store-buttons"><a href="https://apps.apple.com/us/app/low-fodmap-ibs-app-fodmapp/id6761849984"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" loading="lazy"></a><a href="https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" loading="lazy"></a></div></section>
-  <footer><div class="footer-grid"><div class="footer-brand"><div class="logo-footer"><img src="images/logo.png" alt="FODMAPP"> FODMAPP</div><p data-i18n="ft_desc">The AI assistant that makes the low-FODMAP diet safer and simpler.</p></div><div class="footer-col"><h4 data-i18n="ft_pages">Pages</h4><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a><a href="index.html#faq">FAQ</a><a href="index.html#contact" data-i18n="nav_contact">Contact</a></div><div class="footer-col"><h4 data-i18n="ft_legal">Legal</h4><a href="privacypolicy.html" data-i18n="ft_priv">Privacy Policy</a><a href="termsandconditions.html" data-i18n="ft_terms">Terms & Conditions</a><a href="delete.html" data-i18n="ft_del">Delete Account</a></div></div><div class="footer-bottom"><span>© 2026 FODMAPP · Telemark Software Solutions AS</span><a href="mailto:post@fodmapp.com">post@fodmapp.com</a></div></footer>
+  <footer><div class="footer-grid"><div class="footer-brand"><div class="logo-footer"><img src="images/logo.png" alt="FODMAPP"> FODMAPP</div><p data-i18n="ft_desc">The AI assistant that makes the low-FODMAP diet easier in everyday life.</p></div><div class="footer-col"><h4 data-i18n="ft_pages">Pages</h4><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a><a href="index.html#faq">FAQ</a><a href="index.html#contact" data-i18n="nav_contact">Contact</a></div><div class="footer-col"><h4 data-i18n="ft_legal">Legal</h4><a href="privacypolicy.html" data-i18n="ft_priv">Privacy Policy</a><a href="termsandconditions.html" data-i18n="ft_terms">Terms & Conditions</a><a href="delete.html" data-i18n="ft_del">Delete Account</a></div></div><div class="footer-bottom"><span>© 2026 FODMAPP · Telemark Software Solutions AS</span><a href="mailto:post@fodmapp.com">post@fodmapp.com</a></div></footer>
   <div id="mobileCta" class="mobile-cta-bar">
     <div class="mobile-cta-inner">
       <a href="index.html#cta" class="mobile-cta-btn" data-i18n="hero_btn1">Download free ↓</a>
@@ -124,7 +175,7 @@
   <!-- Cookie banner -->
   <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-inner">
-      <p class="cookie-text" data-i18n="cookie_msg">We use essential cookies only to keep the site running. No tracking or advertising. <a href="privacypolicy.html" data-i18n-href>Privacy policy</a></p>
+      <p class="cookie-text" data-i18n="cookie_msg">We use essential cookies only to keep the site running. No tracking or advertising. <a href="privacypolicy.html">Privacy policy</a></p>
       <div class="cookie-btns">
         <button class="cookie-accept" id="cookieAccept" data-i18n="cookie_accept">Accept</button>
         <button class="cookie-decline" id="cookieDecline" data-i18n="cookie_decline">Decline</button>
@@ -137,6 +188,8 @@
       var b=document.getElementById('cookieBanner');
       if(!b)return;
       try{if(localStorage.getItem('cookieConsent'))return;}catch(e){}
+      // r82:cookie-spraak: oversetter banneret (i18n.js kjører applyLang før banneret finnes i DOM-en)
+      try{var t=(typeof T==='object'&&typeof currentLang==='string'&&currentLang!=='en')?T[currentLang]:null;if(t)b.querySelectorAll('[data-i18n]').forEach(function(el){var v=t[el.getAttribute('data-i18n')];if(v)el.innerHTML=v})}catch(e){}
       b.classList.add('show');
       document.getElementById('cookieAccept').addEventListener('click',function(){
         try{localStorage.setItem('cookieConsent','accepted');}catch(e){}
@@ -148,4 +201,5 @@
       });
     })();
   </script>
+  <script src="js/r210.js"></script>
 </body></html>

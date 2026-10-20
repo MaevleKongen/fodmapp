@@ -1,0 +1,76 @@
+/* Nettsiden 2.1.0 (20. okt 2026): sveipekaruseller på mobil, bryteren i kamerafanen, anmeldelser og
+   hurtiglenkene i manualen. Kilde: fodmapp-kode dsl/r80_data/nettside/r210/r210.css (kopieres av
+   lag_nettside_210.py). Brukes av index.html og manual.html. */
+
+/* ── Sveipekarusell: kortrekker blir én vannrett rad på mobil (desktop er uendret) ── */
+.karusell-nav{display:none}
+@media (max-width:760px){
+  .karusell{display:flex!important;flex-wrap:nowrap!important;grid-template-columns:none!important;gap:.9rem!important;
+    overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.35rem .15rem 1rem!important;max-width:100%}
+  .karusell::-webkit-scrollbar{display:none}
+  .karusell>*{flex:0 0 86%!important;max-width:400px;min-width:0;scroll-snap-align:center;margin:0!important}
+  /* Karusellen må ikke gjøre kolonnen den står i bredere (grid-/flex-barn har min-width:auto) */
+  .karusell{min-width:0;width:100%}
+  .fane-oppsett{grid-template-columns:minmax(0,1fr)!important}
+  .fane-oppsett>*,.dagbok-section .container>*,.tips-section .container>*,.features-section .container>*{min-width:0}
+  /* Dagbokkortene er smalere i karusellen: mindre telefoner, så den bakre telefonen og ⤢ holder seg inne i kortet */
+  .dagbok-grid.karusell .dagbok-scene{--sw:178px}
+  .karusell>.reveal{opacity:1!important;transform:none!important}
+  .karusell>.feature-card,.karusell>.tab-card,.karusell>.tip-card,.karusell>.review-card,.karusell>.step-card{height:auto}
+  .karusell-nav{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:.2rem 0 .4rem}
+  .karusell-nav[hidden]{display:none}
+  .karusell-pil{width:36px;height:36px;border-radius:50%;border:1px solid var(--border,#E5DDD3);background:var(--white,#fff);
+    color:var(--charcoal,#2B2B2B);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex:0 0 auto}
+  .karusell-pil:disabled{opacity:.35;cursor:default}
+  .karusell-pil svg{width:16px;height:16px}
+  [dir="rtl"] .karusell-pil svg{transform:scaleX(-1)}
+  .karusell-prikker{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;justify-content:center;max-width:60vw}
+  .karusell-prikk{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--border,#D9CFC3);cursor:pointer;transition:width .2s,background .2s}
+  .karusell-prikk[aria-current="true"]{width:22px;border-radius:5px;background:var(--green,#4D7C5B)}
+  .karusell-pil:focus-visible,.karusell-prikk:focus-visible{outline:2px solid var(--green,#4D7C5B);outline-offset:2px}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.karusell{scroll-behavior:auto}}
+
+/* ── Bryteren over telefonen i kamerafanen: Matrett · Meny · Kjøleskap ── */
+.kam-valg{display:flex;justify-content:center;gap:.3rem;margin:0 auto .9rem;padding:.25rem;border-radius:999px;
+  background:var(--white,#fff);border:1px solid var(--border,#E5DDD3);width:max-content;max-width:100%;position:relative;z-index:3}
+.kam-valg button{border:0;background:transparent;font:600 .85rem/1 inherit;font-family:inherit;color:var(--slate,#5F6B7A);
+  padding:.5rem .9rem;border-radius:999px;cursor:pointer;white-space:nowrap}
+.kam-valg button[aria-pressed="true"]{background:var(--green,#4D7C5B);color:#fff}
+.kam-valg button:focus-visible{outline:2px solid var(--green,#4D7C5B);outline-offset:2px}
+.fane-scene figure.stlf[hidden]{display:none!important}
+.fane-venstre{min-width:0;display:flex;flex-direction:column}
+
+/* ── Anmeldelser: land og «Oversatt fra …» ── */
+.review-ovs{display:block;margin-top:-.8rem;margin-bottom:1rem;font-size:.74rem;color:var(--slate,#5F6B7A);font-style:normal}
+.review-ovs[hidden]{display:none}
+.reviews-score .snitt-tekst{font-weight:600}
+@media (min-width:761px){.reviews-grid.r210{grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}}
+@media (min-width:1100px){.reviews-grid.r210{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1180px}}
+.reviews-grid.r210 .review-card{padding:1.6rem 1.5rem;display:flex;flex-direction:column}
+.reviews-grid.r210 .review-quote{font-size:.98rem;flex:1}
+
+/* ── Manualen: hurtiglenker og ankre under den faste menyen ── */
+html{scroll-padding-top:88px}
+.man-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.4rem auto 0;max-width:820px}
+.man-nav a{display:inline-flex;align-items:center;padding:.45rem .95rem;border-radius:999px;background:var(--white,#fff);
+  border:1px solid var(--border,#E5DDD3);color:var(--charcoal,#2B2B2B);font-weight:600;font-size:.88rem;text-decoration:none}
+.man-nav a:hover{border-color:var(--green,#4D7C5B);color:var(--green-dark,#2D5A3D)}
+.man-nav a:focus-visible{outline:2px solid var(--green,#4D7C5B);outline-offset:2px}
+@media (max-width:760px){
+  .man-nav{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:0 .2rem .3rem;max-width:100%}
+  .man-nav::-webkit-scrollbar{display:none}
+  .man-nav a{flex:0 0 auto}
+}
+
+/* ── Toppmenyen på forsiden for lengre menyord (de, es, fi, fr …), målt 20. okt: hamburger til og med 1000 px,
+   og kompakt meny uten «Om oss»/«Manual» til og med 1240 px. Bare på forsiden (index har disse lenkene). ── */
+@media (min-width:901px) and (max-width:1000px){
+  body:has(#features-detail) nav,body:has(#features-detail) .btn-nav{display:none}
+  body:has(#features-detail) .btn-mobile-download,body:has(#features-detail) .hamburger{display:flex}
+}
+@media (min-width:1101px) and (max-width:1240px){
+  body:has(#features-detail) nav a{padding:.4rem .5rem;font-size:.85rem}
+  body:has(#features-detail) nav a[href="about.html"],body:has(#features-detail) nav a[href="manual.html"]{display:none}
+}

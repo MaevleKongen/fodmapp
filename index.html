@@ -7,14 +7,17 @@
   <title>FODMAPP – AI App for Low-FODMAP Diet & IBS</title>
   <link rel="icon" type="image/png" href="images/logo.png">
   <meta name="keywords" content="FODMAP app, low FODMAP diet, IBS app, IBS diet, FODMAP AI assistant, barcode FODMAP, low FODMAP food scanner, iOS Android FODMAP">
-  <meta name="description" content="FODMAPP helps you manage IBS with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Free low-FODMAP diet app for iOS & Android in 23 languages.">
+  <meta name="description" content="FODMAPP helps you follow a low-FODMAP diet with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Free low-FODMAP diet app for iOS & Android in 23 languages.">
   <meta property="og:title" content="FODMAPP – AI App for Low-FODMAP Diet & IBS">
-  <meta property="og:description" content="Manage IBS with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Available in 23 languages on iOS & Android.">
-  <meta property="og:image" content="https://fodmapp.com/images/app-mockup.png">
+  <meta property="og:description" content="Follow a low-FODMAP diet with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Available in 23 languages on iOS & Android.">
+  <meta property="og:image" content="https://fodmapp.com/images/og-fodmapp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FODMAPP: forsiden og mønsteroversikten i appen">
   <meta property="og:url" content="https://fodmapp.com">
   <meta property="og:type" content="website">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"MobileApplication","name":"FODMAPP","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","description":"Navigate the low-FODMAP diet with ease using AI chat, camera analysis, and barcode scanning.","url":"https://fodmapp.com","image":"https://fodmapp.com/images/app-mockup.png","publisher":{"@type":"Organization","name":"Telemark Software Solutions AS"},"inLanguage":["en","nb","da","sv","fi","de","fr","es","it","pt","nl","pl","ru","tr","ja","ko","zh","hi","id","lt","th","ar"]}
+  {"@context":"https://schema.org","@type":"MobileApplication","name":"FODMAPP","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","description":"Navigate the low-FODMAP diet with ease using AI chat, camera analysis, and barcode scanning.","url":"https://fodmapp.com","image":"https://fodmapp.com/images/og-fodmapp.png","publisher":{"@type":"Organization","name":"Telemark Software Solutions AS"},"inLanguage":["en","nb","da","sv","fi","de","fr","es","it","pt","nl","pl","ru","tr","ja","ko","zh","hi","id","lt","th","ar"]}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,10 +130,6 @@
     .hero-chip .chip-body{line-height:1.25}
     .hero-chip .chip-title{font-size:.78rem;font-weight:700;color:var(--charcoal);white-space:nowrap}
     .hero-chip .chip-sub{font-size:.7rem;font-weight:500;color:var(--slate);white-space:nowrap}
-    .chip-score{top:6%;left:-2%;--tilt:-3deg;animation-delay:.5s}
-    .chip-score .chip-icon{background:var(--green-light);color:var(--green-dark)}
-    .chip-score .chip-bar{width:74px;height:5px;border-radius:3px;background:var(--border);margin-top:4px;overflow:hidden}
-    .chip-score .chip-bar i{display:block;width:88%;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green-glow),var(--green))}
     .chip-db{bottom:10%;right:-3%;--tilt:2.5deg;animation-delay:1.8s}
     .chip-db .chip-icon{background:var(--terra-light)}
     .chip-lang{top:44%;right:-6%;--tilt:-2deg;animation-delay:3s}
@@ -312,7 +311,7 @@
       .hero p{margin-left:auto;margin-right:auto}
       .hero-buttons,.hero-proof{justify-content:center}
       .hero-visual{min-height:auto;margin-top:.5rem}
-      .chip-score{left:2%}.chip-db{right:2%}.chip-lang{right:0}
+      .chip-db{right:2%}.chip-lang{right:0}
       .features-grid{grid-template-columns:1fr}
       .steps-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem 1rem}
       .steps-grid::before{display:none}
@@ -342,11 +341,308 @@
       .hero-chip .chip-sub{display:none}
     }
     @media(prefers-color-scheme:dark){html{color-scheme:light}body{background:var(--cream)!important;color:var(--charcoal)!important}}
+    /* ── Rapport til legen (runde 77C) ── */
+    .rapport-section{background:var(--white);position:relative}
+    .rapport-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+    .rapport-tekst .section-title{text-align:left;margin-bottom:1rem}
+    .rapport-tekst .section-sub{text-align:left;margin:0 0 1.4rem;max-width:34rem}
+    .rapport-liste{list-style:none;margin:0 0 1.8rem;padding:0;display:grid;gap:.7rem}
+    .rapport-liste li{position:relative;padding-left:2rem;color:var(--charcoal)}
+    .rapport-liste li::before{content:'✓';position:absolute;left:0;top:.05rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--green-light);color:var(--green);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+    [dir=rtl] .rapport-liste li{padding-left:0;padding-right:2rem}
+    [dir=rtl] .rapport-liste li::before{left:auto;right:0}
+    [dir=rtl] .rapport-tekst .section-title,[dir=rtl] .rapport-tekst .section-sub{text-align:right}
+    .btn-rapport{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;border-radius:2rem;background:var(--green);color:var(--white);font-weight:600;text-decoration:none;box-shadow:var(--shadow-green);transition:all .3s var(--ease)}
+    .btn-rapport:hover{background:var(--green-dark);transform:translateY(-2px)}
+    .rapport-plus{margin-top:.9rem;font-size:.9rem;font-weight:600;color:var(--green-dark)}
+    .rapport-note{margin-top:.6rem;font-size:.8rem;color:var(--slate);max-width:32rem}
+    .rapport-bilde{display:flex;justify-content:center}
+    .rapport-bilde img{width:100%;max-width:440px;height:auto;border-radius:.6rem;background:#fff;box-shadow:var(--shadow-lg);border:1px solid var(--border);transform:rotate(-1.5deg)}
+    @media(max-width:900px){
+      .rapport-grid{grid-template-columns:1fr;gap:2.4rem}
+      .rapport-tekst .section-title,.rapport-tekst .section-sub,[dir=rtl] .rapport-tekst .section-title,[dir=rtl] .rapport-tekst .section-sub{text-align:center;margin-left:auto;margin-right:auto}
+      .rapport-tekst{text-align:center}
+      .rapport-liste{text-align:start;max-width:26rem;margin-left:auto;margin-right:auto}
+      .rapport-note{margin-left:auto;margin-right:auto}
+      .rapport-bilde img{max-width:330px;transform:none}
+    }
+    /* ── Runde 80: telefonbilder, funksjonskort, faner, dagbok, toalettkart ── */
+    /* Kilde: dsl/r80_data/nettside/r80.css. lag_nettside_80.py limer blokken inn mellom markørene. */
+    /* Telefonramme rundt app-skjermbildene. Bredden styres med --tlf-w per sted. */
+    .tlf{--tlf-w:250px;position:relative;flex:0 0 auto;width:var(--tlf-w);max-width:100%;margin:0;padding:calc(var(--tlf-w)*.03);background:#1B211D;border-radius:calc(var(--tlf-w)*.165);box-shadow:0 28px 64px rgba(28,28,28,.17),0 6px 18px rgba(28,28,28,.10),inset 0 0 0 1.5px rgba(255,255,255,.10)}
+    .tlf-skjerm{position:relative;overflow:hidden;border-radius:calc(var(--tlf-w)*.135);background:var(--tlf-topp,#F8F0EA);padding-top:calc(var(--tlf-w)*.085)}
+    .tlf-skjerm::before{content:'';position:absolute;z-index:2;top:calc(var(--tlf-w)*.024);left:50%;width:calc(var(--tlf-w)*.29);height:calc(var(--tlf-w)*.072);transform:translateX(-50%);background:#1B211D;border-radius:999px}
+    .tlf-skjerm img{display:block;width:100%;height:auto;cursor:zoom-in}
+
+    /* Helten: Hjem foran, Mønsteroversikt bak */
+    .helt-tlf{position:relative;z-index:1;display:flex;justify-content:center;align-items:flex-start;width:100%;padding-bottom:38px}
+    .helt-tlf .tlf{--tlf-w:min(250px,40vw);transition:scale .5s var(--ease)}
+    .helt-tlf .tlf:first-child{rotate:-5deg;translate:14px 0;z-index:2;animation:float 7s ease-in-out infinite}
+    .helt-tlf .tlf:last-child{rotate:4deg;translate:-14px 38px;animation:float 7s ease-in-out infinite 1.6s}
+    .helt-tlf .tlf:hover{scale:1.03;z-index:5}
+    .chip-lang{top:auto;bottom:9%;left:-9%;right:auto}
+
+    /* Funksjoner: åtte kort, fire kolonner */
+    .features-grid.f80{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}
+    .features-grid.f80 .feature-card{display:flex;flex-direction:column;padding:2rem 1.55rem 1.6rem}
+    .features-grid.f80 .feature-card h3{font-size:1.1rem}
+    .features-grid.f80 .feature-card p{font-size:.9rem;line-height:1.7}
+    .feature-link{position:relative;z-index:1;margin-top:auto;padding-top:1.1rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;font-weight:600;font-size:.87rem;color:var(--green-dark);text-decoration:none}
+    .feature-link::after{content:'→';transition:transform .3s var(--ease)}
+    .feature-link:hover{color:var(--green)}
+    .feature-link:hover::after{transform:translateX(3px)}
+    [dir=rtl] .feature-link::after{content:'←'}
+    [dir=rtl] .feature-link:hover::after{transform:translateX(-3px)}
+
+    /* Fanene: telefon til venstre, kort til høyre */
+    .fane-oppsett{display:grid;grid-template-columns:270px minmax(0,1fr);gap:2.4rem;align-items:start}
+    .fane-scene{position:sticky;top:100px;display:flex;justify-content:center;padding-top:.3rem}
+    .fane-scene .tlf{--tlf-w:250px}
+    .fane-oppsett .tab-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .fane-oppsett .tab-card{padding:1.45rem 1.35rem}
+    #tab-barcode .fane-oppsett .tab-grid{grid-template-columns:1fr}
+
+    /* Dagbok og oversikt */
+    .dagbok-section{background:var(--cream);position:relative;overflow:hidden}
+    .dagbok-section::before{content:'';position:absolute;top:-170px;left:50%;transform:translateX(-50%);width:980px;height:420px;background:radial-gradient(ellipse,rgba(232,242,235,.95) 0%,transparent 70%);pointer-events:none}
+    .dagbok-section .container{position:relative}
+    .dagbok-section .section-title em{font-style:italic;color:var(--green)}
+    .dagbok-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-bottom:1.5rem}
+    .dagbok-kort{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:left;box-shadow:var(--shadow-sm);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+    .dagbok-kort:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .dagbok-scene{position:relative;height:380px;overflow:hidden;display:flex;justify-content:center;padding-top:2rem;background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%);border-bottom:1px solid var(--border)}
+    .dagbok-kort:nth-child(2) .dagbok-scene{background:radial-gradient(circle at 50% 40%,rgba(200,133,92,.18),transparent 62%),linear-gradient(180deg,var(--terra-light) 0%,#FDF7F2 100%)}
+    .dagbok-scene .tlf{--tlf-w:224px}
+    .dagbok-scene.to .tlf-bak{--tlf-w:184px;position:absolute;top:3.3rem;left:calc(50% - 22px);rotate:6deg}
+    .dagbok-scene.to .tlf-foran{--tlf-w:212px;translate:-29% 0;rotate:-3deg;z-index:1}
+    .dagbok-tekst{display:flex;flex-direction:column;flex:1;padding:1.6rem 1.7rem 1.8rem}
+    .dagbok-merke{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+    .dagbok-kort h3{font-size:1.45rem;margin-bottom:.55rem;letter-spacing:-.01em}
+    .dagbok-kort p{color:var(--slate);font-size:.94rem;line-height:1.7;margin-bottom:1rem}
+    .dagbok-liste{list-style:none;display:grid;gap:.5rem;margin:0;padding:0}
+    .dagbok-liste li{position:relative;padding-left:1.8rem;font-size:.9rem;line-height:1.55;color:var(--charcoal)}
+    .dagbok-liste li::before{content:'✓';position:absolute;left:0;top:.08rem;width:1.2rem;height:1.2rem;border-radius:50%;background:var(--green-light);color:var(--green);font-weight:700;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+    [dir=rtl] .dagbok-liste li{padding-left:0;padding-right:1.8rem}
+    [dir=rtl] .dagbok-liste li::before{left:auto;right:0}
+
+    /* Toalettkartet */
+    .toalett-panel{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:3rem;align-items:end;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:0 3.2rem;overflow:hidden;box-shadow:var(--shadow-sm);position:relative}
+    .toalett-panel::before{content:'';position:absolute;right:-120px;top:-140px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(107,175,125,.16),transparent 68%);pointer-events:none}
+    .toalett-tekst{padding:3.2rem 0;align-self:center;text-align:left;position:relative}
+    .toalett-tekst .section-title{font-size:clamp(1.7rem,2.8vw,2.3rem)}
+    .toalett-tekst .section-title em{font-style:italic;color:var(--green)}
+    .toalett-tekst > p{color:var(--slate);font-size:1rem;line-height:1.75;max-width:34rem;margin-bottom:1.3rem}
+    .toalett-filtre{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.3rem;padding:0}
+    .toalett-filtre li{display:inline-flex;align-items:center;gap:.35rem;background:var(--cream);border:1px solid var(--border);border-radius:2rem;padding:.38rem .9rem;font-size:.85rem;font-weight:600;color:var(--green-dark)}
+    .toalett-tekst .toalett-kilde{font-size:.8rem;color:var(--slate);margin:0}
+    .toalett-kilde a{color:var(--green-dark)}
+    .toalett-scene{position:relative;height:430px;overflow:hidden;display:flex;justify-content:center;padding-top:2.6rem}
+    .toalett-scene .tlf{--tlf-w:260px}
+    [dir=rtl] .toalett-tekst{text-align:right}
+
+    /* Ankre (#dagbok, #toalettkart, #rapport …) havner under den faste toppmenyen (77 px) */
+    html{scroll-padding-top:88px}
+
+    /* Menyen fikk ett punkt til (Dagbok). Lenkene brytes aldri over to linjer, og logoen
+       presses aldri sammen. Til og med 900 px brukes mobilmenyen (hamburger) som under 769 px.
+       Mellom 901 og 1100 px er lenkene strammere, og Om oss og Manual (som også ligger i
+       bunnteksten) skjules i toppmenyen. kontroll_80.mjs måler 769–1440 px, med og uten
+       rullefelt (17 px). */
+    nav a{white-space:nowrap}
+    .nav-bar .logo{flex-shrink:0}
+    @media(min-width:769px) and (max-width:900px){nav,.btn-nav{display:none}.btn-mobile-download,.hamburger{display:flex}}
+    @media(min-width:901px) and (max-width:1100px){nav a{padding:.4rem .5rem;font-size:.85rem}nav a[href="about.html"],nav a[href="manual.html"]{display:none}}
+    @media(max-width:1120px){
+      .features-grid.f80{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .fane-oppsett .tab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:1000px){
+      .chip-lang{left:2%}
+    }
+    @media(max-width:900px){
+      .fane-oppsett{grid-template-columns:1fr;gap:1.6rem}
+      .fane-scene{position:relative;top:auto;height:330px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+      .fane-scene .tlf{--tlf-w:210px}
+      .dagbok-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
+      .toalett-panel{grid-template-columns:1fr;padding:0 1.6rem;gap:0}
+      .toalett-tekst{padding:2.4rem 0 1.2rem;text-align:center}
+      [dir=rtl] .toalett-tekst{text-align:center}
+      .toalett-tekst > p{margin-left:auto;margin-right:auto}
+      .toalett-filtre{justify-content:center}
+      .toalett-scene{height:360px;padding-top:.8rem}
+      .toalett-scene .tlf{--tlf-w:224px}
+    }
+    @media(max-width:768px){
+      .helt-tlf .tlf:first-child,.helt-tlf .tlf:last-child{animation:none}
+    }
+    @media(max-width:600px){
+      .features-grid.f80{grid-template-columns:1fr;gap:.85rem}
+      .features-grid.f80 .feature-card{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:1rem;padding:1.25rem 1.2rem}
+      .features-grid.f80 .feature-medallion{width:46px;height:46px;border-radius:.85rem;margin:0;grid-row:1 / span 3}
+      .features-grid.f80 .feature-medallion svg{width:22px;height:22px}
+      .features-grid.f80 .feature-card h3{margin-bottom:.25rem}
+      .features-grid.f80 .feature-link{padding-top:.55rem}
+      .fane-oppsett .tab-grid{grid-template-columns:1fr}
+      .dagbok-scene{height:340px;padding-top:1.6rem}
+      .dagbok-scene .tlf{--tlf-w:200px}
+      .dagbok-scene.to .tlf-bak{--tlf-w:166px}
+      .dagbok-scene.to .tlf-foran{--tlf-w:190px}
+      .dagbok-tekst{padding:1.4rem 1.3rem 1.6rem}
+      .dagbok-kort h3{font-size:1.3rem}
+      .toalett-panel{border-radius:1.5rem;padding:0 1.2rem}
+    }
+    /* ── /Runde 80 ── */
+    /* ── Runde 82: scroll-telefoner og fullskjerm ── */
+    /* Kilde: dsl/r80_data/nettside/r82.css. lag_nettside_82.py limer blokken inn ETTER runde 80-blokken. */
+    /* Scroll-telefon: CSS-ramme (fra runde 80, .tlf) + statuslinje + fast app-topp + rullbar kropp
+       + ev. fast bunn. Bredden styres med --tlf-w per sted.
+       NORMAL TELEFON (runde 82 del 2, Fredrik 3. okt: telefonene var «superlange»): skjermen er
+       430 x 932 logiske px (9:19,5) = 0,94 w x 2,0374 w, med statuslinja (54 logiske px = 0,118 w)
+       INNI skjermen og appflaten (878) under. Rammen er 0,03 w, så hele telefonen er 2,0974 w høy
+       (forhold 2,10, som en ekte telefon). Telefonen strekkes aldri; at den går ut av bildet nederst
+       kommer av at beholderen (helten, panelet i fanene, dagbokkortene, toalettpanelet,
+       demopanelet) er så høy at bare den nederste delen (10–20 %, her ca. 14 %) klippes:
+       beholderens høyde = luft over telefonen + 1,804 w (= 0,86 x 2,0974 w).
+       --tlf-skjult (satt av skriptet) er hvor mye av rullefeltet som ligger under beholderens
+       underkant, så bunnen av innholdet kan rulles fram. */
+    .stlf{cursor:zoom-in;align-self:flex-start}
+    .stlf .tlf-skjerm{padding-top:0;display:flex;flex-direction:column;height:calc(var(--tlf-w)*2.0374)}
+    .tlf-status{position:relative;flex:0 0 auto;height:calc(var(--tlf-w)*.118);display:grid;grid-template-columns:minmax(0,1fr) calc(var(--tlf-w)*.31) minmax(0,1fr);align-items:center;padding:calc(var(--tlf-w)*.012) calc(var(--tlf-w)*.045) 0;background:var(--tlf-topp,#F8F0EA);color:#1C1C1C;font:600 calc(var(--tlf-w)*.047)/1 -apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI','DM Sans',system-ui,sans-serif;letter-spacing:-.01em;font-variant-numeric:tabular-nums;user-select:none;transition:background-color .3s}
+    .tlf-klokke{grid-column:1;justify-self:center}
+    .tlf-ikoner{grid-column:3;justify-self:center;display:flex;align-items:center;gap:calc(var(--tlf-w)*.014)}
+    .tlf-ikoner svg{display:block;height:calc(var(--tlf-w)*.036);width:auto}
+    .tlf-ikoner .tlf-batteri{height:calc(var(--tlf-w)*.042)}
+    .tlf-topp,.tlf-bunn{flex:0 0 auto;position:relative;z-index:1}
+    /* Rulling: når telefonen er rullet til enden, ruller siden videre (overscroll-behavior-y:auto).
+       I fullskjerm stopper den ved enden (contain), så siden bak ikke flytter seg. */
+    .tlf-kropp{flex:1 1 0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-x:contain;overscroll-behavior-y:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:none;outline:none}
+    .tlf-full .tlf-kropp{overscroll-behavior:contain}
+    .tlf-kropp::-webkit-scrollbar{display:none}
+    .tlf-kropp::after{content:'';display:block;height:var(--tlf-skjult,0px)}
+    .tlf-kropp:focus-visible{box-shadow:inset 0 0 0 3px var(--green)}
+    .stlf .tlf-skjerm img{-webkit-user-drag:none;user-select:none}
+    /* Forstørr-ikonet: liten rund knapp i telefonens øvre høyre hjørne (åpner fullskjerm) */
+    .tlf-vis{position:absolute;z-index:4;top:calc(var(--tlf-w)*-.03);right:calc(var(--tlf-w)*-.03);width:32px;height:32px;padding:0;border:1px solid rgba(229,225,218,.95);border-radius:50%;background:rgba(255,255,255,.94);color:var(--green-dark);display:flex;align-items:center;justify-content:center;cursor:zoom-in;box-shadow:0 4px 12px rgba(28,28,28,.16);opacity:.9;transition:opacity .2s,transform .2s var(--ease)}
+    .tlf-vis svg{width:15px;height:15px;display:block}
+    .stlf:hover .tlf-vis,.tlf-vis:hover{opacity:1;transform:scale(1.08)}
+    .tlf-vis:focus-visible{opacity:1;outline:3px solid var(--green);outline-offset:2px}
+    .helt-tlf .tlf:first-child .tlf-vis{right:auto;left:calc(var(--tlf-w)*-.03)}
+
+    /* Helten: telefonene står på bunnen av helten og går ut av bildet ved underkanten
+       (.hero-wrap klipper, rett over språkstripa). Hjem: 86,5 % synlig i ro (flyter opptil 14 px
+       opp); Mønsteroversikten står 0,11 w lavere (81 % synlig i ro). */
+    .hero-visual{align-self:end;align-items:flex-start;min-height:0;padding-top:1.4rem;margin-bottom:-5rem}
+    .helt-tlf{--hw:min(250px,40vw);height:calc(var(--hw)*1.814);padding-bottom:0;align-items:flex-start}
+    .helt-tlf .tlf{--tlf-w:var(--hw)}
+    .helt-tlf .tlf:last-child{translate:-14px calc(var(--hw)*.11)}
+
+    /* Fanene: telefonen i et panel (som dagbokkortene), klippet av panelets underkant */
+    .fane-oppsett{grid-template-columns:290px minmax(0,1fr)}
+    .fane-scene{--sw:250px;--pt:1.8rem;height:calc(var(--pt) + var(--sw)*1.804);overflow:hidden;align-items:flex-start;padding-top:var(--pt);border:1px solid var(--border);border-radius:var(--radius);background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%)}
+    .fane-scene .tlf{--tlf-w:var(--sw)}
+
+    /* Dagbokkortene og toalettpanelet: samme regel (luft + 1,804 w). I kortet med to telefoner er
+       den bakre 0,87 w, står 0,2 w lavere og er vippet 4° (så den og ikonet holder seg inne i kortet),
+       den fremre 0,973 w; begge klippes 11–12 %. */
+    .dagbok-scene{--sw:224px;--pt:2rem;height:calc(var(--pt) + var(--sw)*1.804);padding-top:var(--pt)}
+    .dagbok-scene .tlf{--tlf-w:var(--sw)}
+    .dagbok-scene.to .tlf-bak{--tlf-w:calc(var(--sw)*.87);top:calc(var(--pt) + var(--sw)*.2);left:calc(50% - var(--sw)*.205);rotate:4deg}
+    .dagbok-scene.to .tlf-foran{--tlf-w:calc(var(--sw)*.973)}
+    .toalett-scene{--sw:260px;--pt:2.6rem;height:calc(var(--pt) + var(--sw)*1.804);padding-top:var(--pt)}
+    .toalett-scene .tlf{--tlf-w:var(--sw)}
+    .toalett-kilde .kilde-skille{opacity:.6}
+    .toalett-kilde [data-i18n="web_f82_kart_kilde"]{white-space:nowrap}
+
+    /* Demo (runde 82 del 2): animasjon av appen i samme telefonramme (statuslinje), i et panel som
+       klipper telefonen nederst; ev. en ny video (videos/demo-ny.mp4) bak en bryter. */
+    .demo-wrapper{flex-direction:column;align-items:center;gap:1rem}
+    .demo-scene{--sw:280px;--pt:2rem;position:relative;width:min(100%,440px);height:calc(var(--pt) + var(--sw)*1.804);overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding-top:var(--pt);border:1px solid var(--border);border-radius:var(--radius);background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%)}
+    .demo-scene .tlf{--tlf-w:var(--sw)}
+    /* Klippebeholderne skal aldri kunne rulles (kontrollen 3. okt): med overflow:hidden ruller nettleseren
+       beholderen 38–88 px når en telefonkropp (tabindex=0) eller ⤢ får tastaturfokus, og da mister telefonen
+       toppen og ser ut som en lang plate som går ut av bildet både oppe og nede. overflow:clip kan ikke rulles;
+       hidden står først som reserve for eldre nettlesere (der setter r82.js scrollTop tilbake til 0). */
+    .hero-wrap,.fane-scene,.dagbok-scene,.toalett-scene,.demo-scene{overflow:hidden;overflow:clip}
+    .demo-tlf .tlf-skjerm{background:var(--tlf-topp,#FBF8F3)}
+    .demo-flate{position:relative;flex:1 1 0;min-height:0;overflow:hidden;background:#FBF8F3}
+    .demo-lerret{position:absolute;left:0;top:0;width:430px;height:878px;transform-origin:0 0;transform:scale(var(--demo-k,.6))}
+    .demo-skjerm{position:absolute;left:0;top:0;width:430px;height:878px;overflow:hidden;visibility:hidden;will-change:transform}
+    .demo-skjerm img{display:block;width:430px;max-width:none;height:auto;cursor:inherit}
+    .demo-topp,.demo-bunn{position:absolute;left:0;width:430px;z-index:2}
+    .demo-topp{top:0}.demo-bunn{bottom:0}
+    .demo-kropp{position:absolute;left:0;width:430px;overflow:hidden}
+    .demo-kropp img{position:absolute;left:0;top:0;will-change:transform}
+    .demo-skygge{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:3}
+    .demo-trykk{position:absolute;left:0;top:0;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;border:3px solid rgba(45,90,61,.85);background:rgba(107,175,125,.28);opacity:0;pointer-events:none;z-index:6}
+    .demo-video-tlf video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+    .demo-video-tlf .tlf-skjerm{padding-top:0;height:calc(var(--tlf-w)*2.0374)}
+    .demo-kontroller{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.6rem}
+    .demo-knapp{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border:1px solid var(--border);border-radius:2rem;background:var(--white);color:var(--green-dark);font:600 .86rem/1.2 'DM Sans',system-ui,sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+    .demo-knapp:hover{border-color:var(--green-glow,#6BAF7D)}
+    .demo-knapp:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+    .demo-knapp svg{width:14px;height:14px;display:block}
+    .demo-knapp[hidden]{display:none}
+    .demo-valg{display:inline-flex;padding:3px;border:1px solid var(--border);border-radius:2rem;background:var(--white)}
+    .demo-valg[hidden]{display:none}
+    .demo-valg button{padding:.42rem .95rem;border:none;border-radius:2rem;background:transparent;color:var(--slate);font:600 .84rem/1.2 'DM Sans',system-ui,sans-serif;cursor:pointer}
+    .demo-valg button[aria-pressed="true"]{background:var(--green-dark);color:#fff}
+    .demo-valg button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+
+    /* Fullskjerm: en normal telefon (2,0974 w) som passer i høyden, i et modalt lag */
+    html.tlf-full-aapen,html.tlf-full-aapen body{overflow:hidden}
+    .tlf-full{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:58px 12px 14px;overscroll-behavior:contain}
+    .tlf-full[hidden]{display:none}
+    .tlf-full-bak{position:absolute;inset:0;background:rgba(10,14,11,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);touch-action:none;animation:tlfFade .25s ease}
+    .tlf-full-plass{position:relative;z-index:1;display:flex;justify-content:center}
+    .tlf-full .tlf{--tlf-w:min(calc((100vh - 72px) / 2.0974),calc(100vw - 24px),470px);cursor:default;box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.14);animation:tlfInn .3s var(--ease)}
+    @supports(height:100dvh){.tlf-full .tlf{--tlf-w:min(calc((100dvh - 72px) / 2.0974),calc(100vw - 24px),470px)}}
+    .tlf-full .tlf-skjerm img{cursor:auto}
+    .tlf-full-lukk{position:absolute;z-index:2;top:8px;right:12px;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.96);color:#1C1C1C;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
+    .tlf-full-lukk:hover{transform:scale(1.06)}
+    .tlf-full-lukk:focus-visible{outline:3px solid var(--green-glow,#6BAF7D);outline-offset:3px}
+    .tlf-full-lukk svg{width:20px;height:20px}
+    @keyframes tlfFade{from{opacity:0}to{opacity:1}}
+    @keyframes tlfInn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+    @media(min-width:700px){
+      .tlf-full{padding:24px}
+      .tlf-full .tlf{--tlf-w:min(calc((100vh - 48px) / 2.0974),470px)}
+      @supports(height:100dvh){.tlf-full .tlf{--tlf-w:min(calc((100dvh - 48px) / 2.0974),470px)}}
+      .tlf-full-lukk{top:20px;right:24px;width:48px;height:48px}
+    }
+    @media(max-width:1000px){
+      .hero-visual{margin-bottom:-3.5rem}
+    }
+    @media(max-width:900px){
+      .fane-oppsett{grid-template-columns:1fr}
+      .fane-scene{--sw:210px;--pt:1.4rem;-webkit-mask-image:none;mask-image:none}
+      .toalett-scene{--sw:224px;--pt:.8rem}
+    }
+    @media(max-width:600px){
+      .fane-scene{--sw:200px}
+      .dagbok-scene{--sw:200px;--pt:1.6rem}
+      .demo-scene{--sw:236px;--pt:1.6rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .tlf-kropp{scroll-behavior:auto}
+      .tlf-full-bak,.tlf-full .tlf{animation:none}
+      .tlf-status{transition:none}
+    }
+
+    /* Runde 89 (Fredrik 5. okt): hint om at telefonbildet kan scrolles. En liten merkelapp i øvre del av hver
+       scroll-telefon (r82.js lager den; ikke demoen, ikke fullskjerm): godt over klippekanten nederst, over
+       tallmerkene i helten (mobil) og unna ⤢-knappen i hjørnet. Forsvinner når man scroller/drar/trykker i telefonen. */
+    .tlf-rull-hint{position:absolute;z-index:3;left:50%;top:calc(var(--tlf-w)*.8);transform:translateX(-50%);display:inline-flex;align-items:center;gap:.4em;padding:.42em .85em .42em .62em;border-radius:999px;background:rgba(27,33,29,.8);color:#fff;font:600 clamp(11px,calc(var(--tlf-w)*.05),14px)/1.2 'DM Sans',system-ui,sans-serif;letter-spacing:.01em;white-space:nowrap;pointer-events:none;box-shadow:0 6px 18px rgba(20,25,21,.25);transition:opacity .45s ease,transform .45s ease}
+    .tlf-rull-hint svg{width:1.15em;height:1.15em;flex:none;animation:tlfRullPil 1.6s ease-in-out infinite}
+    .tlf-rull-hint.skjult{opacity:0;transform:translate(-50%,6px)}
+    .tlf-full .tlf-rull-hint{display:none}
+    @keyframes tlfRullPil{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+    @media (prefers-reduced-motion:reduce){.tlf-rull-hint svg{animation:none}.tlf-rull-hint{transition:none}}
+    /* ── /Runde 82 ── */
   </style>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FODMAPP – AI App for Low-FODMAP Diet & IBS">
-  <meta name="twitter:description" content="Manage IBS with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Available in 23 languages on iOS & Android.">
-  <meta name="twitter:image" content="https://fodmapp.com/images/app-mockup.png">
+  <meta name="twitter:description" content="Follow a low-FODMAP diet with AI chat, camera food analysis, and barcode scanning of 4.4M+ products. Available in 23 languages on iOS & Android.">
+  <meta name="twitter:image" content="https://fodmapp.com/images/og-fodmapp.png">
   <!-- Hreflang for multilingual SEO -->
   <link rel="canonical" href="https://fodmapp.com/">
   <link rel="alternate" hreflang="x-default" href="https://fodmapp.com/">
@@ -374,6 +670,7 @@
   <link rel="alternate" hreflang="id" href="https://fodmapp.com/">
   <link rel="alternate" hreflang="nl" href="https://fodmapp.com/">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="stylesheet" href="css/r210.css">
 </head>
 <body>
   <header id="siteHeader">
@@ -382,6 +679,7 @@
       <nav>
         <a href="#features" data-i18n="nav_features">Features</a>
         <a href="#how" data-i18n="nav_how">How it works</a>
+        <a href="#dagbok" data-i18n="web_f80_nav_dagbok">Diary</a>
         <a href="#demo" data-i18n="nav_demo">Demo</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
@@ -398,6 +696,7 @@
     <div id="mobileNav" class="mobile-nav">
       <a href="#features" onclick="closeMobileNav()" data-i18n="nav_features">Features</a>
       <a href="#how" onclick="closeMobileNav()" data-i18n="nav_how">How it works</a>
+      <a href="#dagbok" onclick="closeMobileNav()" data-i18n="web_f80_nav_dagbok">Diary</a>
       <a href="#demo" onclick="closeMobileNav()" data-i18n="nav_demo">Demo</a>
       <a href="#faq" onclick="closeMobileNav()">FAQ</a>
       <a href="#contact" onclick="closeMobileNav()" data-i18n="nav_contact">Contact</a>
@@ -413,7 +712,7 @@
       <div class="hero-content reveal">
         <div class="hero-badge" data-i18n="hero_badge">🌿 Your FODMAP AI assistant</div>
         <h1 data-i18n="hero_title">Low-FODMAP made <em>simple</em> with AI</h1>
-        <p data-i18n="hero_p">No more googling. No more embarrassing moments at restaurants. Just snap a photo, scan, or ask — and eat without fear.</p>
+        <p data-i18n="hero_p">No more googling. No more embarrassing moments at restaurants. Just snap a photo, scan or ask, and get an answer in seconds.</p>
         <div class="hero-buttons">
           <a href="#cta" class="btn-primary" data-i18n="hero_btn1">Download free ↓</a>
           <a href="#demo" class="btn-secondary" data-i18n="hero_btn2">Watch demo ▶</a>
@@ -424,16 +723,9 @@
         </div>
       </div>
       <div class="hero-visual reveal reveal-d2">
-        <div class="hero-shots">
-          <img src="images/app-mockup.png" alt="App preview" loading="eager" onclick="openFullscreen(this)">
-          <img src="images/screenshot.jpg" alt="App screenshot" loading="lazy" onclick="openFullscreen(this)">
-        </div>
-        <div class="hero-chip chip-score" aria-hidden="true">
-          <div class="chip-icon">✓</div>
-          <div class="chip-body">
-            <div class="chip-title">FODMAP Score · 92/100</div>
-            <div class="chip-bar"><i></i></div>
-          </div>
+        <div class="helt-tlf">
+          <figure class="tlf stlf" data-tlf="hjem" style="--tlf-topp:#FBF8F3"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Forsiden i FODMAPP med dagens tips, loggknapper og funksjoner"><img src="images/app/en/hjem_kropp.webp" srcset="images/app/en/hjem_kropp.webp 600w, images/app/en/hjem_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="hjem_kropp" data-stor data-alt="web_f80_alt_hjem" alt="Forsiden i FODMAPP med dagens tips, loggknapper og funksjoner" width="600" height="1965" loading="eager" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure>
+          <figure class="tlf stlf" data-tlf="analyse" data-start="0.373" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Mønsteroversikten i FODMAPP: hva som oftest går igjen før plager"><img src="images/app/en/analyse_kropp.webp" srcset="images/app/en/analyse_kropp.webp 600w, images/app/en/analyse_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="analyse_kropp" data-stor data-alt="web_f80_alt_analyse" alt="Mønsteroversikten i FODMAPP: hva som oftest går igjen før plager" width="600" height="3480" loading="eager" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure>
         </div>
         <div class="hero-chip chip-db" aria-hidden="true">
           <div class="chip-icon">🏷️</div>
@@ -453,6 +745,9 @@
     </section>
   </div>
   <div id="lightbox" class="lightbox" onclick="closeFullscreen()"><img id="lightbox-img" src="" alt=""></div>
+  <!-- r82:fullskjerm -->
+  <div id="tlfFull" class="tlf-full" role="dialog" aria-modal="true" aria-label="" hidden><div class="tlf-full-bak"></div><button type="button" class="tlf-full-lukk" data-i18n-aria="web_f82_lukk" aria-label="Lukk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="tlf-full-plass"></div></div>
+  <!-- /r82:fullskjerm -->
 
   <!-- ── Language marquee ── -->
   <div class="marquee-strip" aria-hidden="true">
@@ -472,34 +767,67 @@
 
   <!-- ── Features ── -->
   <section id="features" class="features-section"><div class="container text-center">
-    <div class="reveal"><span class="section-tag" data-i18n="feat_tag">✦ Features</span><h2 class="section-title" data-i18n="feat_title">Everything you need, in your pocket</h2><p class="section-sub" data-i18n="feat_sub">Over 4.4 million products – every ingredient analyzed by AI. No guessing, no searching. Just snap a photo, scan, or ask.</p></div>
-    <div class="features-grid">
+    <div class="reveal"><span class="section-tag" data-i18n="feat_tag">✦ Features</span><h2 class="section-title" data-i18n="feat_title">Everything you need, in your pocket</h2><p class="section-sub" data-i18n="feat_sub">Scan food and ask about it, log how your gut is doing, and get an overview of your diary. All in one app.</p></div>
+    <div class="features-grid f80 karusell">
       <div class="feature-card reveal reveal-d1">
         <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
         <h3 data-i18n="f2h">AI Camera</h3>
-        <p data-i18n="f2p">Take a photo of food, menus, your fridge, or an ingredient list – and get instant FODMAP analysis and safe recommendations.</p>
+        <p data-i18n="f2p">Snap the dish, the menu, the buffet or the fridge, and see the FODMAP level of every ingredient, dish and product.</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('camera')" data-i18n="web_f80_lenke_kamera">See the camera tools</a>
       </div>
       <div class="feature-card reveal reveal-d2">
         <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5v14"/><path d="M8 5v14"/><path d="M12 5v14"/><path d="M17 5v14"/><path d="M21 5v14"/></svg></div>
         <h3 data-i18n="f3h">Barcode Scanner</h3>
         <p data-i18n="f3p">Scan any product's barcode and get an instant AI-powered FODMAP analysis. The app draws from Open Food Facts – a database of over 4.4 million products from around the world.</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('barcode')" data-i18n="web_f80_lenke_strekkode">See the barcode scanner</a>
       </div>
       <div class="feature-card reveal reveal-d3">
         <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></div>
         <h3 data-i18n="f1h">AI Chat</h3>
-        <p data-i18n="f1p">Get answers about low-FODMAP foods, recipes, and weekly meal plans. Your personal assistant – right on your phone.</p>
+        <p data-i18n="f1p">Get answers about low-FODMAP food, recipes and weekly menus. The chat suggests questions based on your scans and meals.</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('chat')" data-i18n="web_f80_lenke_chat">See the chat</a>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 data-i18n="web_f80_f_toalett_h">Toilet map</h3>
+        <p data-i18n="web_f80_f_toalett_p">Find toilets nearby, filter by free, wheelchair access, changing table and open now, and save your favorites. Toilet data from OpenStreetMap.</p>
+        <a class="feature-link" href="#toalettkart" data-i18n="web_f80_lenke_toalett">See the Toilet map</a>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17.5" rx="2"/><path d="M9 3.5v2h6v-2"/><path d="M9 11h6"/><path d="M9 15h4"/></svg></div>
+        <h3 data-i18n="web_f80_f_logg_h">Logging</h3>
+        <p data-i18n="web_f80_f_logg_p">Log symptoms with pain from 0 to 10 and stress, bathroom visits with the Bristol scale, and your meals. It only takes a couple of minutes.</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_logg">See logging</a>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg></div>
+        <h3 data-i18n="web_f80_f_dagbok_h">Pain diary</h3>
+        <p data-i18n="web_f80_f_dagbok_p">See pain and stress by week, month or year, with charts, a pain calendar and your logging streak.</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_dagbok">See the Pain diary</a>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3.5-3.5 3 3L19 8"/></svg></div>
+        <h3 data-i18n="web_f80_f_monster_h">AI Analysis</h3>
+        <p data-i18n="web_f80_f_monster_p">AI Analysis gives you a summary of your logs, and the app counts what most often comes up before symptoms.</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_monster">See AI Analysis</a>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3 data-i18n="web_f80_f_rapport_h">Report for your doctor</h3>
+        <p data-i18n="web_f80_f_rapport_p">Create a PDF report of your own entries, ready to show your GP, gastroenterologist or dietitian.</p>
+        <a class="feature-link" href="#rapport" data-i18n="web_f80_lenke_rapport">See the example report</a>
       </div>
     </div>
   </div></section>
 
   <!-- ── How it works ── -->
   <section id="how" class="how-section"><div class="container text-center">
-    <div class="reveal"><span class="section-tag" data-i18n="how_tag">✦ How it works</span><h2 class="section-title" data-i18n="how_title">Ready in seconds</h2><p class="section-sub" data-i18n="how_sub">Four simple steps from download to confident eating.</p></div>
-    <div class="steps-grid">
+    <div class="reveal"><span class="section-tag" data-i18n="how_tag">✦ How it works</span><h2 class="section-title" data-i18n="how_title">Ready in seconds</h2><p class="section-sub" data-i18n="how_sub">Four simple steps from download to easier food choices.</p></div>
+    <div class="steps-grid karusell">
       <div class="step-card reveal reveal-d1"><div class="step-number">1</div><h3 data-i18n="s1h">Download the app</h3><p data-i18n="s1p">Install FODMAPP from App Store or Google Play – ready to use instantly.</p></div>
       <div class="step-card reveal reveal-d2"><div class="step-number">2</div><h3 data-i18n="s2h">Use camera, chat or barcode</h3><p data-i18n="s2p">Take a photo, scan a barcode, or ask the AI assistant. Get help exactly when you need it.</p></div>
-      <div class="step-card reveal reveal-d3"><div class="step-number">3</div><h3 data-i18n="s3h">Get safe guidance</h3><p data-i18n="s3p">The app analyzes the content and gives clear low-FODMAP recommendations.</p></div>
-      <div class="step-card reveal reveal-d4"><div class="step-number">4</div><h3 data-i18n="s4h">Eat with confidence</h3><p data-i18n="s4p">Less stress around food choices. More support following low-FODMAP daily.</p></div>
+      <div class="step-card reveal reveal-d3"><div class="step-number">3</div><h3 data-i18n="s3h">Get clear guidance</h3><p data-i18n="s3p">The app assesses the contents and shows clearly what is low, moderate and high in FODMAPs.</p></div>
+      <div class="step-card reveal reveal-d4"><div class="step-number">4</div><h3 data-i18n="s4h">Eat with more peace of mind</h3><p data-i18n="s4p">Less stress around food choices. More support for eating low-FODMAP every day.</p></div>
     </div>
   </div></section>
 
@@ -507,56 +835,152 @@
   <section id="features-detail" class="features-tab-section"><div class="container">
     <div class="text-center reveal">
       <span class="section-tag" data-i18n="feat_tab_tag">✦ Explore features</span>
-      <h2 class="section-title" data-i18n="feat_tab_title">Three tools. One app.</h2>
+      <h2 class="section-title" data-i18n="feat_tab_title">Camera, barcode and chat</h2>
       <p class="section-sub" data-i18n="feat_tab_sub">Select a feature to see what it can do for you.</p>
     </div>
     <div class="feature-tabs-wrap reveal">
       <div class="feature-tabs">
-        <button class="feature-tab active" onclick="switchTab('camera',this)"><span class="tab-icon">📸</span> <span data-i18n="f2h">AI Camera</span></button>
-        <button class="feature-tab" onclick="switchTab('barcode',this)"><span class="tab-icon">🏷️</span> <span data-i18n="f3h">Barcode Scanner</span></button>
-        <button class="feature-tab" onclick="switchTab('chat',this)"><span class="tab-icon">💬</span> <span data-i18n="f1h">AI Chat</span></button>
+        <button class="feature-tab active" data-fane="camera" onclick="switchTab('camera',this)"><span class="tab-icon">📸</span> <span data-i18n="f2h">AI Camera</span></button>
+        <button class="feature-tab" data-fane="barcode" onclick="switchTab('barcode',this)"><span class="tab-icon">🏷️</span> <span data-i18n="f3h">Barcode Scanner</span></button>
+        <button class="feature-tab" data-fane="chat" onclick="switchTab('chat',this)"><span class="tab-icon">💬</span> <span data-i18n="f1h">AI Chat</span></button>
       </div>
     </div>
     <div id="tab-chat" class="tab-panel">
       <p class="tab-desc" data-i18n="chat_sub">Ask a question and get an answer in seconds – tailored to you.</p>
-      <div class="tab-grid">
-        <div class="tab-card reveal"><h3 data-i18n="ch1h">🥦 Evaluate any food</h3><p data-i18n="ch1p">Type a food, dish, or product name and get an instant FODMAP rating with explanation, portion advice, and safe alternatives.</p></div>
-        <div class="tab-card reveal reveal-d1"><h3 data-i18n="ch2h">🍽️ Analyse restaurant dishes</h3><p data-i18n="ch2p">Describe a restaurant dish and the AI assesses each ingredient, explains the FODMAP risks, and suggests how to order it low-FODMAP.</p></div>
+      <div class="fane-oppsett">
+        <div class="fane-scene"><figure class="tlf stlf" data-tlf="chat" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="images/app/en/chat_topp.webp" srcset="images/app/en/chat_topp.webp 600w, images/app/en/chat_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="AI-chatten i FODMAPP med forslag til spørsmål"><img src="images/app/en/chat_kropp.webp" srcset="images/app/en/chat_kropp.webp 600w, images/app/en/chat_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_kropp" data-stor data-alt="web_f80_alt_chat_forslag" alt="AI-chatten i FODMAPP med forslag til spørsmål" width="600" height="1026" loading="lazy" decoding="async"></div><div class="tlf-bunn"><img src="images/app/en/chat_bunn.webp" srcset="images/app/en/chat_bunn.webp 600w, images/app/en/chat_bunn_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_bunn" data-stor alt="" width="600" height="148" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+      <div class="tab-grid karusell">
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_ch7h">💡 Suggestions for you</h3><p data-i18n="web_f80_ch7p">The chat suggests questions based on your scans and meals, such as low-FODMAP alternatives to something you've scanned or a recipe for something you've eaten.</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="web_f80_ch8h">🙋 Knows you from the start</h3><p data-i18n="web_f80_ch8p">The answers you give when you start using the app are used as background in the chat, so you don't have to repeat yourself. You can change them anytime.</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="ch1h">🥦 Evaluate any food</h3><p data-i18n="ch1p">Type a food, a dish or a product name and get a FODMAP assessment with an explanation, portion advice and low-FODMAP alternatives.</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="ch2h">🍽️ Analyse restaurant dishes</h3><p data-i18n="ch2p">Describe a restaurant dish, and the AI assesses each ingredient, explains the FODMAP content and suggests how to order a low-FODMAP version.</p></div>
         <div class="tab-card reveal reveal-d2"><h3 data-i18n="ch3h">📅 Weekly meal plans</h3><p data-i18n="ch3p">Ask for a full low-FODMAP weekly menu with breakfast, lunch, dinner, and snacks – the AI creates a varied and balanced plan with recipes.</p></div>
         <div class="tab-card reveal"><h3 data-i18n="ch4h">🛒 Shopping lists</h3><p data-i18n="ch4p">After your meal plan, ask for a shopping list. The AI generates one based on the menu so you always have the right ingredients at home.</p></div>
         <div class="tab-card reveal reveal-d1"><h3 data-i18n="ch5h">❓ FODMAP questions</h3><p data-i18n="ch5p">Ask what FODMAP is, which types exist (fructans, galactans, polyols, fructose, lactose), how the diet works, or anything else related to FODMAP.</p></div>
-        <div class="tab-card reveal reveal-d2"><h3 data-i18n="ch6h">🧘 Stress management</h3><p data-i18n="ch6p">Stress can worsen IBS symptoms. Ask the AI for relaxation techniques, breathing exercises, and practical tips for long-term stress management.</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="ch6h">🧘 Stress management</h3><p data-i18n="ch6p">Ask the AI for relaxation techniques, breathing exercises and practical tips for handling stress in everyday life.</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_ch9h">🕒 Deleted after 24 hours</h3><p data-i18n="web_f80_ch9p">Messages stay in the chat for 24 hours and are then deleted automatically.</p></div>
+      </div>
       </div>
     </div>
     <div id="tab-camera" class="tab-panel active">
-      <p class="tab-desc" data-i18n="cam_sub">Point, scan and get answers – straight from your camera.</p>
-      <div class="tab-grid">
-        <div class="tab-card reveal"><h3 data-i18n="cam1h">🥕 Single food item</h3><p data-i18n="cam1p">Photograph a fruit, vegetable, or ingredient to instantly find out if it's low or high FODMAP – with portion advice and safe alternatives.</p></div>
-        <div class="tab-card reveal reveal-d1"><h3 data-i18n="cam2h">🍲 Meals and dishes</h3><p data-i18n="cam2p">Photo an entire meal and the AI identifies all ingredients, assesses each one, and checks for FODMAP stacking – where several moderate items together exceed the safe limit.</p></div>
-        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam3h">📋 Restaurant menus</h3><p data-i18n="cam3p">Photo a menu in any language and get suggestions for safe dishes, with specific tips on what to ask the waiter to change or leave out.</p></div>
-        <div class="tab-card reveal"><h3 data-i18n="cam4h">🧊 Fridge contents</h3><p data-i18n="cam4p">Photo your fridge and the AI lists all recognisable ingredients with FODMAP status, then creates two low-FODMAP recipe suggestions based on what you have.</p></div>
-        <div class="tab-card reveal reveal-d1"><h3 data-i18n="cam5h">🥤 Drinks</h3><p data-i18n="cam5p">Photograph a drink – juice, smoothie, or soft drink – and get a full FODMAP assessment including information about sweeteners and safe portion sizes.</p></div>
-        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam6h">🔢 FODMAP score 0–100</h3><p data-i18n="cam6p">Every camera analysis gives you a FODMAP score from 0 to 100. Green (80–100) means safe, yellow (55–79) means moderate caution, and red (below 55) means high FODMAP content – so you can decide at a glance.</p></div>
+      <p class="tab-desc" data-i18n="cam_sub">Point the camera at the dish, the menu, the buffet or the fridge, and see the FODMAP level of every ingredient, dish and product.</p>
+      <div class="fane-oppsett">
+        <!-- r210:kamera --><div class="fane-venstre"><div class="kam-valg" role="group" data-i18n-aria="web_f210_kam_valg" aria-label="Velg skanning"><button type="button" data-vis="matrett" aria-pressed="true" data-i18n="web_f210_kam_matrett">Dish</button><button type="button" data-vis="meny" aria-pressed="false" data-i18n="web_f210_kam_meny">Menu</button><button type="button" data-vis="kjoleskap" aria-pressed="false" data-i18n="web_f210_kam_kjoleskap">Fridge</button></div><!-- /r210:kamera --><div class="fane-scene"><figure class="tlf stlf" data-tlf="matrett" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="FODMAP-vurdering av en matrett fra AI-kameraet"><img src="images/app/en/matrett_kropp.webp" srcset="images/app/en/matrett_kropp.webp 600w, images/app/en/matrett_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="matrett_kropp" data-stor data-alt="web_f80_alt_matrett" alt="FODMAP-vurdering av en matrett fra AI-kameraet" width="600" height="3271" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><!-- r210:kamera-tlf --><figure class="tlf stlf" data-tlf="meny" data-r210 hidden style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Menyanalyse i FODMAPP: rettene med FODMAP-nivå og en tekst til kelneren"><img src="images/app/en/meny_kropp.webp" srcset="images/app/en/meny_kropp.webp 600w, images/app/en/meny_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="meny_kropp" data-stor data-alt="web_f210_alt_meny" alt="Menyanalyse i FODMAPP: rettene med FODMAP-nivå og en tekst til kelneren" width="600" height="5016" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf stlf" data-tlf="kjoleskap" data-r210 hidden style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Kjøleskapsanalyse i FODMAPP: varene med FODMAP-nivå og forslag til oppskrifter"><img src="images/app/en/kjoleskap_kropp.webp" srcset="images/app/en/kjoleskap_kropp.webp 600w, images/app/en/kjoleskap_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kjoleskap_kropp" data-stor data-alt="web_f210_alt_kjoleskap" alt="Kjøleskapsanalyse i FODMAPP: varene med FODMAP-nivå og forslag til oppskrifter" width="600" height="5487" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><!-- /r210:kamera-tlf --></div><!-- r210:kamera-slutt --></div><!-- /r210:kamera-slutt -->
+      <div class="tab-grid karusell">
+        <div class="tab-card reveal"><h3 data-i18n="cam1h">🍲 Dish</h3><p data-i18n="cam1p">Snap your plate. The food scanner recognizes the ingredients, estimates the amounts and shows which are low, moderate and high in FODMAP, with swap ideas for a lower level.</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam3h">📋 Restaurant menu</h3><p data-i18n="cam3p">Snap a menu in any language. The dishes appear in your language with their FODMAP level, and under “To the waiter” you get a ready-made note in the menu's language to show.</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="cam4h">🧊 Fridge</h3><p data-i18n="cam4p">Snap your fridge. FODMAPP finds the foods, and you can add anything the AI missed. Then you get recipes made only from the low-FODMAP foods, scaled to the number of servings.</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam6h">🔢 Levels and FODMAP groups</h3><p data-i18n="cam6p">Every scan shows the level with a color and three bars: low, moderate or high. You also see the amount and which FODMAP group sets the level, such as fructans.</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_cam7h">🥗 Hot and cold buffets</h3><p data-i18n="web_f80_cam7p">Take one photo of the whole buffet table. The AI finds the dishes and shows which are low, moderate and high in FODMAP, so you get the full picture fast.</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="web_f80_cam8h">🍽️ Log what you ate</h3><p data-i18n="web_f80_cam8p">Tap “Log as eaten” once you've eaten what you scanned. You choose the portion afterwards, and the meal goes straight into your diary.</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="web_f80_cam9h">🗂️ My scans</h3><p data-i18n="web_f80_cam9p">All your scans are gathered in one place, with search. Filter by dish, menu, buffet, fridge or barcode, and open an earlier result again.</p></div>
+      </div>
       </div>
     </div>
     <div id="tab-barcode" class="tab-panel">
-      <p class="tab-desc" data-i18n="man_bc_sub">Scan barcodes and get instant FODMAP results – wherever you shop.</p>
-      <div class="tab-grid">
+      <p class="tab-desc" data-i18n="man_bc_sub">Point the camera at any product's barcode and get a full FODMAP assessment in seconds.</p>
+      <div class="fane-oppsett">
+        <div class="fane-scene"><figure class="tlf stlf" data-tlf="strekkode" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="FODMAP-vurdering av et produkt fra strekkodeskanneren"><img src="images/app/en/strekkode_kropp.webp" srcset="images/app/en/strekkode_kropp.webp 600w, images/app/en/strekkode_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="strekkode_kropp" data-stor data-alt="web_f80_alt_strekkode" alt="FODMAP-vurdering av et produkt fra strekkodeskanneren" width="600" height="2714" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+      <div class="tab-grid karusell">
         <div class="tab-card reveal"><h3 data-i18n="bc1h">🌍 Over 4.4 million products</h3><p data-i18n="bc1p">The barcode scanner taps into Open Food Facts – one of the world's largest open food databases with over 4.4 million products from countries around the globe. Whether you're at home or travelling abroad, chances are the product is already in the database.</p></div>
-        <div class="tab-card reveal reveal-d1"><h3 data-i18n="bc2h">📊 AI-powered ingredient analysis</h3><p data-i18n="bc2p">When you scan a barcode, the app fetches the full ingredient list and analyses every single ingredient with advanced AI – giving you a complete, reliable FODMAP verdict.</p></div>
-        <div class="tab-card reveal reveal-d2"><h3 data-i18n="bc3h">✅ Safe shopping made easy</h3><p data-i18n="bc3p">Use the scanner before putting anything in your trolley. It works with packaged products from any country – perfect when travelling or shopping at international stores.</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="bc2h">📊 AI-powered ingredient analysis</h3><p data-i18n="bc2p">When you scan the barcode, the app fetches the ingredient list on the pack and assesses every ingredient, with serving size and lower-FODMAP alternatives.</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="bc3h">✅ Shopping made easier</h3><p data-i18n="bc3p">Use the scanner before putting anything in your trolley. It works with packaged products from any country – perfect when travelling or shopping at international stores.</p></div>
       </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ── Dagbok og oversikt (runde 80) ── -->
+  <section id="dagbok" class="dagbok-section"><div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag" data-i18n="web_f80_dag_tag">✦ Diary and overview</span>
+      <h2 class="section-title" data-i18n="web_f80_dag_title">Log day to day, see your <em>patterns</em></h2>
+      <p class="section-sub" data-i18n="web_f80_dag_sub">Keep a diary of symptoms, bathroom visits and meals. FODMAPP gathers what you log into charts, a calendar and an overview of what comes up most often.</p>
+    </div>
+    <div class="dagbok-grid karusell">
+      <article class="dagbok-kort reveal reveal-d1" id="dagbok-logg">
+        <div class="dagbok-scene to"><figure class="tlf stlf tlf-bak" data-tlf="toalett" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="images/app/en/toalett_topp.webp" srcset="images/app/en/toalett_topp.webp 600w, images/app/en/toalett_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="toalett_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Toalettlogg i FODMAPP med Bristol-skalaen"><img src="images/app/en/toalett_kropp.webp" srcset="images/app/en/toalett_kropp.webp 600w, images/app/en/toalett_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="toalett_kropp" data-stor data-alt="web_f80_alt_toalett" alt="Toalettlogg i FODMAPP med Bristol-skalaen" width="600" height="1173" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf stlf tlf-foran" data-tlf="logg" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Symptomlogg i FODMAPP med smerte, stress og symptomer"><img src="images/app/en/logg_kropp.webp" srcset="images/app/en/logg_kropp.webp 600w, images/app/en/logg_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="logg_kropp" data-stor data-alt="web_f80_alt_logg" alt="Symptomlogg i FODMAPP med smerte, stress og symptomer" width="600" height="1973" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_logg_merke">Logging</span>
+        <h3 data-i18n="web_f80_logg_h">Done in a couple of minutes</h3>
+        <p data-i18n="web_f80_logg_p">Record how your gut is doing in a few taps. Save a good day with “No symptoms today”, and you can copy your previous log.</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_logg_l1">Pain and stress from 0 to 10, symptoms, sleep and medication</li>
+          <li data-i18n="web_f80_logg_l2">Bathroom visits with the Bristol scale</li>
+          <li data-i18n="web_f80_logg_l3">Meals, typed in or from a scan</li>
+        </ul>
+        </div>
+      </article>
+      <article class="dagbok-kort reveal reveal-d2" id="dagbok-smerte">
+        <div class="dagbok-scene"><figure class="tlf stlf" data-tlf="dagbok" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Smertedagboken i FODMAPP med snitt smerte, loggestreak og kurve"><img src="images/app/en/dagbok_kropp.webp" srcset="images/app/en/dagbok_kropp.webp 600w, images/app/en/dagbok_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="dagbok_kropp" data-stor data-alt="web_f80_alt_dagbok" alt="Smertedagboken i FODMAPP med snitt smerte, loggestreak og kurve" width="600" height="4288" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_dagbok_merke">Pain diary</span>
+        <h3 data-i18n="web_f80_dagbok_h">Your diary at a glance</h3>
+        <p data-i18n="web_f80_dagbok_p">Follow how things develop by week, month or year, and get a daily reminder to log if you like.</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_dagbok_l1">Charts for pain and stress</li>
+          <li data-i18n="web_f80_dagbok_l2">Pain calendar with color-coded days</li>
+          <li data-i18n="web_f80_dagbok_l3">Logging streak and most frequent symptoms</li>
+        </ul>
+        </div>
+      </article>
+      <article class="dagbok-kort reveal reveal-d3" id="dagbok-monster">
+        <div class="dagbok-scene"><figure class="tlf stlf" data-tlf="analyse" data-start="0.373" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Mønsteroversikten i FODMAPP: hva som oftest går igjen før plager"><img src="images/app/en/analyse_kropp.webp" srcset="images/app/en/analyse_kropp.webp 600w, images/app/en/analyse_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="analyse_kropp" data-stor data-alt="web_f80_alt_analyse" alt="Mønsteroversikten i FODMAPP: hva som oftest går igjen før plager" width="600" height="3480" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_monster_merke">AI Analysis</span>
+        <h3 data-i18n="web_f80_monster_h">See your patterns</h3>
+        <p data-i18n="web_f80_monster_p">Choose the last 14 or 30 days. Once you've logged at least 10 days, you get a summary of your logs and an overview of what keeps coming up.</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_monster_l1">What most often comes up before symptoms</li>
+          <li data-i18n="web_f80_monster_l2">With numbers, for example “Eaten before 9 of 14 logged symptoms”</li>
+          <li data-i18n="web_f80_monster_l3">Pain and stress per day in the same chart</li>
+        </ul>
+        <a class="feature-link" href="#rapport" data-i18n="web_f80_monster_lenke">Share the report with your doctor</a>
+        </div>
+      </article>
+    </div>
+    <div class="toalett-panel reveal" id="toalettkart">
+      <div class="toalett-tekst">
+        <span class="section-tag" data-i18n="web_f80_toa_tag">✦ Toilet map</span>
+        <h2 class="section-title" data-i18n="web_f80_toa_title">Find a toilet <em>nearby</em></h2>
+        <p data-i18n="web_f80_toa_p">The Toilet map shows toilets around you, both on the map and in a list with distances. Filter by what you need, get directions and save your favorites to your account.</p>
+        <ul class="toalett-filtre"><li><span aria-hidden="true">🆓</span> <span data-i18n="web_f80_toa_f1">Free</span></li><li><span aria-hidden="true">♿</span> <span data-i18n="web_f80_toa_f2">Wheelchair</span></li><li><span aria-hidden="true">🚼</span> <span data-i18n="web_f80_toa_f3">Changing table</span></li><li><span aria-hidden="true">🕒</span> <span data-i18n="web_f80_toa_f4">Open now</span></li><li><span aria-hidden="true">★</span> <span data-i18n="web_f80_toa_f5">Favorites</span></li></ul>
+        <p class="toalett-kilde"><span data-i18n="web_f80_toa_kilde_html">Toilet data: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</span><span class="kilde-skille" aria-hidden="true"> · </span><span data-i18n="web_f82_kart_kilde">Map: Google</span></p>
+      </div>
+      <div class="toalett-scene"><figure class="tlf stlf" data-tlf="kart" data-start-bunn="0.2342" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="images/app/en/kart_topp.webp" srcset="images/app/en/kart_topp.webp 600w, images/app/en/kart_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kart_topp" data-stor alt="" width="600" height="116" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="Toalettkartet i FODMAPP med filtre og toaletter i nærheten"><img src="images/app/en/kart_kropp.webp" srcset="images/app/en/kart_kropp.webp 600w, images/app/en/kart_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kart_kropp" data-stor data-alt="web_f80_alt_kart" alt="Toalettkartet i FODMAPP med filtre og toaletter i nærheten" width="600" height="4267" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+    </div>
+  </div></section>
+
+  <!-- ── Rapport til legen (runde 77C) ── -->
+  <section id="rapport" class="rapport-section"><div class="container">
+    <div class="rapport-grid">
+      <div class="rapport-tekst reveal">
+        <span class="section-tag" data-i18n="web_rap_tag">✦ Report for your doctor</span>
+        <h2 class="section-title" data-i18n="web_rap_title">Share your diary with your doctor</h2>
+        <p class="section-sub" data-i18n="web_rap_sub">Create a clear report of what you have recorded: symptoms, bowel movements, meals and medication. Ready to show your GP, gastroenterologist or dietitian.</p>
+        <ul class="rapport-liste">
+          <li data-i18n="web_rap_p1">Summary and key figures on the first page</li>
+          <li data-i18n="web_rap_p2">Charts, a calendar and a day-by-day overview</li>
+          <li data-i18n="web_rap_p3">You choose the period and language, and share the report as a PDF</li>
+        </ul>
+        <div data-i18n="web_rap_knapp_html"><a class="btn-rapport" href="rapport/fodmapp-eksempelrapport-en.pdf" target="_blank" rel="noopener">View the example report (PDF) ↗</a></div>
+        <p class="rapport-plus" data-i18n="web_rap_plus">Included in FODMAPP Plus</p>
+        <p class="rapport-note" data-i18n="web_rap_note">The example uses fictitious data. The report is a summary of your own entries and does not give a diagnosis or treatment advice.</p>
+      </div>
+      <div class="rapport-bilde reveal reveal-d1" data-i18n="web_rap_bilde_html"><img src="rapport/side1-en.webp" alt="First page of an example report from FODMAPP" loading="lazy" width="620" height="877"></div>
     </div>
   </div></section>
 
   <!-- ── Demo ── -->
   <section id="demo" class="demo-section"><div class="container text-center">
     <div class="reveal"><span class="section-tag" data-i18n="demo_tag">▶ Demo</span><h2 class="section-title" data-i18n="demo_title">See FODMAPP in action</h2></div>
+    <!-- r82:demo -->
+    <!-- Den gamle demovideoen (videos/demo.mp4, «EAT WITHOUT PAIN», MDR) er skjult i runde 82; fila er ikke slettet. Legg en ny video i videos/demo-ny.mp4, så vises bryteren «Animasjon / Video» (se dsl/r80_data/nettside/README.md). -->
     <div class="demo-wrapper reveal reveal-d1">
-      <div class="phone-frame">
-        <video autoplay loop muted controls playsinline poster="images/app-mockup.png"><source src="videos/demo.mp4" type="video/mp4"></video>
-      </div>
+      <div class="demo-scene"><figure class="tlf stlf demo-tlf" data-tlf="demo" data-demo style="--tlf-topp:#FBF8F3"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="demo-flate" role="img" data-i18n-aria="web_f82_demo_alt" aria-label="Animasjon av FODMAPP med demotall: Hjem, skann av en wok og en ketchup, smertedagboken, mønsteroversikten, toalettkartet og AI-chatten"><div class="demo-lerret"><div class="demo-skjerm" data-s="hjem"><div class="demo-kropp" style="top:0px;height:878px"><img src="images/app/en/hjem_kropp.webp" srcset="images/app/en/hjem_kropp.webp 600w, images/app/en/hjem_kropp_860.webp 860w" sizes="280px" data-app-bilde="hjem_kropp" data-stor alt="" width="600" height="1965" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="matrett"><div class="demo-kropp" style="top:0px;height:878px"><img src="images/app/en/matrett_kropp.webp" srcset="images/app/en/matrett_kropp.webp 600w, images/app/en/matrett_kropp_860.webp 860w" sizes="280px" data-app-bilde="matrett_kropp" data-stor alt="" width="600" height="3271" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="strekkode"><div class="demo-kropp" style="top:0px;height:878px"><img src="images/app/en/strekkode_kropp.webp" srcset="images/app/en/strekkode_kropp.webp 600w, images/app/en/strekkode_kropp_860.webp 860w" sizes="280px" data-app-bilde="strekkode_kropp" data-stor alt="" width="600" height="2714" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="dagbok"><div class="demo-kropp" style="top:0px;height:878px"><img src="images/app/en/dagbok_kropp.webp" srcset="images/app/en/dagbok_kropp.webp 600w, images/app/en/dagbok_kropp_860.webp 860w" sizes="280px" data-app-bilde="dagbok_kropp" data-stor alt="" width="600" height="4288" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="analyse"><div class="demo-kropp" style="top:0px;height:878px"><img src="images/app/en/analyse_kropp.webp" srcset="images/app/en/analyse_kropp.webp 600w, images/app/en/analyse_kropp_860.webp 860w" sizes="280px" data-app-bilde="analyse_kropp" data-stor alt="" width="600" height="3480" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="kart"><div class="demo-topp"><img src="images/app/en/kart_topp.webp" srcset="images/app/en/kart_topp.webp 600w, images/app/en/kart_topp_860.webp 860w" sizes="280px" data-app-bilde="kart_topp" data-stor alt="" width="600" height="116" loading="lazy" decoding="async"></div><div class="demo-kropp" style="top:83px;height:795px"><img src="images/app/en/kart_kropp.webp" srcset="images/app/en/kart_kropp.webp 600w, images/app/en/kart_kropp_860.webp 860w" sizes="280px" data-app-bilde="kart_kropp" data-stor alt="" width="600" height="4267" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="chat"><div class="demo-topp"><img src="images/app/en/chat_topp.webp" srcset="images/app/en/chat_topp.webp 600w, images/app/en/chat_topp_860.webp 860w" sizes="280px" data-app-bilde="chat_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="demo-kropp" style="top:91px;height:681px"><img src="images/app/en/chat_kropp.webp" srcset="images/app/en/chat_kropp.webp 600w, images/app/en/chat_kropp_860.webp 860w" sizes="280px" data-app-bilde="chat_kropp" data-stor alt="" width="600" height="1026" loading="lazy" decoding="async"></div><div class="demo-bunn"><img src="images/app/en/chat_bunn.webp" srcset="images/app/en/chat_bunn.webp 600w, images/app/en/chat_bunn_860.webp 860w" sizes="280px" data-app-bilde="chat_bunn" data-stor alt="" width="600" height="148" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-trykk"></div></div></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="Vis i fullskjerm"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf demo-video-tlf" hidden><div class="tlf-skjerm"><video muted playsinline controls loop preload="none" data-src="videos/demo-ny.mp4"></video></div></figure></div>
+      <div class="demo-kontroller"><button type="button" class="demo-knapp demo-pause" aria-pressed="false" data-tekst-pause="web_f82_demo_pause" data-tekst-spill="web_f82_demo_spill"><svg class="ikon-pause" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="2" width="3.2" height="10" rx="1"/><rect x="8.3" y="2" width="3.2" height="10" rx="1"/></svg><svg class="ikon-spill" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true" style="display:none"><path d="M3.5 1.8v10.4c0 .5.6.8 1 .5l8-5.2a.6.6 0 0 0 0-1L4.5 1.3c-.4-.3-1 0-1 .5z"/></svg><span>Pause</span></button><div class="demo-valg" role="group" hidden><button type="button" aria-pressed="true" data-demo-vis="anim" data-i18n="web_f82_demo_anim">Animation</button><button type="button" aria-pressed="false" data-demo-vis="video" data-i18n="web_f82_demo_video">Video</button></div></div>
     </div>
+    <!-- /r82:demo -->
   </div></section>
 
   <!-- ── FAQ ── -->
@@ -564,9 +988,9 @@
     <div class="reveal"><span class="section-tag">✦ FAQ</span><h2 class="section-title" data-i18n="faq_title">Frequently asked questions</h2></div>
     <div class="faq-list">
       <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q1q">What is the low-FODMAP diet?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q1a">A research-based dietary approach to reduce digestive issues in people with IBS, by limiting certain hard-to-digest carbohydrates.</p></div></div>
-      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q2q">How do you handle privacy?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q2a">Your AI chat conversations are deleted automatically after 24 hours, and the food and symptom entries you record are stored on your account so that you have a history &ndash; you can delete them in the app at any time. Photos are not stored on our servers; they are sent straight to the AI for analysis and discarded afterwards. Text and images are processed by Google&rsquo;s Gemini AI on the basis of your explicit consent. We never sell your data and never use it for advertising.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q2q">How do you handle privacy?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q2a">Your AI chat conversations are deleted automatically after 24 hours, and the food and symptom entries you record are stored on your account so that you have a history &ndash; you can delete them in the app at any time. Photos you take for analysis are stored only temporarily with us while the AI analyses them, and are deleted automatically within one hour. They are not saved in your scan history. Text and images are processed by the AI models Gemini from Google and Claude from Anthropic on the basis of your explicit consent. We never sell your data and never use it to target advertising.</p></div></div>
       <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q3q">Is the app available on iOS and Android?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q3a">Yes, FODMAPP is available for both iPhone and Android phones.</p></div></div>
-      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q4q">How accurate is the AI?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q4a">FODMAPP uses advanced AI that provides reliable FODMAP guidance based on established research. The AI should be used alongside professional medical advice – not as a replacement.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q4q">How accurate is the AI?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q4a">FODMAPP uses advanced AI that assesses FODMAP content based on established research. AI can make mistakes and should be used alongside professional advice, not instead of it.</p></div></div>
       <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q5q">Is the app free?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q5a">Every new user gets a free 14-day trial with full access to all features. After the trial, continued access to the AI features requires a FODMAPP Plus subscription, available as a monthly or yearly plan. Current prices are always shown in the app before you buy.</p></div></div>
       <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q6q">What languages does the app support?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q6a">FODMAPP is available in 23 languages including English, Norwegian, Swedish, Danish, Finnish, German, French, Spanish, Italian, Portuguese, Dutch, Polish, Russian, Turkish, Japanese, Korean, Chinese, Hindi, Indonesian, Lithuanian, Thai, and Arabic.</p></div></div>
     </div>
@@ -574,12 +998,12 @@
 
   <!-- ── Reviews ── -->
   <section class="reviews-section"><div class="container text-center">
-    <div class="reveal"><span class="section-tag" data-i18n="rev_tag">⭐ Reviews</span><h2 class="section-title" data-i18n="rev_title">What users say</h2><p class="section-sub" data-i18n="rev_sub">Real reviews from Google Play</p></div>
-    <div class="reveal"><div class="reviews-score"><span class="big-stars">★★★★★</span><span>5.0 / 5 · Google Play</span></div></div>
-    <div class="reviews-grid">
-      <div class="review-card reveal reveal-d1">
+    <div class="reveal"><span class="section-tag" data-i18n="rev_tag">⭐ Reviews</span><h2 class="section-title" data-i18n="rev_title">What users say</h2><p class="section-sub" data-i18n="rev_sub">Real reviews from the App Store and Google Play</p></div>
+    <div class="reveal"><div class="reviews-score"><span class="big-stars">★★★★★</span><span class="snitt-tekst" data-i18n="web_f210_rev_snitt">5.0 out of 5 on the App Store in Norway</span></div></div>
+    <div class="reviews-grid r210 karusell">
+      <div class="review-card reveal reveal-d1" data-orig="nb">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote" data-i18n="rev_q1">Impressive first impression – I'm going to use this a lot!</p>
+        <p class="review-quote" data-i18n="rev_q1">Impressive first impression – I'm going to use this a lot!</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb" hidden>Translated from Norwegian</span>
         <div class="review-foot">
           <div class="review-avatar">C</div>
           <div>
@@ -589,9 +1013,9 @@
           <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Google Play</div>
         </div>
       </div>
-      <div class="review-card reveal reveal-d2">
+      <div class="review-card reveal reveal-d2" data-orig="nb">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote" data-i18n="rev_q2">I really like this app! Easy to navigate.</p>
+        <p class="review-quote" data-i18n="rev_q2">I really like this app! Easy to navigate.</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb" hidden>Translated from Norwegian</span>
         <div class="review-foot">
           <div class="review-avatar">G</div>
           <div>
@@ -601,6 +1025,78 @@
           <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Google Play</div>
         </div>
       </div>
+      <div class="review-card reveal reveal-d1" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q3">The best app for IBS I've come across. Easy to understand and easy to find my way around in everyday life. Highly recommended! :)</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb" hidden>Translated from Norwegian</span>
+        <div class="review-foot">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-author">Karnekj</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">Norway</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q4">I don't know much about nutrition, but this app has made it so much easier to control what I can eat. I just scan the product in the store and get an answer right away. I've been using it almost every day since I downloaded it.</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en" hidden>Translated from English</span>
+        <div class="review-foot">
+          <div class="review-avatar">U</div>
+          <div>
+            <div class="review-author">uskeivys</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_gb">United Kingdom</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d3" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q5">Living with a FODMAP diet is tough enough — this app actually makes it manageable. Great for beginners and experienced users alike. Highly recommended tool!</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en" hidden>Translated from English</span>
+        <div class="review-foot">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-author">Meddern</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">Norway</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d4" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q6">Finally an AI tool for people with gastrointestinal challenges</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en" hidden>Translated from English</span>
+        <div class="review-foot">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-author">chrbo86</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">Norway</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d1" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q7">Top app, exactly what I needed to manage my digestion</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb" hidden>Translated from Norwegian</span>
+        <div class="review-foot">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-author">Sannegilsen</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">Norway</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q8">Exactly the kind of help I need 👍👍👍</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb" hidden>Translated from Norwegian</span>
+        <div class="review-foot">
+          <div class="review-avatar">T</div>
+          <div>
+            <div class="review-author">Terje7755</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">Norway</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
     </div>
   </div></section>
 
@@ -608,7 +1104,7 @@
   <div class="cta-outer"><div class="container">
     <section id="cta" class="cta-section reveal" style="padding-left:2rem;padding-right:2rem">
       <h2 data-i18n="cta_title">Stop living around your gut.</h2>
-      <p data-i18n="cta_p">Download free. Eat without fear. iOS & Android – 23 languages.</p>
+      <p data-i18n="cta_p">Download free. iOS and Android, 23 languages.</p>
       <div class="store-buttons">
         <a href="https://apps.apple.com/us/app/low-fodmap-ibs-app-fodmapp/id6761849984"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" loading="lazy"></a>
         <a href="https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" loading="lazy"></a>
@@ -629,11 +1125,11 @@
     </div>
   </div></section>
 
-  <div class="disclaimer" data-i18n="discl">FODMAPP provides general guidance based on FODMAP research. It is not a substitute for professional medical advice. Always consult a healthcare professional for personal dietary needs.</div>
+  <div class="disclaimer" data-i18n="discl">FODMAPP is a lifestyle tool for people who want to follow a low-FODMAP diet. It is not a medical device: it does not diagnose, does not assess symptoms and does not give treatment advice. Always consult a healthcare professional for personal dietary needs.</div>
 
   <footer>
     <div class="footer-grid">
-      <div class="footer-brand"><div class="logo-footer"><img src="images/logo.png" alt="FODMAPP"> FODMAPP</div><p data-i18n="ft_desc">The AI assistant that makes the low-FODMAP diet safer and simpler – in your daily life.</p></div>
+      <div class="footer-brand"><div class="logo-footer"><img src="images/logo.png" alt="FODMAPP"> FODMAPP</div><p data-i18n="ft_desc">The AI assistant that makes the low-FODMAP diet easier in everyday life.</p></div>
       <div class="footer-col"><h4 data-i18n="ft_pages">Pages</h4><a href="about.html" data-i18n="nav_about">About</a><a href="manual.html" data-i18n="nav_manual">Manual</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Contact</a></div>
       <div class="footer-col"><h4 data-i18n="ft_legal">Legal</h4><a href="privacypolicy.html" data-i18n="ft_priv">Privacy Policy</a><a href="termsandconditions.html" data-i18n="ft_terms">Terms & Conditions</a><a href="delete.html" data-i18n="ft_del">Delete Account</a></div>
     </div>
@@ -647,6 +1143,233 @@
   </div>
 
   <script src="js/i18n.js"></script>
+  <script>/* r82:tlf */
+    // Runde 82: scroll-telefoner med helsides app-skjermbilder og fullskjerm. Kilde:
+    // dsl/r80_data/nettside/r82.js (lag_nettside_82.py limer den inn og fyller inn språklista).
+    // Bildene ligger i images/app/<kode>/<skjerm>_<del>.webp (600 px) og <skjerm>_<del>_860.webp;
+    // språk uten egen komplett mappe bruker reservemappa. Erstatter runde 80-skriptet (r80:appbilder).
+    // Del 2: demoanimasjonen (figure[data-demo], r82:demo) kan også åpnes i fullskjerm; da tegner
+    // animasjonen i kopien (window.fodmappDemo.vis/skjul).
+    var APP_BILDE_SPRAAK=["ar", "da", "de", "en", "es", "fi", "fr", "hi", "id", "it", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "th", "tr", "zh-Hans", "zh-Hant"],APP_BILDE_RESERVE="nb";
+    function settAppBilder(lang){var k=APP_BILDE_SPRAAK.indexOf(lang)>=0?lang:APP_BILDE_RESERVE;var t=(typeof T==='object'&&T[lang])||{};
+      document.querySelectorAll('img[data-app-bilde]').forEach(function(img){var b='images/app/'+k+'/'+img.getAttribute('data-app-bilde');
+        if(img.hasAttribute('data-stor')){var ss=b+'.webp 600w, '+b+'_860.webp 860w';if(img.getAttribute('srcset')!==ss)img.setAttribute('srcset',ss)}
+        if(img.getAttribute('src')!==b+'.webp')img.setAttribute('src',b+'.webp');var a=img.getAttribute('data-alt');if(a&&t[a])img.alt=t[a]});
+      document.querySelectorAll('[data-i18n-aria]').forEach(function(el){var a=t[el.getAttribute('data-i18n-aria')];if(a)el.setAttribute('aria-label',a)});
+      document.querySelectorAll('figure.stlf').forEach(function(f){var r=f.querySelector('.tlf-kropp'),i=r&&r.querySelector('img');if(i)r.setAttribute('aria-label',i.alt)});
+      var full=document.getElementById('tlfFull'),fi=full&&full.querySelector('.tlf-kropp img'),fd=full&&full.querySelector('.demo-flate');
+      if(full&&!full.hidden){if(fi)full.setAttribute('aria-label',fi.alt);else if(fd)full.setAttribute('aria-label',fd.getAttribute('aria-label')||'')}
+      if(window.fodmappDemo)window.fodmappDemo.spraak()}
+    function visFane(n){var b=document.querySelector('.feature-tab[data-fane="'+n+'"]');if(b&&typeof switchTab==='function')switchTab(n,b)}
+    (function(){if(typeof applyLang==='function'){var opprinnelig=applyLang;applyLang=function(l){opprinnelig(l);settAppBilder(l)}}settAppBilder(typeof currentLang==='string'?currentLang:'en')})();
+    (function(){
+      var KLIPP='.hero-wrap,.fane-scene,.dagbok-scene,.toalett-scene,.demo-scene',STOR='(max-width:600px) 92vw, 440px';
+      var full=null,aapen=null,klon=null,forrigeFokus=null,iHistorikk=false,planlagt=false;
+      function kropp(f){return f&&f.querySelector('.tlf-kropp')}
+      function bilde(f){return f&&f.querySelector('.tlf-kropp img')}
+      function rullUten(el,y){var s=el.style.scrollBehavior;el.style.scrollBehavior='auto';el.scrollTop=y;el.style.scrollBehavior=s}
+      // Startposisjon: data-start = andel av kroppen øverst; data-start-bunn = andel av kroppen som skal stå
+      // ved underkanten av det synlige (beholderens underkant, eller telefonens i fullskjerm).
+      function startY(f,k,c){var i=bilde(f),h=i?i.offsetHeight:0,sb=parseFloat(f.getAttribute('data-start-bunn')||'0');
+        if(sb>0){var kb=k.getBoundingClientRect(),u=c?Math.min(kb.bottom,c.getBoundingClientRect().bottom):kb.bottom;return Math.max(0,sb*h-(u-kb.top))}
+        return parseFloat(f.getAttribute('data-start')||'0')*h}
+      // Hvor mye av rullefeltet som ligger under beholderens underkant (telefonen går ut av bildet),
+      // og startposisjonen (mønsteroversikten ved lista, toalettkartet med kartets underkant synlig).
+      // Hele piksler: kroppens høyde og innholdets høyde rundes slik at enden av rullefeltet er et helt tall.
+      // Ellers blir en brøkdel av en piksel igjen å rulle, og nettleseren lar ikke en ny bevegelse gå
+      // videre til siden når telefonen er rullet helt ned.
+      function tilpass(){planlagt=false;
+        document.querySelectorAll('figure.stlf').forEach(function(f){if(f.closest('#tlfFull'))return;var k=kropp(f);if(!k||!k.getClientRects().length)return;
+          k.style.flex='';var kh=k.getBoundingClientRect().height,khi=Math.floor(kh+.001);if(kh-khi>.001)k.style.flex='0 0 '+khi+'px';
+          var c=f.closest(KLIPP),s=0;if(c){s=k.getBoundingClientRect().bottom-c.getBoundingClientRect().bottom;s=s>0?Math.ceil(s+16):0}
+          var ib=bilde(f),ih=ib?ib.getBoundingClientRect().height:0;s=+(s+(Math.ceil(ih-.001)-ih)).toFixed(4);
+          if(k.style.getPropertyValue('--tlf-skjult')!==s+'px')k.style.setProperty('--tlf-skjult',s+'px');
+          var i=bilde(f),h=i?i.offsetHeight:0;
+          if(f.hasAttribute('data-startet')&&f._h&&h&&Math.abs(h-f._h)>1){var r=h/f._h;rullUten(k,k.scrollTop*r);f.setAttribute('data-startet',String(Math.round(parseFloat(f.getAttribute('data-startet'))*r)))}
+          if(h)f._h=h; // ny bredde (f.eks. snudd nettbrett): samme sted i appen, ikke samme antall piksler
+          if(!f.hasAttribute('data-startet')&&k.clientHeight>0){var y=startY(f,k,c);if(y>0)rullUten(k,y);f.setAttribute('data-startet',String(Math.round(k.scrollTop)))}})}
+      function planlegg(){if(planlagt)return;planlagt=true;requestAnimationFrame(tilpass)}
+      function fokuserbare(){return Array.prototype.filter.call(full.querySelectorAll('button,[tabindex="0"]'),function(el){return el.getClientRects().length>0})}
+      function aapne(f){full=full||document.getElementById('tlfFull');if(aapen||!full)return;
+        forrigeFokus=document.activeElement;var erDemo=f.hasAttribute('data-demo');
+        var k0=kropp(f),i0=bilde(f),andel=(k0&&i0&&i0.offsetHeight)?k0.scrollTop/i0.offsetHeight:0;
+        var urort=!k0||Math.abs(k0.scrollTop-parseFloat(f.getAttribute('data-startet')||'0'))<2; // ikke rullet: start som i appen
+        klon=f.cloneNode(true);klon.classList.remove('tlf-bak','tlf-foran');klon.removeAttribute('data-startet');
+        var vis=klon.querySelector('.tlf-vis');if(vis)vis.remove();
+        klon.querySelectorAll('img').forEach(function(i){i.setAttribute('loading','eager');if(i.hasAttribute('srcset'))i.setAttribute('sizes',STOR)});
+        var plass=full.querySelector('.tlf-full-plass');plass.innerHTML='';plass.appendChild(klon);
+        var etikett=(i0&&i0.alt)||'';if(erDemo){var fd=f.querySelector('.demo-flate');etikett=(fd&&fd.getAttribute('aria-label'))||''}
+        full.setAttribute('aria-label',etikett);full.hidden=false;document.documentElement.classList.add('tlf-full-aapen');aapen=f;
+        if(erDemo){if(window.fodmappDemo)window.fodmappDemo.vis(klon);var lk=full.querySelector('.tlf-full-lukk');if(lk)lk.focus({preventScroll:true})}
+        else{var k1=kropp(klon);k1.style.removeProperty('--tlf-skjult');k1.style.flex='';var i1=bilde(klon);rullUten(k1,urort?startY(klon,k1,null):andel*(i1?i1.offsetHeight:0));k1.focus({preventScroll:true})}
+        try{history.pushState({tlfFull:1},'');iHistorikk=true}catch(e){iHistorikk=false}}
+      function lukk(fraTilbake){if(!aapen)return;var f=aapen;aapen=null;
+        if(klon&&klon.hasAttribute('data-demo')&&window.fodmappDemo)window.fodmappDemo.skjul(klon);
+        full.hidden=true;document.documentElement.classList.remove('tlf-full-aapen');full.querySelector('.tlf-full-plass').innerHTML='';klon=null;
+        if(iHistorikk){iHistorikk=false;if(!fraTilbake){try{history.back()}catch(e){}}}
+        var m=(forrigeFokus&&forrigeFokus!==document.body&&document.contains(forrigeFokus))?forrigeFokus:(kropp(f)||f.querySelector('.tlf-vis'));if(m&&m.focus)m.focus({preventScroll:true})}
+      window.tlfAapne=aapne;window.tlfLukk=function(){lukk(false)};
+      document.addEventListener('click',function(e){var t=e.target;if(!t||!t.closest)return;
+        if(t.closest('#tlfFull')){if(!t.closest('figure.stlf'))lukk(false);return}
+        var f=t.closest('figure.stlf');if(f){e.preventDefault();aapne(f)}});
+      document.addEventListener('keydown',function(e){if(!aapen)return;
+        if(e.key==='Escape'||e.key==='Esc'){e.preventDefault();lukk(false);return}
+        if(e.key==='Tab'){var l=fokuserbare();if(!l.length)return;var i=l.indexOf(document.activeElement);e.preventDefault();
+          l[e.shiftKey?(i<=0?l.length-1:i-1):(i<0||i>=l.length-1?0:i+1)].focus()}});
+      document.addEventListener('focusin',function(e){if(aapen&&full&&!full.contains(e.target)){var l=fokuserbare();if(l.length)l[0].focus()}});
+      window.addEventListener('popstate',function(){if(aapen){iHistorikk=false;lukk(true)}});
+      // Musehjul: når en liten telefon er rullet til enden (eller toppen), går hjulet videre til siden med
+      // en gang, også midt i en bevegelse (nettleseren holder ellers bevegelsen låst til telefonen).
+      // Ikke i fullskjerm (der stopper telefonen ved enden).
+      function hjul(e){var k=e.currentTarget;if(e.ctrlKey||k.closest('#tlfFull'))return;var dy=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);
+        if(!dy||Math.abs(e.deltaX)>Math.abs(dy))return;var maks=k.scrollHeight-k.clientHeight;
+        if(dy>0?k.scrollTop>=maks-1:k.scrollTop<=1){e.preventDefault();window.scrollBy({top:dy,left:0,behavior:'instant'})}}
+      document.querySelectorAll('figure.stlf .tlf-kropp').forEach(function(k){k.addEventListener('wheel',hjul,{passive:false})});
+      // Klippebeholderne skal aldri rulle (r82.css: overflow:clip). Reserve for nettlesere uten clip: når en
+      // telefonkropp eller ⤢ får tastaturfokus, setter vi beholderen tilbake, så telefonen beholder toppen.
+      document.querySelectorAll(KLIPP).forEach(function(c){c.addEventListener('scroll',function(){if(c.scrollTop||c.scrollLeft){c.scrollTop=0;c.scrollLeft=0}})});
+      if('ResizeObserver' in window){var ro=new ResizeObserver(planlegg);document.querySelectorAll('figure.stlf .tlf-kropp').forEach(function(k){ro.observe(k)});document.querySelectorAll(KLIPP).forEach(function(c){ro.observe(c)})}
+      window.addEventListener('resize',planlegg);window.addEventListener('load',planlegg);
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(planlegg);
+      planlegg();
+    })();
+    // Runde 89 (Fredrik 5. okt): hint om at bildet i telefonen kan scrolles. En liten merkelapp midt på hver
+    // scroll-telefon (ikke demoen, ikke fullskjerm-kopien) som forsvinner når brukeren ruller, drar eller trykker
+    // i den telefonen. Bare brukerhandlinger teller: startposisjonene (data-start) settes med scrollTop.
+    (function(){
+      var N="web_f82_rull_hint";  // doble anførselstegn: lag_nettside_82.py sjekker at nøkkelen brukes
+      function tekst(){var l=typeof currentLang==='string'?currentLang:'nb',t=(typeof T==='object'&&(T[l]||T.nb))||{};return t[N]||'Scroll for å se mer'}
+      var PIL='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v11M4.8 5.7 8 2.5l3.2 3.2M4.8 10.3 8 13.5l3.2-3.2"/></svg>';
+      document.querySelectorAll('figure.stlf').forEach(function(f){
+        if(f.closest('#tlfFull')||f.hasAttribute('data-demo'))return;
+        var s=f.querySelector('.tlf-skjerm'),k=f.querySelector('.tlf-kropp');if(!s||!k||s.querySelector('.tlf-rull-hint'))return;
+        var h=document.createElement('span');h.className='tlf-rull-hint';h.setAttribute('aria-hidden','true');
+        h.innerHTML=PIL+'<span data-i18n="'+N+'"></span>';h.lastChild.textContent=tekst();s.appendChild(h);
+        function skjul(){h.classList.add('skjult')}
+        ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){k.addEventListener(ev,skjul,{passive:true,once:true})});
+        f.addEventListener('click',skjul);
+      });
+    })();
+  </script>
+  <script>/* r82:demo */
+    // Runde 82 del 2: demoanimasjon av appen i «Se FODMAPP i aksjon» (erstatter den gamle demovideoen
+    // videos/demo.mp4 med «EAT WITHOUT PAIN», som er skjult; fila er ikke slettet). Kilde:
+    // dsl/r80_data/nettside/r82_demo.js (lag_nettside_82.py limer den inn og fyller inn KONF).
+    // Lett, skriptet JS/CSS-animasjon av helsidesbildene (images/app/<kode>/<skjerm>_<del>.webp) i samme
+    // telefonramme med statuslinje som de andre telefonene: Hjem -> trykk på woken (matrettsresultatet)
+    // -> tilbake -> trykk på ketchupen (strekkoderesultatet) -> smertedagbok -> mønsteroversikt ->
+    // toalettkart -> AI-chat, og i løkke (ca. 40 s). Står stille når seksjonen ikke er synlig, når fanen
+    // er skjult og ved prefers-reduced-motion (da vises et stillbilde; «Spill av» starter den likevel).
+    // Pauseknappen under telefonen (WCAG 2.2.2). Telefonen kan åpnes i fullskjerm som de andre (r82.js
+    // kaller fodmappDemo.vis/skjul med kopien). Finnes videos/demo-ny.mp4 (fetch HEAD), vises bryteren
+    // «Animasjon / Video», og videoen spilles i en telefon nr. 2 på samme sted.
+    // Koordinatene i MANUS er appens logiske px (430 bred; appflaten er 878 høy, under statuslinja).
+    // 20. okt 2026 (2.1.0): «Dagens skanninger» har woken øverst (y 632) og ketchupen under (702) når Hjem
+    // er rullet til bunnen (530); analysen rulles til «Går oftest igjen før plager» (900).
+    (function(){
+      var KONF={"video": "videos/demo-ny.mp4", "skjermer": {"hjem": {"farge": "#FBF8F3", "topp": 0, "kropp": 1408.0, "bunn": 0}, "matrett": {"farge": "#F8F0EA", "topp": 0, "kropp": 2344.0, "bunn": 0}, "strekkode": {"farge": "#F8F0EA", "topp": 0, "kropp": 1945.0, "bunn": 0}, "dagbok": {"farge": "#F8F0EA", "topp": 0, "kropp": 3073.0, "bunn": 0}, "analyse": {"farge": "#F8F0EA", "topp": 0, "kropp": 2494.0, "bunn": 0}, "kart": {"farge": "#F8F0EA", "topp": 83.0, "kropp": 3058.33, "bunn": 0}, "chat": {"farge": "#F8F0EA", "topp": 91.0, "kropp": 735.0, "bunn": 106.0}}};
+      var fig=document.querySelector('figure[data-demo]');if(!fig)return;
+      var B=430,H=878,S=KONF.skjermer;
+      // [handling, ...]: vis <skjerm> <y> | vent <s> | rull <s> <y> | trykk <x> <y> | inn <skjerm> <y> | ut | tone <skjerm> <y>
+      var MANUS=[
+        ['vis','hjem',0],['vent',1.2],['rull',2.2,760],['vent',.4],
+        ['trykk',215,632],['inn','matrett',0],['vent',1.5],['rull',2.2,640],['vent',1.6],['ut'],
+        ['vent',.3],['trykk',215,702],['inn','strekkode',0],['vent',1.4],['rull',2.0,560],['vent',1.4],['ut'],
+        ['rull',1.1,300],['trykk',314,132],['inn','dagbok',0],['vent',.9],['rull',1.8,600],['vent',1.2],['ut'],
+        ['rull',.7,420],['trykk',215,576],['inn','analyse',0],['vent',.8],['rull',2.2,900],['vent',2.0],['ut'],
+        ['trykk',314,431],['inn','kart',0],['vent',1.0],['rull',1.8,560],['vent',1.6],['ut'],
+        ['trykk',115,431],['inn','chat',0],['vent',2.2],['tone','hjem',0]];
+      var VAR={trykk:.55,inn:.45,ut:.4,tone:.7};
+      function maksY(s){var k=S[s];return Math.max(0,k.kropp-(H-k.topp-k.bunn))}
+      function kopi(st){return st.map(function(e){return {s:e.s,y:e.y}})}
+      // Segmenter med starttid, varighet og tilstanden før (stabelen av skjermer)
+      var SEG=[],T0=0,stabel=[];
+      MANUS.forEach(function(m){var g={h:m[0],t0:T0,d:0,foer:kopi(stabel),m:m};
+        if(m[0]==='vis'){stabel=[{s:m[1],y:Math.min(m[2],maksY(m[1]))}]}
+        else if(m[0]==='vent'){g.d=m[1]}
+        else if(m[0]==='rull'){g.d=m[1];g.fra=stabel[stabel.length-1].y;g.til=Math.min(m[2],maksY(stabel[stabel.length-1].s));stabel[stabel.length-1].y=g.til}
+        else if(m[0]==='trykk'){g.d=VAR.trykk}
+        else if(m[0]==='inn'){g.d=VAR.inn;stabel.push({s:m[1],y:Math.min(m[2],maksY(m[1]))})}
+        else if(m[0]==='ut'){g.d=VAR.ut;stabel.pop()}
+        else if(m[0]==='tone'){g.d=VAR.tone;stabel=[{s:m[1],y:m[2]}]}
+        g.etter=kopi(stabel);T0+=g.d;SEG.push(g)});
+      var TOT=T0,STILL=0;
+      for(var i=0;i<SEG.length;i++){if(SEG[i].h==='inn'&&SEG[i].m[1]==='matrett'){STILL=SEG[i].t0+SEG[i].d+.6;break}}
+      function myk(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}       // inn og ut
+      function ut3(p){return 1-Math.pow(1-p,3)}
+      function tilstand(t){var g=SEG[SEG.length-1];for(var i=0;i<SEG.length;i++){if(t<SEG[i].t0+SEG[i].d||(SEG[i].d===0&&t<=SEG[i].t0)){g=SEG[i];break}}
+        var p=g.d?Math.min(1,Math.max(0,(t-g.t0)/g.d)):1,st={stabel:kopi(g.foer.length?g.foer:g.etter),o:null,ring:null};
+        if(g.h==='vis'){st.stabel=kopi(g.etter)}
+        else if(g.h==='rull'){st.stabel[st.stabel.length-1].y=g.fra+(g.til-g.fra)*myk(p)}
+        else if(g.h==='trykk'){st.ring={x:g.m[1],y:g.m[2],p:p}}
+        else if(g.h==='inn'){st.stabel=kopi(g.etter);st.o={h:'inn',p:ut3(p)}}
+        else if(g.h==='ut'){st.o={h:'ut',p:myk(p)}}
+        else if(g.h==='tone'){st.o={h:'tone',p:p,til:kopi(g.etter)}}
+        else if(g.h==='vent'){}
+        return st}
+      // Instanser: telefonen på siden, og kopien i fullskjerm
+      var inst=[];
+      function lagInstans(f){var i={f:f,flate:f.querySelector('.demo-flate'),lerret:f.querySelector('.demo-lerret'),ring:f.querySelector('.demo-trykk'),sk:{}};
+        f.querySelectorAll('.demo-skjerm').forEach(function(el){i.sk[el.getAttribute('data-s')]={el:el,img:el.querySelector('.demo-kropp img'),skygge:el.querySelector('.demo-skygge')}});
+        skaler(i);if('ResizeObserver' in window){i.ro=new ResizeObserver(function(){skaler(i)});i.ro.observe(i.flate)}return i}
+      function skaler(i){var w=i.flate.clientWidth;if(w)i.lerret.style.setProperty('--demo-k',String(w/B))}
+      function sett(e,x,y,z,o){e.el.style.visibility='visible';e.el.style.transform='translate3d('+x.toFixed(2)+'px,0,0)';e.el.style.zIndex=z;e.el.style.opacity=o;
+        if(e.img)e.img.style.transform='translate3d(0,'+(-y).toFixed(2)+'px,0)'}
+      function tegnI(i,st){var vist={},topp=st.stabel[st.stabel.length-1],under=st.stabel[st.stabel.length-2],farge=S[topp.s].farge;
+        Object.keys(i.sk).forEach(function(n){i.sk[n].skygge.style.opacity=0});
+        if(st.o&&st.o.h==='inn'){var p=st.o.p;sett(i.sk[topp.s],B*(1-p),topp.y,2,1);vist[topp.s]=1;
+          if(under){sett(i.sk[under.s],-.28*B*p,under.y,1,1);i.sk[under.s].skygge.style.opacity=(.12*p).toFixed(3);vist[under.s]=1;if(p<.5)farge=S[under.s].farge}}
+        else if(st.o&&st.o.h==='ut'){var q=st.o.p;sett(i.sk[topp.s],B*q,topp.y,2,1);vist[topp.s]=1;
+          if(under){sett(i.sk[under.s],-.28*B*(1-q),under.y,1,1);i.sk[under.s].skygge.style.opacity=(.12*(1-q)).toFixed(3);vist[under.s]=1;if(q>=.5)farge=S[under.s].farge}}
+        else if(st.o&&st.o.h==='tone'){var ny=st.o.til[0];sett(i.sk[topp.s],0,topp.y,1,1);vist[topp.s]=1;
+          if(ny.s!==topp.s){sett(i.sk[ny.s],0,ny.y,2,st.o.p.toFixed(3));vist[ny.s]=1}else{i.sk[topp.s].img.style.transform='translate3d(0,'+(-(topp.y*(1-st.o.p)+ny.y*st.o.p)).toFixed(2)+'px,0)'}
+          if(st.o.p>=.5)farge=S[ny.s].farge}
+        else{sett(i.sk[topp.s],0,topp.y,1,1);vist[topp.s]=1}
+        Object.keys(i.sk).forEach(function(n){if(!vist[n])i.sk[n].el.style.visibility='hidden'});
+        if(i.f.style.getPropertyValue('--tlf-topp')!==farge)i.f.style.setProperty('--tlf-topp',farge);
+        var r=i.ring;if(st.ring){var p2=st.ring.p,o=p2<.18?p2/.18:Math.max(0,1-(p2-.18)/.82);r.style.left=st.ring.x+'px';r.style.top=st.ring.y+'px';
+          r.style.transform='scale('+(.55+.7*p2).toFixed(3)+')';r.style.opacity=(.95*o).toFixed(3)}else if(r.style.opacity!=='0')r.style.opacity='0'}
+      var t=0,siste=null,spiller=false,raf=0,synlig=false,fullAapen=false,brukerPause=false,brukerStart=false,video=false;
+      function tegn(){var st=tilstand(t);inst.forEach(function(i){tegnI(i,st)})}
+      function ramme(ts){if(siste!==null)t=(t+Math.min(.1,(ts-siste)/1000))%TOT;siste=ts;tegn();raf=requestAnimationFrame(ramme)}
+      var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+      function redusert(){return !!(mq&&mq.matches)}
+      var knapp=document.querySelector('.demo-pause');
+      function tekst(k,s){var l=(typeof currentLang==='string'&&typeof T==='object'&&T[currentLang])||{};return l[k]||s}
+      function oppdaterKnapp(){if(!knapp)return;var sp=knapp.querySelector('span'),k=spiller?knapp.getAttribute('data-tekst-pause'):knapp.getAttribute('data-tekst-spill');
+        sp.textContent=tekst(k,spiller?'Pause':'Spill av');knapp.setAttribute('aria-pressed',spiller?'false':'true');
+        knapp.querySelector('.ikon-pause').style.display=spiller?'':'none';knapp.querySelector('.ikon-spill').style.display=spiller?'none':''}
+      function oppdater(){var skal=!video&&!brukerPause&&(!redusert()||brukerStart)&&!document.hidden&&(synlig||fullAapen);
+        if(skal&&!spiller){spiller=true;siste=null;raf=requestAnimationFrame(ramme)}
+        else if(!skal&&spiller){spiller=false;cancelAnimationFrame(raf)}
+        fig.setAttribute('data-spiller',spiller?'1':'0');oppdaterKnapp()}
+      inst.push(lagInstans(fig));
+      if(redusert())t=STILL;
+      tegn();
+      if(knapp)knapp.addEventListener('click',function(){if(spiller){brukerPause=true}else{brukerPause=false;if(redusert())brukerStart=true}oppdater()});
+      if(mq){var lytt=function(){if(redusert()&&!brukerStart){t=STILL;tegn()}oppdater()};if(mq.addEventListener)mq.addEventListener('change',lytt);else if(mq.addListener)mq.addListener(lytt)}
+      document.addEventListener('visibilitychange',oppdater);
+      if('IntersectionObserver' in window){new IntersectionObserver(function(e){synlig=e[e.length-1].isIntersecting;oppdater()},{threshold:.2}).observe(fig)}else{synlig=true;oppdater()}
+      // Ny video (valgfri): bryteren vises bare hvis videos/demo-ny.mp4 finnes
+      var valg=document.querySelector('.demo-valg'),vt=document.querySelector('.demo-video-tlf'),ve=vt&&vt.querySelector('video'),sjekket=false;
+      function sjekkVideo(){if(sjekket||!valg||!ve||!window.fetch)return;sjekket=true;
+        fetch(KONF.video,{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok)valg.hidden=false}).catch(function(){})}
+      function velg(v){video=v==='video';valg.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-demo-vis')===v?'true':'false')});
+        fig.hidden=video;vt.hidden=!video;if(knapp)knapp.hidden=video;
+        if(video){if(!ve.getAttribute('src'))ve.setAttribute('src',ve.getAttribute('data-src'));var pr=ve.play();if(pr&&pr.catch)pr.catch(function(){})}else{ve.pause()}
+        oppdater()}
+      if(valg){valg.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button[data-demo-vis]');if(b)velg(b.getAttribute('data-demo-vis'))});
+        if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[e.length-1].isIntersecting){io.disconnect();sjekkVideo()}},{rootMargin:'600px 0px'});io.observe(fig)}else sjekkVideo()}
+      window.fodmappDemo={
+        vis:function(k){inst.push(lagInstans(k));fullAapen=true;tegn();oppdater()},
+        skjul:function(k){inst=inst.filter(function(i){if(i.f===k){if(i.ro)i.ro.disconnect();return false}return true});fullAapen=false;oppdater()},
+        spraak:oppdaterKnapp,
+        tid:function(){return t},spiller:function(){return spiller},varighet:TOT,still:STILL,
+        sett:function(x){t=((+x||0)%TOT+TOT)%TOT;tegn()},   // for kontroll og forhåndsvisning
+        pause:function(){brukerPause=true;oppdater()}};
+      oppdaterKnapp();
+    })();
+  </script>
   <script>
     function switchTab(name,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.feature-tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');btn.classList.add('active')}
     // Lightbox
@@ -684,7 +1407,7 @@
   <!-- Cookie banner -->
   <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-inner">
-      <p class="cookie-text" data-i18n="cookie_msg">We use essential cookies only to keep the site running. No tracking or advertising. <a href="privacypolicy.html" data-i18n-href>Privacy policy</a></p>
+      <p class="cookie-text" data-i18n="cookie_msg">We use essential cookies only to keep the site running. No tracking or advertising. <a href="privacypolicy.html">Privacy policy</a></p>
       <div class="cookie-btns">
         <button class="cookie-accept" id="cookieAccept" data-i18n="cookie_accept">Accept</button>
         <button class="cookie-decline" id="cookieDecline" data-i18n="cookie_decline">Decline</button>
@@ -697,6 +1420,8 @@
       var b=document.getElementById('cookieBanner');
       if(!b)return;
       try{if(localStorage.getItem('cookieConsent'))return;}catch(e){}
+      // r82:cookie-spraak: oversetter banneret (i18n.js kjører applyLang før banneret finnes i DOM-en)
+      try{var t=(typeof T==='object'&&typeof currentLang==='string'&&currentLang!=='en')?T[currentLang]:null;if(t)b.querySelectorAll('[data-i18n]').forEach(function(el){var v=t[el.getAttribute('data-i18n')];if(v)el.innerHTML=v})}catch(e){}
       b.classList.add('show');
       document.getElementById('cookieAccept').addEventListener('click',function(){
         try{localStorage.setItem('cookieConsent','accepted');}catch(e){}
@@ -708,5 +1433,6 @@
       });
     })();
   </script>
+  <script src="js/r210.js"></script>
 </body>
 </html>
