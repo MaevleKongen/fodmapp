@@ -412,6 +412,12 @@ if '_internal' not in (les('_config.yml') or ''):
     F('_config.yml utelater ikke _internal')
 for navn in ('js/i18n.js', 'js/spraak.js'):
     les(navn)
+# Automatisk språkvalg er av: ingen side skal lese nettleserspråk eller user-agent (ser ut som cloaking, jf. bygg_spraak.py).
+if 'AUTO_SPRAAK = False' in (les('_internal/tools/i18n/bygg_spraak.py') or ''):
+    for k in KODER:
+        for s in SIDER:
+            if re.search(r'navigator\.(languages?|userAgent)', les(fil(k, s)) or ''):
+                F(f'{fil(k, s)}: leser nettleserspråk eller user-agent, men AUTO_SPRAAK er av')
 
 # Gamle lenker (fra fodmapp-kode, appen, butikkene, e-postene, annonsene)
 if LENKEFIL:

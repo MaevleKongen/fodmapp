@@ -27,8 +27,11 @@ from inject import find_lang_block  # noqa: E402
 ROT = pathlib.Path(__file__).resolve().parents[3]
 DOMENE = 'https://fodmapp.com'
 SIDER = ['index.html', 'manual.html', 'about.html', 'delete.html', 'privacypolicy.html', 'termsandconditions.html']
-# Automatisk språkvalg: bare på forsiden /, bare for mennesker uten eget valg. Av: sett til False og bygg på nytt.
-AUTO_SPRAAK = True
+# Automatisk språkvalg på forsiden / ut fra nettleserens språk. AV: siden har aldri gjort det før (js/i18n.js brukte bare
+# lagret valg), oppgaven ba ikke om det, og det krever at roboter skilles ut på user-agent (ligner cloaking), mot Googles
+# råd om språkvideresending og med annonselandingen som innsats. Søk og AI finner språksidene via hreflang og sitemap uansett.
+# Skal det på, gjør det som et eget, målt valg: sett True, bygg, kjør kontroll_nettleser.mjs med --auto.
+AUTO_SPRAAK = False
 
 # App Store-land og Play (hl, gl) per språk. Alle er sjekket mot itunes.apple.com/lookup (resultCount 1) 2. nov 2026.
 LAND = {
@@ -123,25 +126,28 @@ def beskrivelse(kode, side, t):
 
 def startskript(kode, side, langs):
     """Kjøres FØR siden tegnes. ?lang= sendes til riktig sti. Bare rotsidene (engelsk) kan sende noen videre av seg selv:
-    et valg brukeren har gjort tidligere, og på forsiden / nettleserens språk første gang. En språkside blir der den er,
-    og roboter sendes aldri videre."""
+    et valg brukeren har gjort tidligere (slik siden virket før rSpraak). En språkside blir der den er. Roboter har ingen
+    lagret verdi og blir alltid der de er, uten at skriptet ser på user-agent. Med AUTO_SPRAAK også nettleserens språk
+    på forsiden, men aldri fra en annen side på fodmapp.com og aldri uten lagring (da kunne ingen velge engelsk igjen)."""
     k = {l['code']: sti(l['code']) for l in langs}
     f = '' if side == 'index.html' else side
-    auto = 1 if (AUTO_SPRAAK and kode == 'en' and side == 'index.html') else 0
-    return ('<script>(function(C,F,A,K){try{'
+    auto = ''
+    if AUTO_SPRAAK and kode == 'en' and side == 'index.html':
+        auto = ("else if(o&&document.referrer.indexOf(location.origin)!==0&&"
+                "!/bot|crawl|spider|slurp|preview|fetch|lighthouse|headless|google|bing|facebook|perplexity|chatgpt/i.test(navigator.userAgent)){"
+                "var L=navigator.languages||[navigator.language];for(var i=0;i<L.length;i++){var v=V(L[i]);if(v){if(v!=='en')t=v;break}}}")
+    return ('<script>(function(C,F,K){try{'
             "var N='fodmapp-lang',H=function(k){return Object.prototype.hasOwnProperty.call(K,k)},"
             "V=function(x){x=String(x||'').replace('_','-').toLowerCase();var b=x.split('-')[0];"
             "if(b==='nb'||b==='no'||b==='nn')return'nb';if(b==='zh')return/hant|tw|hk|mo/.test(x)?'zh-Hant':'zh-Hans';"
             "return H(b)?b:null},"
-            "s=location.search,m=s.match(/[?&]lang=([^&#]*)/),q=m?V(decodeURIComponent(m[1])):null,t=null,g=null;"
-            "try{g=localStorage.getItem(N)}catch(e){}"
+            "s=location.search,m=s.match(/[?&]lang=([^&#]*)/),q=m?V(decodeURIComponent(m[1])):null,t=null,g=null,o=0;"
+            "try{g=localStorage.getItem(N);o=1}catch(e){}"
             "if(m){s=s.replace(/([?&])lang=[^&#]*(&?)/,function(a,p,e){return e?p:''});if(q){t=q;try{localStorage.setItem(N,q)}catch(e){}}}"
-            "else if(C==='en'){if(g&&H(g)){if(g!=='en')t=g}"
-            "else if(A&&!/bot|crawl|spider|slurp|preview|fetch|lighthouse|headless/i.test(navigator.userAgent)){"
-            "var L=navigator.languages||[navigator.language];for(var i=0;i<L.length;i++){var v=V(L[i]);if(v){if(v!=='en')t=v;break}}}}"
+            f"else if(C==='en'){{if(g&&H(g)){{if(g!=='en')t=g}}{auto}}}"
             "if(t&&t!==C)location.replace('/'+K[t]+F+s+location.hash);"
             "else if(m&&q)history.replaceState(null,'',location.pathname+s+location.hash)"
-            f"}}catch(e){{}}}})({json.dumps(kode)},{json.dumps(f)},{auto},{json.dumps(k, separators=(',', ':'))});</script>")
+            f"}}catch(e){{}}}})({json.dumps(kode)},{json.dumps(f)},{json.dumps(k, separators=(',', ':'))});</script>")
 
 
 def json_ld(kode, side, t, langs):
