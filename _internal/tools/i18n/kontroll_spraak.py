@@ -412,6 +412,10 @@ if '_internal' not in (les('_config.yml') or ''):
     F('_config.yml utelater ikke _internal')
 for navn in ('js/i18n.js', 'js/spraak.js'):
     les(navn)
+for k in KODER:
+    for s_ in SIDER:
+        if 'EAT WITHOUT' in (les(fil(k, s_)) or ''):
+            F(f'{fil(k, s_)}: det gamle videoslagordet står i kildekoden')
 # Automatisk språkvalg er av: ingen side skal lese nettleserspråk eller user-agent (ser ut som cloaking, jf. bygg_spraak.py).
 if 'AUTO_SPRAAK = False' in (les('_internal/tools/i18n/bygg_spraak.py') or ''):
     for k in KODER:

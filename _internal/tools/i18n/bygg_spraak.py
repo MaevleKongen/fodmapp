@@ -331,6 +331,8 @@ def rens_rot(s, side, langs, t):
     """Rotsiden, engelsk: bytter hode, språkvelger og skript, teksten røres ikke. f(f(x)) = f(x)."""
     nl = '\r\n' if '\r\n' in s else '\n'
     s = re.sub(r'<html\b[^>]*>', '<html lang="en" dir="ltr">', s, count=1)
+    # Interne merknader i kildekoden skal ikke gjenta det gamle videoslagordet på 23 språksider (roboter leser kildekoden).
+    s = s.replace('(videos/demo.mp4, «EAT WITHOUT PAIN», MDR)', '(videos/demo.mp4)').replace('videos/demo.mp4 med «EAT WITHOUT PAIN», som', 'videos/demo.mp4, som')
     s = gjengi(s, 'en', t, bare_attr=True)
     # Hodet: enten markørene fra forrige bygg, eller de gamle canonical/hreflang-linjene.
     if HODE_A in s:
