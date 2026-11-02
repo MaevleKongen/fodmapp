@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <title>FODMAPP – ผู้ช่วย AI ที่ทำให้การกินแบบ low FODMAP ในชีวิตประจำวันง่ายขึ้น</title>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <meta name="description" content="สแกนและถามเรื่องอาหาร บันทึกอาการท้อง และดูภาพรวมบันทึกของคุณ ทั้งหมดในแอปเดียว">
+  <meta property="og:title" content="FODMAPP – ผู้ช่วย AI ที่ทำให้การกินแบบ low FODMAP ในชีวิตประจำวันง่ายขึ้น">
+  <meta property="og:description" content="สแกนและถามเรื่องอาหาร บันทึกอาการท้อง และดูภาพรวมบันทึกของคุณ ทั้งหมดในแอปเดียว">
+  <meta property="og:image" content="https://fodmapp.com/images/og-fodmapp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://fodmapp.com/th/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"FODMAPP","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","description":"ผู้ช่วย AI ที่ทำให้การกินแบบ low FODMAP ในชีวิตประจำวันง่ายขึ้น","url":"https://fodmapp.com/th/","image":"https://fodmapp.com/images/og-fodmapp.png","installUrl":["https://apps.apple.com/th/app/id6761849984","https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp&hl=th&gl=TH"],"sameAs":["https://apps.apple.com/th/app/id6761849984","https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp&hl=th&gl=TH"],"publisher":{"@type":"Organization","name":"Telemark Software Solutions AS"},"inLanguage":["id","da","de","en","es","fr","it","lt","nl","nb","pl","pt","fi","sv","tr","ru","ar","hi","th","zh-Hans","zh-Hant","ja","ko"]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#4D7C5B;--green-dark:#2D5A3D;--green-deep:#1F4230;--green-light:#E8F2EB;--green-glow:#6BAF7D;
+      --terra:#C8855C;--terra-light:#FAE8DB;
+      --cream:#FBF8F3;--white:#FFFFFF;--charcoal:#1C1C1C;--slate:#5F6B7A;--border:#E5E1DA;
+      --shadow-sm:0 2px 8px rgba(28,28,28,.06);
+      --shadow-md:0 10px 34px rgba(28,28,28,.09);
+      --shadow-lg:0 24px 70px rgba(28,28,28,.13);
+      --shadow-green:0 12px 34px rgba(77,124,91,.32);
+      --radius:1.25rem;--radius-sm:.75rem;--radius-lg:2rem;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;color-scheme:light}
+    body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.7;color:var(--charcoal);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;line-height:1.15;font-weight:600}
+    img{max-width:100%}
+    ::selection{background:var(--green);color:#fff}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+
+    /* ── Motion ── */
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes floatChip{0%,100%{transform:translateY(0) rotate(var(--tilt,0deg))}50%{transform:translateY(-9px) rotate(var(--tilt,0deg))}}
+    @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,25px) scale(.95)}}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.15s!important}
+      html{scroll-behavior:auto}
+    }
+
+    .container{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+    .text-center{text-align:center}
+
+    /* ── Header ── */
+    header{background:rgba(251,248,243,.82);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid transparent;position:sticky;top:0;z-index:100;transition:border-color .3s,box-shadow .3s}
+    header.scrolled{border-bottom-color:var(--border);box-shadow:0 6px 24px rgba(28,28,28,.05)}
+    .nav-bar{display:flex;justify-content:space-between;align-items:center;height:76px}
+    .logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.32rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--green-dark)}
+    .logo img{height:42px;border-radius:11px;box-shadow:var(--shadow-sm)}
+    nav{display:flex;align-items:center;gap:.1rem}
+    nav a{color:var(--slate);font-weight:500;text-decoration:none;font-size:.89rem;padding:.4rem .7rem;border-radius:2rem;transition:all .25s}
+    nav a:hover{color:var(--green-dark);background:var(--green-light)}
+    .nav-right{display:flex;align-items:center;gap:.55rem}
+    .btn-nav{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.25rem;border-radius:2rem;font-weight:600;font-size:.88rem;background:var(--green);color:var(--white);text-decoration:none;transition:all .3s var(--ease);box-shadow:0 2px 10px rgba(77,124,91,.28);white-space:nowrap}
+    .btn-nav:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(77,124,91,.38)}
+    .lang-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:all .25s;font-size:1.05rem;color:var(--slate)}
+    .lang-btn:hover{border-color:var(--green);color:var(--green-dark);background:var(--green-light);transform:rotate(18deg)}
+    .btn-mobile-download{display:none;background:var(--green);color:white;border-radius:.7rem;width:40px;height:40px;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 10px rgba(77,124,91,.3)}
+    .btn-mobile-download svg{width:18px;height:18px;stroke:white}
+    .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;padding:6px}
+    .hamburger span{height:2.5px;width:22px;background:var(--charcoal);border-radius:4px;transition:all .3s}
+    .mobile-nav{display:none;flex-direction:column;background:var(--white);padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);gap:.15rem}
+    .mobile-nav a{color:var(--slate);font-weight:500;text-decoration:none;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.95rem}
+    .mobile-nav a:last-child{border-bottom:none}.mobile-nav a:hover{color:var(--green)}
+
+    /* ── Language modal ── */
+    .lang-overlay{display:none;position:fixed;inset:0;background:rgba(20,30,24,.5);z-index:200;justify-content:center;align-items:center;backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+    .lang-overlay.open{display:flex;opacity:1}
+    .lang-modal{background:var(--white);border-radius:1.5rem;padding:2rem;max-width:540px;width:92%;max-height:80vh;overflow-y:auto;box-shadow:0 30px 90px rgba(0,0,0,.22);position:relative;transform:scale(.94) translateY(10px);transition:transform .35s var(--ease)}
+    .lang-overlay.open .lang-modal{transform:scale(1) translateY(0)}
+    .lang-modal h3{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:1.25rem;text-align:center;color:var(--charcoal)}
+    .lang-modal-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border:none;background:var(--cream);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--slate);transition:all .2s}
+    .lang-modal-close:hover{background:var(--green-light);color:var(--green-dark);transform:rotate(90deg)}
+    .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+    .lang-option{display:flex;align-items:center;gap:.6rem;padding:.6rem .85rem;border-radius:.65rem;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--charcoal);transition:all .2s;border:1.5px solid transparent}
+    .lang-option:hover{background:var(--green-light);color:var(--green-dark)}
+    .lang-option.active{background:var(--green-light);border-color:var(--green);color:var(--green-dark);font-weight:600}
+    .lang-flag{font-size:1.2rem;width:24px;text-align:center}
+    @media(max-width:480px){.lang-grid{grid-template-columns:1fr}}
+
+    /* ── Buttons ── */
+    .btn-primary{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.9rem;border-radius:2.5rem;font-weight:600;font-size:1rem;background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);color:var(--white);text-decoration:none;transition:all .35s var(--ease);box-shadow:var(--shadow-green);overflow:hidden}
+    .btn-primary::after{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(77,124,91,.42)}
+    .btn-primary:hover::after{left:130%}
+    .btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.9rem;border-radius:2.5rem;font-weight:600;font-size:1rem;background:var(--white);color:var(--green-dark);text-decoration:none;border:1.5px solid var(--border);transition:all .3s var(--ease);box-shadow:var(--shadow-sm)}
+    .btn-secondary:hover{border-color:var(--green);background:var(--green-light);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+
+    /* ── Hero ── */
+    .hero-wrap{position:relative;overflow:hidden}
+    .hero-wrap::before{content:'';position:absolute;top:-320px;right:-180px;width:820px;height:820px;background:radial-gradient(circle,rgba(107,175,125,.16) 0%,rgba(107,175,125,.05) 45%,transparent 70%);border-radius:50%;pointer-events:none;animation:drift 22s ease-in-out infinite}
+    .hero-wrap::after{content:'';position:absolute;bottom:-260px;left:-200px;width:640px;height:640px;background:radial-gradient(circle,rgba(200,133,92,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;animation:drift 28s ease-in-out infinite reverse}
+    .hero{padding:5.5rem 1.5rem 5rem;display:grid;gap:3.5rem;grid-template-columns:1.05fr .95fr;align-items:center;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);color:var(--green-dark);font-weight:600;font-size:.78rem;padding:.45rem 1.05rem;border-radius:2rem;margin-bottom:1.6rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+    .hero h1{font-size:clamp(2.4rem,5.2vw,3.9rem);margin-bottom:1.3rem;letter-spacing:-.025em;line-height:1.08}
+    .hero h1 em{font-style:italic;color:var(--green);position:relative;white-space:nowrap}
+    .hero h1 em::after{content:'';position:absolute;left:-2%;bottom:.02em;width:104%;height:.32em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 30 4, 60 3, 117 7' fill='none' stroke='%23C8855C' stroke-width='5' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E") no-repeat center/100% 100%;z-index:-1}
+    .hero p{font-size:1.15rem;color:var(--slate);margin-bottom:2.2rem;max-width:480px;line-height:1.8}
+    .hero-buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.9rem}
+    .hero-proof{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .proof-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);border-radius:2rem;padding:.4rem .95rem;font-size:.82rem;font-weight:600;color:var(--slate);box-shadow:var(--shadow-sm)}
+    .proof-pill .stars{color:#F59E0B;letter-spacing:.05em;font-size:.85rem}
+    .proof-pill strong{color:var(--charcoal)}
+
+    .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
+    .hero-shots{position:relative;z-index:1;display:flex;justify-content:center;width:100%}
+    .hero-shots img{width:46%;max-width:250px;border-radius:1.6rem;box-shadow:var(--shadow-lg);object-fit:cover;cursor:zoom-in;transition:transform .5s var(--ease),box-shadow .5s;border:5px solid var(--white)}
+    .hero-shots img:first-child{transform:rotate(-5deg) translateX(8px);animation:float 7s ease-in-out infinite;z-index:2}
+    .hero-shots img:last-child{transform:rotate(4deg) translateX(-8px) translateY(34px);animation:float 7s ease-in-out infinite 1.6s}
+    .hero-shots img:hover{transform:scale(1.045) rotate(0deg);box-shadow:0 30px 80px rgba(28,28,28,.2);z-index:5}
+    .hero-chip{position:absolute;z-index:6;display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(229,225,218,.9);border-radius:1rem;padding:.65rem .95rem;box-shadow:var(--shadow-md);animation:floatChip 6s ease-in-out infinite;pointer-events:none}
+    .hero-chip .chip-icon{width:34px;height:34px;border-radius:.65rem;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+    .hero-chip .chip-body{line-height:1.25}
+    .hero-chip .chip-title{font-size:.78rem;font-weight:700;color:var(--charcoal);white-space:nowrap}
+    .hero-chip .chip-sub{font-size:.7rem;font-weight:500;color:var(--slate);white-space:nowrap}
+    .chip-db{bottom:10%;right:-3%;--tilt:2.5deg;animation-delay:1.8s}
+    .chip-db .chip-icon{background:var(--terra-light)}
+    .chip-lang{top:44%;right:-6%;--tilt:-2deg;animation-delay:3s}
+    .chip-lang .chip-icon{background:var(--green-light)}
+
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(10,14,11,.93);justify-content:center;align-items:center;z-index:9999;cursor:zoom-out;backdrop-filter:blur(8px)}
+    .lightbox img{max-width:90%;max-height:90%;border-radius:1rem;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+
+    /* ── Language marquee ── */
+    .marquee-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;position:relative}
+    .marquee-strip::before,.marquee-strip::after{content:'';position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
+    .marquee-strip::before{left:0;background:linear-gradient(90deg,var(--white),transparent)}
+    .marquee-strip::after{right:0;background:linear-gradient(-90deg,var(--white),transparent)}
+    .marquee-track{display:flex;gap:2.4rem;width:max-content;animation:marquee 48s linear infinite}
+    .marquee-item{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600;color:var(--slate);white-space:nowrap}
+    .marquee-item span{font-size:1.05rem}
+
+    /* ── Stats ── */
+    .stats-bar{padding:3.6rem 0;background:var(--cream)}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+    .stat-item{padding:.5rem 1rem;position:relative}
+    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:18%;height:64%;width:1px;background:var(--border)}
+    .stat-number{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.6vw,2.4rem);font-weight:700;color:var(--green-dark);margin-bottom:.3rem;letter-spacing:-.01em}
+    .stat-label{font-size:.85rem;color:var(--slate);font-weight:500;text-transform:uppercase;letter-spacing:.07em;font-size:.75rem}
+
+    /* ── Sections ── */
+    section{padding:6rem 0}
+    .section-tag{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.9rem;background:var(--green-light);padding:.35rem 1rem;border-radius:2rem}
+    .section-title{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:.9rem;letter-spacing:-.02em}
+    .section-sub{font-size:1.08rem;color:var(--slate);max-width:600px;margin:0 auto 3rem;line-height:1.8}
+
+    /* ── Features ── */
+    .features-section{background:var(--white);position:relative;overflow:hidden}
+    .features-section::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:400px;background:radial-gradient(ellipse,rgba(232,242,235,.75) 0%,transparent 70%);pointer-events:none}
+    .features-grid{display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);position:relative}
+    .feature-card{padding:2.4rem 2.1rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--cream);transition:all .45s var(--ease);position:relative;overflow:hidden;text-align:left}
+    .feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--green),var(--green-glow));opacity:0;transition:opacity .3s}
+    .feature-card::after{content:'';position:absolute;bottom:-70px;right:-70px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(107,175,125,.12),transparent 70%);opacity:0;transition:opacity .45s}
+    .feature-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent;background:var(--white)}
+    .feature-card:hover::before,.feature-card:hover::after{opacity:1}
+    .feature-medallion{width:60px;height:60px;border-radius:1.1rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;background:linear-gradient(135deg,var(--green-light),#fff);border:1px solid var(--border);box-shadow:var(--shadow-sm);transition:transform .45s var(--ease)}
+    .feature-card:hover .feature-medallion{transform:scale(1.08) rotate(-5deg)}
+    .feature-medallion svg{width:28px;height:28px;stroke:var(--green-dark)}
+    .feature-card h3{font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.55rem;letter-spacing:-.01em}
+    .feature-card p{color:var(--slate);font-size:.94rem;line-height:1.75}
+
+    /* ── How it works ── */
+    .how-section{background:var(--cream);position:relative}
+    .steps-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(4,1fr);position:relative}
+    .steps-grid::before{content:'';position:absolute;top:31px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--green-glow) 0 8px,transparent 8px 18px);opacity:.45}
+    .step-card{text-align:center;padding:0 1rem;position:relative}
+    .step-number{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-dark));color:var(--white);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1.35rem;box-shadow:var(--shadow-green);position:relative;border:4px solid var(--cream);transition:transform .4s var(--ease)}
+    .step-card:hover .step-number{transform:scale(1.12) rotate(-6deg)}
+    .step-card h3{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+    .step-card p{color:var(--slate);font-size:.9rem;line-height:1.7}
+
+    /* ── Feature tabs ── */
+    .features-tab-section{background:var(--white)}
+    .feature-tabs{display:inline-flex;gap:.3rem;justify-content:center;margin:0 auto 2.8rem;flex-wrap:wrap;background:var(--cream);border:1px solid var(--border);border-radius:3rem;padding:.35rem}
+    .feature-tabs-wrap{display:flex;justify-content:center}
+    .feature-tab{display:inline-flex;align-items:center;gap:.55rem;padding:.72rem 1.7rem;border-radius:2.5rem;border:none;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;color:var(--slate);transition:all .3s var(--ease)}
+    .feature-tab:hover{color:var(--green-dark)}
+    .feature-tab.active{background:var(--green);color:var(--white);box-shadow:0 6px 18px rgba(77,124,91,.35)}
+    .feature-tab .tab-icon{font-size:1.15rem}
+    .tab-panel{display:none;animation:fadeInTab .4s var(--ease)}
+    .tab-panel.active{display:block}
+    @keyframes fadeInTab{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .tab-desc{color:var(--slate);text-align:center;font-size:1.02rem;margin-bottom:2.2rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.75}
+    .tab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .tab-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:1.9rem;transition:all .4s var(--ease);position:relative;overflow:hidden;text-align:left}
+    .tab-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),var(--green-glow));opacity:0;transition:opacity .3s}
+    .tab-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;background:var(--white)}
+    .tab-card:hover::before{opacity:1}
+    .tab-card h3{font-family:'DM Sans',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:.5rem}
+    .tab-card p{color:var(--slate);font-size:.89rem;line-height:1.7}
+    #tab-barcode .tab-card::before{background:linear-gradient(90deg,var(--terra),#E8A87C)}
+
+    /* ── Demo ── */
+    .demo-section{background:var(--cream);position:relative;overflow:hidden}
+    .demo-section::before{content:'';position:absolute;top:16%;left:50%;transform:translateX(-50%);width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(77,124,91,.13) 0%,transparent 68%);pointer-events:none}
+    .demo-wrapper{display:flex;justify-content:center;margin-top:1.5rem;position:relative;z-index:1}
+    .phone-frame{position:relative;background:#141715;border-radius:2.9rem;padding:.75rem;box-shadow:0 34px 90px rgba(20,25,21,.35),inset 0 0 0 2px rgba(255,255,255,.06);max-width:300px;width:100%}
+    .phone-frame::before{content:'';position:absolute;top:1.15rem;left:50%;transform:translateX(-50%);width:88px;height:19px;background:#141715;border-radius:12px;z-index:3}
+    .phone-frame video{display:block;width:100%;border-radius:2.2rem;background:#000}
+
+    /* ── FAQ ── */
+    .faq-section{background:var(--white)}
+    .faq-list{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:.65rem}
+    .faq-item{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;transition:all .3s;text-align:left}
+    .faq-item:hover{border-color:var(--green-glow);box-shadow:var(--shadow-sm)}
+    .faq-item.active{background:var(--white);border-color:var(--green);box-shadow:var(--shadow-md)}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.35rem;gap:1rem}
+    .faq-question h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600}
+    .faq-arrow{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--green-light);color:var(--green-dark);font-size:.66rem;flex-shrink:0;transition:transform .35s var(--ease),background .3s}
+    .faq-item.active .faq-arrow{transform:rotate(90deg);background:var(--green);color:#fff}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+    .faq-answer p{padding:0 1.35rem 1.2rem;color:var(--slate);font-size:.92rem;line-height:1.75}
+    .faq-item.active .faq-answer{max-height:320px}
+
+    /* ── Reviews ── */
+    .reviews-section{background:var(--cream)}
+    .reviews-score{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);border:1px solid var(--border);border-radius:2.5rem;padding:.55rem 1.4rem;margin-bottom:2.6rem;box-shadow:var(--shadow-sm)}
+    .reviews-score .big-stars{color:#F59E0B;font-size:1.15rem;letter-spacing:.1em}
+    .reviews-score span{font-weight:700;font-size:.95rem;color:var(--charcoal)}
+    .reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;max-width:860px;margin:0 auto}
+    .review-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2.1rem 2.2rem;position:relative;transition:all .4s var(--ease);text-align:left}
+    .review-card::before{content:'“';position:absolute;top:.4rem;right:1.4rem;font-family:'Playfair Display',serif;font-size:5rem;line-height:1;color:var(--green-light);pointer-events:none}
+    .review-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+    .review-stars{color:#F59E0B;font-size:1.05rem;letter-spacing:.1em;margin-bottom:.9rem}
+    .review-quote{font-size:1.02rem;color:var(--charcoal);font-style:italic;line-height:1.75;margin-bottom:1.4rem;position:relative;z-index:1;font-family:'Playfair Display',Georgia,serif}
+    .review-foot{display:flex;align-items:center;gap:.85rem}
+    .review-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;flex-shrink:0}
+    .review-card:nth-child(2) .review-avatar{background:linear-gradient(135deg,var(--terra),#A96B44)}
+    .review-author{font-weight:700;font-size:.92rem;color:var(--charcoal);line-height:1.3}
+    .review-meta{font-size:.76rem;color:var(--slate)}
+    .review-badge{margin-left:auto;display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;color:var(--slate);background:var(--cream);border:1px solid var(--border);border-radius:2rem;padding:.28rem .7rem;white-space:nowrap}
+
+    /* ── CTA ── */
+    .cta-outer{padding:2rem 0 6rem;background:var(--cream)}
+    .cta-section{position:relative;overflow:hidden;background:linear-gradient(140deg,var(--green-deep) 0%,var(--green-dark) 45%,var(--green) 100%);color:var(--white);text-align:center;padding:5rem 2rem;border-radius:var(--radius-lg);box-shadow:0 40px 100px rgba(45,90,61,.35);max-width:1180px;margin:0 auto}
+    .cta-section::before{content:'';position:absolute;top:-140px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(255,255,255,.09) 0%,transparent 70%);border-radius:50%}
+    .cta-section::after{content:'';position:absolute;bottom:-190px;left:-110px;width:420px;height:420px;background:radial-gradient(circle,rgba(107,175,125,.25) 0%,transparent 70%);border-radius:50%}
+    .cta-section h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:.85rem;color:var(--white);letter-spacing:-.02em;position:relative;z-index:1}
+    .cta-section p{margin-bottom:2.1rem;opacity:.92;font-size:1.08rem;position:relative;z-index:1}
+    .store-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;z-index:1}
+    .store-buttons a{transition:transform .35s var(--ease),box-shadow .35s;border-radius:12px;overflow:hidden}
+    .store-buttons img{height:56px;display:block}
+    .store-buttons a:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 14px 34px rgba(0,0,0,.3)}
+
+    /* ── Contact ── */
+    .contact-section{background:var(--white)}
+    .contact-card{max-width:600px;margin:0 auto;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;box-shadow:var(--shadow-sm)}
+    .contact-form{display:flex;flex-direction:column;gap:1rem}
+    .contact-form input,.contact-form textarea{padding:.95rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.95rem;background:var(--white);transition:border-color .3s,box-shadow .3s;color:var(--charcoal)}
+    .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(77,124,91,.13)}
+    .contact-form input::placeholder,.contact-form textarea::placeholder{color:#A0A8B4}
+    .contact-form button{padding:.95rem 2.2rem;border:none;border-radius:2.5rem;background:linear-gradient(135deg,var(--green),var(--green-dark));color:var(--white);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.98rem;cursor:pointer;transition:all .35s var(--ease);box-shadow:var(--shadow-green);align-self:center}
+    .contact-form button:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(77,124,91,.4)}
+
+    .disclaimer{text-align:center;padding:1.6rem 1.5rem;font-size:.78rem;color:var(--slate);background:var(--white);border-top:1px solid var(--border)}
+
+    /* ── Footer ── */
+    footer{background:var(--green-deep);color:rgba(255,255,255,.72);padding:4rem 1.5rem 2rem;position:relative;overflow:hidden}
+    footer::before{content:'';position:absolute;top:-220px;right:-160px;width:520px;height:520px;background:radial-gradient(circle,rgba(107,175,125,.14) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;max-width:1180px;margin:0 auto;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,.12);position:relative}
+    .footer-brand .logo-footer{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem}
+    .footer-brand .logo-footer img{height:36px;border-radius:9px}
+    .footer-brand p{font-size:.89rem;line-height:1.65;max-width:290px}
+    .footer-col h4{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.8rem;color:var(--white);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+    .footer-col a{display:block;color:rgba(255,255,255,.65);text-decoration:none;font-size:.89rem;margin-bottom:.5rem;transition:color .2s,transform .2s}
+    .footer-col a:hover{color:var(--white);transform:translateX(3px)}
+    .footer-bottom{max-width:1180px;margin:1.4rem auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;position:relative}
+    .footer-bottom a{color:rgba(255,255,255,.55);text-decoration:none}
+    .footer-bottom a:hover{color:var(--white)}
+
+    /* ── Sticky mobile download bar ── */
+    .mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--green-dark);padding:.8rem 1.25rem;z-index:150;box-shadow:0 -6px 28px rgba(0,0,0,.2);transform:translateY(100%);transition:transform .45s var(--ease)}
+    .mobile-cta-bar.visible{transform:translateY(0)}
+    .mobile-cta-inner{display:flex;justify-content:center}
+    .mobile-cta-btn{color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:.01em}
+    @media(max-width:768px){.mobile-cta-bar{display:block}}
+
+    /* ── Cookie banner ── */
+    .cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;background:#171a18;color:rgba(255,255,255,.9);padding:1rem 1.5rem;z-index:300;box-shadow:0 -6px 24px rgba(0,0,0,.3)}
+    .cookie-banner.show{display:block}
+    .cookie-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .cookie-text{flex:1;font-size:.85rem;line-height:1.5;min-width:200px}
+    .cookie-text a{color:#6BAF7D;text-decoration:underline}
+    .cookie-btns{display:flex;gap:.5rem;flex-shrink:0}
+    .cookie-accept{padding:.5rem 1.3rem;background:var(--green);color:#fff;border:none;border-radius:2rem;font-weight:600;font-size:.85rem;cursor:pointer;transition:background .2s;font-family:inherit}
+    .cookie-accept:hover{background:#2D5A3D}
+    .cookie-decline{padding:.5rem 1rem;background:transparent;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.3);border-radius:2rem;font-size:.85rem;cursor:pointer;transition:all .2s;font-family:inherit}
+    .cookie-decline:hover{color:#fff;border-color:rgba(255,255,255,.65)}
+    @media(max-width:560px){.cookie-inner{flex-direction:column;align-items:flex-start}.cookie-btns{width:100%}.cookie-accept,.cookie-decline{flex:1;text-align:center}}
+
+    /* ── Responsive ── */
+    @media(max-width:1000px){
+      .hero{grid-template-columns:1fr;text-align:center;gap:3rem;padding:4rem 1.5rem 3.5rem}
+      .hero p{margin-left:auto;margin-right:auto}
+      .hero-buttons,.hero-proof{justify-content:center}
+      .hero-visual{min-height:auto;margin-top:.5rem}
+      .chip-db{right:2%}.chip-lang{right:0}
+      .features-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem 1rem}
+      .steps-grid::before{display:none}
+      .footer-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:900px){.tab-grid{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat-item:nth-child(3)::before{display:none}}
+    @media(max-width:768px){
+      nav{display:none}.btn-nav{display:none}.btn-mobile-download{display:flex}.hamburger{display:flex}
+      section{padding:4.2rem 0}
+      .hero-shots img:first-child,.hero-shots img:last-child{animation:none}
+      .hero-chip{animation:none}
+      .chip-lang{display:none}
+      .phone-frame{max-width:250px}
+      .cta-outer{padding:1rem 1rem 4.5rem}
+      .cta-section{padding:3.8rem 1.5rem;border-radius:1.5rem}
+      .contact-card{padding:1.6rem}
+      .footer-bottom{flex-direction:column;gap:.4rem;text-align:center}
+    }
+    @media(max-width:580px){
+      .tab-grid{grid-template-columns:1fr}
+      .feature-tabs{border-radius:1.25rem}
+      .feature-tab{padding:.6rem 1.1rem;font-size:.86rem}
+      .hero-shots img{width:47%}
+      .steps-grid{grid-template-columns:1fr;gap:2rem}
+      .stats-grid{grid-template-columns:1fr 1fr;gap:1.5rem 0}
+      .reviews-grid{grid-template-columns:1fr}
+      .hero-chip .chip-sub{display:none}
+    }
+    @media(prefers-color-scheme:dark){html{color-scheme:light}body{background:var(--cream)!important;color:var(--charcoal)!important}}
+    /* ── Rapport til legen (runde 77C) ── */
+    .rapport-section{background:var(--white);position:relative}
+    .rapport-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+    .rapport-tekst .section-title{text-align:left;margin-bottom:1rem}
+    .rapport-tekst .section-sub{text-align:left;margin:0 0 1.4rem;max-width:34rem}
+    .rapport-liste{list-style:none;margin:0 0 1.8rem;padding:0;display:grid;gap:.7rem}
+    .rapport-liste li{position:relative;padding-left:2rem;color:var(--charcoal)}
+    .rapport-liste li::before{content:'✓';position:absolute;left:0;top:.05rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--green-light);color:var(--green);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+    [dir=rtl] .rapport-liste li{padding-left:0;padding-right:2rem}
+    [dir=rtl] .rapport-liste li::before{left:auto;right:0}
+    [dir=rtl] .rapport-tekst .section-title,[dir=rtl] .rapport-tekst .section-sub{text-align:right}
+    .btn-rapport{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;border-radius:2rem;background:var(--green);color:var(--white);font-weight:600;text-decoration:none;box-shadow:var(--shadow-green);transition:all .3s var(--ease)}
+    .btn-rapport:hover{background:var(--green-dark);transform:translateY(-2px)}
+    .rapport-plus{margin-top:.9rem;font-size:.9rem;font-weight:600;color:var(--green-dark)}
+    .rapport-note{margin-top:.6rem;font-size:.8rem;color:var(--slate);max-width:32rem}
+    .rapport-bilde{display:flex;justify-content:center}
+    .rapport-bilde img{width:100%;max-width:440px;height:auto;border-radius:.6rem;background:#fff;box-shadow:var(--shadow-lg);border:1px solid var(--border);transform:rotate(-1.5deg)}
+    @media(max-width:900px){
+      .rapport-grid{grid-template-columns:1fr;gap:2.4rem}
+      .rapport-tekst .section-title,.rapport-tekst .section-sub,[dir=rtl] .rapport-tekst .section-title,[dir=rtl] .rapport-tekst .section-sub{text-align:center;margin-left:auto;margin-right:auto}
+      .rapport-tekst{text-align:center}
+      .rapport-liste{text-align:start;max-width:26rem;margin-left:auto;margin-right:auto}
+      .rapport-note{margin-left:auto;margin-right:auto}
+      .rapport-bilde img{max-width:330px;transform:none}
+    }
+    /* ── Runde 80: telefonbilder, funksjonskort, faner, dagbok, toalettkart ── */
+    /* Kilde: dsl/r80_data/nettside/r80.css. lag_nettside_80.py limer blokken inn mellom markørene. */
+    /* Telefonramme rundt app-skjermbildene. Bredden styres med --tlf-w per sted. */
+    .tlf{--tlf-w:250px;position:relative;flex:0 0 auto;width:var(--tlf-w);max-width:100%;margin:0;padding:calc(var(--tlf-w)*.03);background:#1B211D;border-radius:calc(var(--tlf-w)*.165);box-shadow:0 28px 64px rgba(28,28,28,.17),0 6px 18px rgba(28,28,28,.10),inset 0 0 0 1.5px rgba(255,255,255,.10)}
+    .tlf-skjerm{position:relative;overflow:hidden;border-radius:calc(var(--tlf-w)*.135);background:var(--tlf-topp,#F8F0EA);padding-top:calc(var(--tlf-w)*.085)}
+    .tlf-skjerm::before{content:'';position:absolute;z-index:2;top:calc(var(--tlf-w)*.024);left:50%;width:calc(var(--tlf-w)*.29);height:calc(var(--tlf-w)*.072);transform:translateX(-50%);background:#1B211D;border-radius:999px}
+    .tlf-skjerm img{display:block;width:100%;height:auto;cursor:zoom-in}
+
+    /* Helten: Hjem foran, Mønsteroversikt bak */
+    .helt-tlf{position:relative;z-index:1;display:flex;justify-content:center;align-items:flex-start;width:100%;padding-bottom:38px}
+    .helt-tlf .tlf{--tlf-w:min(250px,40vw);transition:scale .5s var(--ease)}
+    .helt-tlf .tlf:first-child{rotate:-5deg;translate:14px 0;z-index:2;animation:float 7s ease-in-out infinite}
+    .helt-tlf .tlf:last-child{rotate:4deg;translate:-14px 38px;animation:float 7s ease-in-out infinite 1.6s}
+    .helt-tlf .tlf:hover{scale:1.03;z-index:5}
+    .chip-lang{top:auto;bottom:9%;left:-9%;right:auto}
+
+    /* Funksjoner: åtte kort, fire kolonner */
+    .features-grid.f80{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}
+    .features-grid.f80 .feature-card{display:flex;flex-direction:column;padding:2rem 1.55rem 1.6rem}
+    .features-grid.f80 .feature-card h3{font-size:1.1rem}
+    .features-grid.f80 .feature-card p{font-size:.9rem;line-height:1.7}
+    .feature-link{position:relative;z-index:1;margin-top:auto;padding-top:1.1rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;font-weight:600;font-size:.87rem;color:var(--green-dark);text-decoration:none}
+    .feature-link::after{content:'→';transition:transform .3s var(--ease)}
+    .feature-link:hover{color:var(--green)}
+    .feature-link:hover::after{transform:translateX(3px)}
+    [dir=rtl] .feature-link::after{content:'←'}
+    [dir=rtl] .feature-link:hover::after{transform:translateX(-3px)}
+
+    /* Fanene: telefon til venstre, kort til høyre */
+    .fane-oppsett{display:grid;grid-template-columns:270px minmax(0,1fr);gap:2.4rem;align-items:start}
+    .fane-scene{position:sticky;top:100px;display:flex;justify-content:center;padding-top:.3rem}
+    .fane-scene .tlf{--tlf-w:250px}
+    .fane-oppsett .tab-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .fane-oppsett .tab-card{padding:1.45rem 1.35rem}
+    #tab-barcode .fane-oppsett .tab-grid{grid-template-columns:1fr}
+
+    /* Dagbok og oversikt */
+    .dagbok-section{background:var(--cream);position:relative;overflow:hidden}
+    .dagbok-section::before{content:'';position:absolute;top:-170px;left:50%;transform:translateX(-50%);width:980px;height:420px;background:radial-gradient(ellipse,rgba(232,242,235,.95) 0%,transparent 70%);pointer-events:none}
+    .dagbok-section .container{position:relative}
+    .dagbok-section .section-title em{font-style:italic;color:var(--green)}
+    .dagbok-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-bottom:1.5rem}
+    .dagbok-kort{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:left;box-shadow:var(--shadow-sm);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+    .dagbok-kort:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .dagbok-scene{position:relative;height:380px;overflow:hidden;display:flex;justify-content:center;padding-top:2rem;background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%);border-bottom:1px solid var(--border)}
+    .dagbok-kort:nth-child(2) .dagbok-scene{background:radial-gradient(circle at 50% 40%,rgba(200,133,92,.18),transparent 62%),linear-gradient(180deg,var(--terra-light) 0%,#FDF7F2 100%)}
+    .dagbok-scene .tlf{--tlf-w:224px}
+    .dagbok-scene.to .tlf-bak{--tlf-w:184px;position:absolute;top:3.3rem;left:calc(50% - 22px);rotate:6deg}
+    .dagbok-scene.to .tlf-foran{--tlf-w:212px;translate:-29% 0;rotate:-3deg;z-index:1}
+    .dagbok-tekst{display:flex;flex-direction:column;flex:1;padding:1.6rem 1.7rem 1.8rem}
+    .dagbok-merke{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+    .dagbok-kort h3{font-size:1.45rem;margin-bottom:.55rem;letter-spacing:-.01em}
+    .dagbok-kort p{color:var(--slate);font-size:.94rem;line-height:1.7;margin-bottom:1rem}
+    .dagbok-liste{list-style:none;display:grid;gap:.5rem;margin:0;padding:0}
+    .dagbok-liste li{position:relative;padding-left:1.8rem;font-size:.9rem;line-height:1.55;color:var(--charcoal)}
+    .dagbok-liste li::before{content:'✓';position:absolute;left:0;top:.08rem;width:1.2rem;height:1.2rem;border-radius:50%;background:var(--green-light);color:var(--green);font-weight:700;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+    [dir=rtl] .dagbok-liste li{padding-left:0;padding-right:1.8rem}
+    [dir=rtl] .dagbok-liste li::before{left:auto;right:0}
+
+    /* Toalettkartet */
+    .toalett-panel{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:3rem;align-items:end;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:0 3.2rem;overflow:hidden;box-shadow:var(--shadow-sm);position:relative}
+    .toalett-panel::before{content:'';position:absolute;right:-120px;top:-140px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(107,175,125,.16),transparent 68%);pointer-events:none}
+    .toalett-tekst{padding:3.2rem 0;align-self:center;text-align:left;position:relative}
+    .toalett-tekst .section-title{font-size:clamp(1.7rem,2.8vw,2.3rem)}
+    .toalett-tekst .section-title em{font-style:italic;color:var(--green)}
+    .toalett-tekst > p{color:var(--slate);font-size:1rem;line-height:1.75;max-width:34rem;margin-bottom:1.3rem}
+    .toalett-filtre{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.3rem;padding:0}
+    .toalett-filtre li{display:inline-flex;align-items:center;gap:.35rem;background:var(--cream);border:1px solid var(--border);border-radius:2rem;padding:.38rem .9rem;font-size:.85rem;font-weight:600;color:var(--green-dark)}
+    .toalett-tekst .toalett-kilde{font-size:.8rem;color:var(--slate);margin:0}
+    .toalett-kilde a{color:var(--green-dark)}
+    .toalett-scene{position:relative;height:430px;overflow:hidden;display:flex;justify-content:center;padding-top:2.6rem}
+    .toalett-scene .tlf{--tlf-w:260px}
+    [dir=rtl] .toalett-tekst{text-align:right}
+
+    /* Ankre (#dagbok, #toalettkart, #rapport …) havner under den faste toppmenyen (77 px) */
+    html{scroll-padding-top:88px}
+
+    /* Menyen fikk ett punkt til (Dagbok). Lenkene brytes aldri over to linjer, og logoen
+       presses aldri sammen. Til og med 900 px brukes mobilmenyen (hamburger) som under 769 px.
+       Mellom 901 og 1100 px er lenkene strammere, og Om oss og Manual (som også ligger i
+       bunnteksten) skjules i toppmenyen. kontroll_80.mjs måler 769–1440 px, med og uten
+       rullefelt (17 px). */
+    nav a{white-space:nowrap}
+    .nav-bar .logo{flex-shrink:0}
+    @media(min-width:769px) and (max-width:900px){nav,.btn-nav{display:none}.btn-mobile-download,.hamburger{display:flex}}
+    @media(min-width:901px) and (max-width:1100px){nav a{padding:.4rem .5rem;font-size:.85rem}nav a[href="about.html"],nav a[href="manual.html"]{display:none}}
+    @media(max-width:1120px){
+      .features-grid.f80{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .fane-oppsett .tab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:1000px){
+      .chip-lang{left:2%}
+    }
+    @media(max-width:900px){
+      .fane-oppsett{grid-template-columns:1fr;gap:1.6rem}
+      .fane-scene{position:relative;top:auto;height:330px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+      .fane-scene .tlf{--tlf-w:210px}
+      .dagbok-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
+      .toalett-panel{grid-template-columns:1fr;padding:0 1.6rem;gap:0}
+      .toalett-tekst{padding:2.4rem 0 1.2rem;text-align:center}
+      [dir=rtl] .toalett-tekst{text-align:center}
+      .toalett-tekst > p{margin-left:auto;margin-right:auto}
+      .toalett-filtre{justify-content:center}
+      .toalett-scene{height:360px;padding-top:.8rem}
+      .toalett-scene .tlf{--tlf-w:224px}
+    }
+    @media(max-width:768px){
+      .helt-tlf .tlf:first-child,.helt-tlf .tlf:last-child{animation:none}
+    }
+    @media(max-width:600px){
+      .features-grid.f80{grid-template-columns:1fr;gap:.85rem}
+      .features-grid.f80 .feature-card{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:1rem;padding:1.25rem 1.2rem}
+      .features-grid.f80 .feature-medallion{width:46px;height:46px;border-radius:.85rem;margin:0;grid-row:1 / span 3}
+      .features-grid.f80 .feature-medallion svg{width:22px;height:22px}
+      .features-grid.f80 .feature-card h3{margin-bottom:.25rem}
+      .features-grid.f80 .feature-link{padding-top:.55rem}
+      .fane-oppsett .tab-grid{grid-template-columns:1fr}
+      .dagbok-scene{height:340px;padding-top:1.6rem}
+      .dagbok-scene .tlf{--tlf-w:200px}
+      .dagbok-scene.to .tlf-bak{--tlf-w:166px}
+      .dagbok-scene.to .tlf-foran{--tlf-w:190px}
+      .dagbok-tekst{padding:1.4rem 1.3rem 1.6rem}
+      .dagbok-kort h3{font-size:1.3rem}
+      .toalett-panel{border-radius:1.5rem;padding:0 1.2rem}
+    }
+    /* ── /Runde 80 ── */
+    /* ── Runde 82: scroll-telefoner og fullskjerm ── */
+    /* Kilde: dsl/r80_data/nettside/r82.css. lag_nettside_82.py limer blokken inn ETTER runde 80-blokken. */
+    /* Scroll-telefon: CSS-ramme (fra runde 80, .tlf) + statuslinje + fast app-topp + rullbar kropp
+       + ev. fast bunn. Bredden styres med --tlf-w per sted.
+       NORMAL TELEFON (runde 82 del 2, Fredrik 3. okt: telefonene var «superlange»): skjermen er
+       430 x 932 logiske px (9:19,5) = 0,94 w x 2,0374 w, med statuslinja (54 logiske px = 0,118 w)
+       INNI skjermen og appflaten (878) under. Rammen er 0,03 w, så hele telefonen er 2,0974 w høy
+       (forhold 2,10, som en ekte telefon). Telefonen strekkes aldri; at den går ut av bildet nederst
+       kommer av at beholderen (helten, panelet i fanene, dagbokkortene, toalettpanelet,
+       demopanelet) er så høy at bare den nederste delen (10–20 %, her ca. 14 %) klippes:
+       beholderens høyde = luft over telefonen + 1,804 w (= 0,86 x 2,0974 w).
+       --tlf-skjult (satt av skriptet) er hvor mye av rullefeltet som ligger under beholderens
+       underkant, så bunnen av innholdet kan rulles fram. */
+    .stlf{cursor:zoom-in;align-self:flex-start}
+    .stlf .tlf-skjerm{padding-top:0;display:flex;flex-direction:column;height:calc(var(--tlf-w)*2.0374)}
+    .tlf-status{position:relative;flex:0 0 auto;height:calc(var(--tlf-w)*.118);display:grid;grid-template-columns:minmax(0,1fr) calc(var(--tlf-w)*.31) minmax(0,1fr);align-items:center;padding:calc(var(--tlf-w)*.012) calc(var(--tlf-w)*.045) 0;background:var(--tlf-topp,#F8F0EA);color:#1C1C1C;font:600 calc(var(--tlf-w)*.047)/1 -apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI','DM Sans',system-ui,sans-serif;letter-spacing:-.01em;font-variant-numeric:tabular-nums;user-select:none;transition:background-color .3s}
+    .tlf-klokke{grid-column:1;justify-self:center}
+    .tlf-ikoner{grid-column:3;justify-self:center;display:flex;align-items:center;gap:calc(var(--tlf-w)*.014)}
+    .tlf-ikoner svg{display:block;height:calc(var(--tlf-w)*.036);width:auto}
+    .tlf-ikoner .tlf-batteri{height:calc(var(--tlf-w)*.042)}
+    .tlf-topp,.tlf-bunn{flex:0 0 auto;position:relative;z-index:1}
+    /* Rulling: når telefonen er rullet til enden, ruller siden videre (overscroll-behavior-y:auto).
+       I fullskjerm stopper den ved enden (contain), så siden bak ikke flytter seg. */
+    .tlf-kropp{flex:1 1 0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-x:contain;overscroll-behavior-y:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:none;outline:none}
+    .tlf-full .tlf-kropp{overscroll-behavior:contain}
+    .tlf-kropp::-webkit-scrollbar{display:none}
+    .tlf-kropp::after{content:'';display:block;height:var(--tlf-skjult,0px)}
+    .tlf-kropp:focus-visible{box-shadow:inset 0 0 0 3px var(--green)}
+    .stlf .tlf-skjerm img{-webkit-user-drag:none;user-select:none}
+    /* Forstørr-ikonet: liten rund knapp i telefonens øvre høyre hjørne (åpner fullskjerm) */
+    .tlf-vis{position:absolute;z-index:4;top:calc(var(--tlf-w)*-.03);right:calc(var(--tlf-w)*-.03);width:32px;height:32px;padding:0;border:1px solid rgba(229,225,218,.95);border-radius:50%;background:rgba(255,255,255,.94);color:var(--green-dark);display:flex;align-items:center;justify-content:center;cursor:zoom-in;box-shadow:0 4px 12px rgba(28,28,28,.16);opacity:.9;transition:opacity .2s,transform .2s var(--ease)}
+    .tlf-vis svg{width:15px;height:15px;display:block}
+    .stlf:hover .tlf-vis,.tlf-vis:hover{opacity:1;transform:scale(1.08)}
+    .tlf-vis:focus-visible{opacity:1;outline:3px solid var(--green);outline-offset:2px}
+    .helt-tlf .tlf:first-child .tlf-vis{right:auto;left:calc(var(--tlf-w)*-.03)}
+
+    /* Helten: telefonene står på bunnen av helten og går ut av bildet ved underkanten
+       (.hero-wrap klipper, rett over språkstripa). Hjem: 86,5 % synlig i ro (flyter opptil 14 px
+       opp); Mønsteroversikten står 0,11 w lavere (81 % synlig i ro). */
+    .hero-visual{align-self:end;align-items:flex-start;min-height:0;padding-top:1.4rem;margin-bottom:-5rem}
+    .helt-tlf{--hw:min(250px,40vw);height:calc(var(--hw)*1.814);padding-bottom:0;align-items:flex-start}
+    .helt-tlf .tlf{--tlf-w:var(--hw)}
+    .helt-tlf .tlf:last-child{translate:-14px calc(var(--hw)*.11)}
+
+    /* Fanene: telefonen i et panel (som dagbokkortene), klippet av panelets underkant */
+    .fane-oppsett{grid-template-columns:290px minmax(0,1fr)}
+    .fane-scene{--sw:250px;--pt:1.8rem;height:calc(var(--pt) + var(--sw)*1.804);overflow:hidden;align-items:flex-start;padding-top:var(--pt);border:1px solid var(--border);border-radius:var(--radius);background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%)}
+    .fane-scene .tlf{--tlf-w:var(--sw)}
+
+    /* Dagbokkortene og toalettpanelet: samme regel (luft + 1,804 w). I kortet med to telefoner er
+       den bakre 0,87 w, står 0,2 w lavere og er vippet 4° (så den og ikonet holder seg inne i kortet),
+       den fremre 0,973 w; begge klippes 11–12 %. */
+    .dagbok-scene{--sw:224px;--pt:2rem;height:calc(var(--pt) + var(--sw)*1.804);padding-top:var(--pt)}
+    .dagbok-scene .tlf{--tlf-w:var(--sw)}
+    .dagbok-scene.to .tlf-bak{--tlf-w:calc(var(--sw)*.87);top:calc(var(--pt) + var(--sw)*.2);left:calc(50% - var(--sw)*.205);rotate:4deg}
+    .dagbok-scene.to .tlf-foran{--tlf-w:calc(var(--sw)*.973)}
+    .toalett-scene{--sw:260px;--pt:2.6rem;height:calc(var(--pt) + var(--sw)*1.804);padding-top:var(--pt)}
+    .toalett-scene .tlf{--tlf-w:var(--sw)}
+    .toalett-kilde .kilde-skille{opacity:.6}
+    .toalett-kilde [data-i18n="web_f82_kart_kilde"]{white-space:nowrap}
+
+    /* Demo (runde 82 del 2): animasjon av appen i samme telefonramme (statuslinje), i et panel som
+       klipper telefonen nederst; ev. en ny video (videos/demo-ny.mp4) bak en bryter. */
+    .demo-wrapper{flex-direction:column;align-items:center;gap:1rem}
+    .demo-scene{--sw:280px;--pt:2rem;position:relative;width:min(100%,440px);height:calc(var(--pt) + var(--sw)*1.804);overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding-top:var(--pt);border:1px solid var(--border);border-radius:var(--radius);background:radial-gradient(circle at 50% 40%,rgba(107,175,125,.20),transparent 62%),linear-gradient(180deg,var(--green-light) 0%,#F5F9F6 100%)}
+    .demo-scene .tlf{--tlf-w:var(--sw)}
+    /* Klippebeholderne skal aldri kunne rulles (kontrollen 3. okt): med overflow:hidden ruller nettleseren
+       beholderen 38–88 px når en telefonkropp (tabindex=0) eller ⤢ får tastaturfokus, og da mister telefonen
+       toppen og ser ut som en lang plate som går ut av bildet både oppe og nede. overflow:clip kan ikke rulles;
+       hidden står først som reserve for eldre nettlesere (der setter r82.js scrollTop tilbake til 0). */
+    .hero-wrap,.fane-scene,.dagbok-scene,.toalett-scene,.demo-scene{overflow:hidden;overflow:clip}
+    .demo-tlf .tlf-skjerm{background:var(--tlf-topp,#FBF8F3)}
+    .demo-flate{position:relative;flex:1 1 0;min-height:0;overflow:hidden;background:#FBF8F3}
+    .demo-lerret{position:absolute;left:0;top:0;width:430px;height:878px;transform-origin:0 0;transform:scale(var(--demo-k,.6))}
+    .demo-skjerm{position:absolute;left:0;top:0;width:430px;height:878px;overflow:hidden;visibility:hidden;will-change:transform}
+    .demo-skjerm img{display:block;width:430px;max-width:none;height:auto;cursor:inherit}
+    .demo-topp,.demo-bunn{position:absolute;left:0;width:430px;z-index:2}
+    .demo-topp{top:0}.demo-bunn{bottom:0}
+    .demo-kropp{position:absolute;left:0;width:430px;overflow:hidden}
+    .demo-kropp img{position:absolute;left:0;top:0;will-change:transform}
+    .demo-skygge{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:3}
+    .demo-trykk{position:absolute;left:0;top:0;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;border:3px solid rgba(45,90,61,.85);background:rgba(107,175,125,.28);opacity:0;pointer-events:none;z-index:6}
+    .demo-video-tlf video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+    .demo-video-tlf .tlf-skjerm{padding-top:0;height:calc(var(--tlf-w)*2.0374)}
+    .demo-kontroller{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.6rem}
+    .demo-knapp{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border:1px solid var(--border);border-radius:2rem;background:var(--white);color:var(--green-dark);font:600 .86rem/1.2 'DM Sans',system-ui,sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+    .demo-knapp:hover{border-color:var(--green-glow,#6BAF7D)}
+    .demo-knapp:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+    .demo-knapp svg{width:14px;height:14px;display:block}
+    .demo-knapp[hidden]{display:none}
+    .demo-valg{display:inline-flex;padding:3px;border:1px solid var(--border);border-radius:2rem;background:var(--white)}
+    .demo-valg[hidden]{display:none}
+    .demo-valg button{padding:.42rem .95rem;border:none;border-radius:2rem;background:transparent;color:var(--slate);font:600 .84rem/1.2 'DM Sans',system-ui,sans-serif;cursor:pointer}
+    .demo-valg button[aria-pressed="true"]{background:var(--green-dark);color:#fff}
+    .demo-valg button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+
+    /* Fullskjerm: en normal telefon (2,0974 w) som passer i høyden, i et modalt lag */
+    html.tlf-full-aapen,html.tlf-full-aapen body{overflow:hidden}
+    .tlf-full{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:58px 12px 14px;overscroll-behavior:contain}
+    .tlf-full[hidden]{display:none}
+    .tlf-full-bak{position:absolute;inset:0;background:rgba(10,14,11,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);touch-action:none;animation:tlfFade .25s ease}
+    .tlf-full-plass{position:relative;z-index:1;display:flex;justify-content:center}
+    .tlf-full .tlf{--tlf-w:min(calc((100vh - 72px) / 2.0974),calc(100vw - 24px),470px);cursor:default;box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.14);animation:tlfInn .3s var(--ease)}
+    @supports(height:100dvh){.tlf-full .tlf{--tlf-w:min(calc((100dvh - 72px) / 2.0974),calc(100vw - 24px),470px)}}
+    .tlf-full .tlf-skjerm img{cursor:auto}
+    .tlf-full-lukk{position:absolute;z-index:2;top:8px;right:12px;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.96);color:#1C1C1C;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
+    .tlf-full-lukk:hover{transform:scale(1.06)}
+    .tlf-full-lukk:focus-visible{outline:3px solid var(--green-glow,#6BAF7D);outline-offset:3px}
+    .tlf-full-lukk svg{width:20px;height:20px}
+    @keyframes tlfFade{from{opacity:0}to{opacity:1}}
+    @keyframes tlfInn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+    @media(min-width:700px){
+      .tlf-full{padding:24px}
+      .tlf-full .tlf{--tlf-w:min(calc((100vh - 48px) / 2.0974),470px)}
+      @supports(height:100dvh){.tlf-full .tlf{--tlf-w:min(calc((100dvh - 48px) / 2.0974),470px)}}
+      .tlf-full-lukk{top:20px;right:24px;width:48px;height:48px}
+    }
+    @media(max-width:1000px){
+      .hero-visual{margin-bottom:-3.5rem}
+    }
+    @media(max-width:900px){
+      .fane-oppsett{grid-template-columns:1fr}
+      .fane-scene{--sw:210px;--pt:1.4rem;-webkit-mask-image:none;mask-image:none}
+      .toalett-scene{--sw:224px;--pt:.8rem}
+    }
+    @media(max-width:600px){
+      .fane-scene{--sw:200px}
+      .dagbok-scene{--sw:200px;--pt:1.6rem}
+      .demo-scene{--sw:236px;--pt:1.6rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .tlf-kropp{scroll-behavior:auto}
+      .tlf-full-bak,.tlf-full .tlf{animation:none}
+      .tlf-status{transition:none}
+    }
+
+    /* Runde 89 (Fredrik 5. okt): hint om at telefonbildet kan scrolles. En liten merkelapp i øvre del av hver
+       scroll-telefon (r82.js lager den; ikke demoen, ikke fullskjerm): godt over klippekanten nederst, over
+       tallmerkene i helten (mobil) og unna ⤢-knappen i hjørnet. Forsvinner når man scroller/drar/trykker i telefonen. */
+    .tlf-rull-hint{position:absolute;z-index:3;left:50%;top:calc(var(--tlf-w)*.8);transform:translateX(-50%);display:inline-flex;align-items:center;gap:.4em;padding:.42em .85em .42em .62em;border-radius:999px;background:rgba(27,33,29,.8);color:#fff;font:600 clamp(11px,calc(var(--tlf-w)*.05),14px)/1.2 'DM Sans',system-ui,sans-serif;letter-spacing:.01em;white-space:nowrap;pointer-events:none;box-shadow:0 6px 18px rgba(20,25,21,.25);transition:opacity .45s ease,transform .45s ease}
+    .tlf-rull-hint svg{width:1.15em;height:1.15em;flex:none;animation:tlfRullPil 1.6s ease-in-out infinite}
+    .tlf-rull-hint.skjult{opacity:0;transform:translate(-50%,6px)}
+    .tlf-full .tlf-rull-hint{display:none}
+    @keyframes tlfRullPil{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+    @media (prefers-reduced-motion:reduce){.tlf-rull-hint svg{animation:none}.tlf-rull-hint{transition:none}}
+    /* ── /Runde 82 ── */
+  </style>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FODMAPP – ผู้ช่วย AI ที่ทำให้การกินแบบ low FODMAP ในชีวิตประจำวันง่ายขึ้น">
+  <meta name="twitter:description" content="สแกนและถามเรื่องอาหาร บันทึกอาการท้อง และดูภาพรวมบันทึกของคุณ ทั้งหมดในแอปเดียว">
+  <meta name="twitter:image" content="https://fodmapp.com/images/og-fodmapp.png">
+  <!-- rSpraak:hode -->
+  <link rel="canonical" href="https://fodmapp.com/th/">
+  <link rel="alternate" hreflang="x-default" href="https://fodmapp.com/">
+  <link rel="alternate" hreflang="id" href="https://fodmapp.com/id/">
+  <link rel="alternate" hreflang="da" href="https://fodmapp.com/da/">
+  <link rel="alternate" hreflang="de" href="https://fodmapp.com/de/">
+  <link rel="alternate" hreflang="en" href="https://fodmapp.com/">
+  <link rel="alternate" hreflang="es" href="https://fodmapp.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://fodmapp.com/fr/">
+  <link rel="alternate" hreflang="it" href="https://fodmapp.com/it/">
+  <link rel="alternate" hreflang="lt" href="https://fodmapp.com/lt/">
+  <link rel="alternate" hreflang="nl" href="https://fodmapp.com/nl/">
+  <link rel="alternate" hreflang="nb" href="https://fodmapp.com/no/">
+  <link rel="alternate" hreflang="pl" href="https://fodmapp.com/pl/">
+  <link rel="alternate" hreflang="pt" href="https://fodmapp.com/pt/">
+  <link rel="alternate" hreflang="fi" href="https://fodmapp.com/fi/">
+  <link rel="alternate" hreflang="sv" href="https://fodmapp.com/sv/">
+  <link rel="alternate" hreflang="tr" href="https://fodmapp.com/tr/">
+  <link rel="alternate" hreflang="ru" href="https://fodmapp.com/ru/">
+  <link rel="alternate" hreflang="ar" href="https://fodmapp.com/ar/">
+  <link rel="alternate" hreflang="hi" href="https://fodmapp.com/hi/">
+  <link rel="alternate" hreflang="th" href="https://fodmapp.com/th/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://fodmapp.com/zh-hans/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://fodmapp.com/zh-hant/">
+  <link rel="alternate" hreflang="ja" href="https://fodmapp.com/ja/">
+  <link rel="alternate" hreflang="ko" href="https://fodmapp.com/ko/">
+  <style>a.lang-option{text-decoration:none}@media(max-width:340px){.logo{font-size:1.12rem;gap:.35rem}.logo img{height:36px}}</style>
+  <noscript><style>.lang-btn{display:none}.lang-overlay{display:block;position:static;opacity:1;background:none;backdrop-filter:none}.lang-modal{transform:none;box-shadow:none;max-height:none;max-width:none;margin:1rem auto}.lang-modal-close{display:none}.lang-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}</style></noscript>
+  <script>(function(C,F,A,K){try{var N='fodmapp-lang',H=function(k){return Object.prototype.hasOwnProperty.call(K,k)},V=function(x){x=String(x||'').replace('_','-').toLowerCase();var b=x.split('-')[0];if(b==='nb'||b==='no'||b==='nn')return'nb';if(b==='zh')return/hant|tw|hk|mo/.test(x)?'zh-Hant':'zh-Hans';return H(b)?b:null},s=location.search,m=s.match(/[?&]lang=([^&#]*)/),q=m?V(decodeURIComponent(m[1])):null,t=null,g=null;try{g=localStorage.getItem(N)}catch(e){}if(m){s=s.replace(/([?&])lang=[^&#]*(&?)/,function(a,p,e){return e?p:''});if(q){t=q;try{localStorage.setItem(N,q)}catch(e){}}}else if(C==='en'){if(g&&H(g)){if(g!=='en')t=g}else if(A&&!/bot|crawl|spider|slurp|preview|fetch|lighthouse|headless/i.test(navigator.userAgent)){var L=navigator.languages||[navigator.language];for(var i=0;i<L.length;i++){var v=V(L[i]);if(v){if(v!=='en')t=v;break}}}}if(t&&t!==C)location.replace('/'+K[t]+F+s+location.hash);else if(m&&q)history.replaceState(null,'',location.pathname+s+location.hash)}catch(e){}})("th","",0,{"id":"id/","da":"da/","de":"de/","en":"","es":"es/","fr":"fr/","it":"it/","lt":"lt/","nl":"nl/","nb":"no/","pl":"pl/","pt":"pt/","fi":"fi/","sv":"sv/","tr":"tr/","ru":"ru/","ar":"ar/","hi":"hi/","th":"th/","zh-Hans":"zh-hans/","zh-Hant":"zh-hant/","ja":"ja/","ko":"ko/"});</script>
+  <!-- /rSpraak:hode -->
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="stylesheet" href="../css/r210.css">
+</head>
+<body>
+  <header id="siteHeader">
+    <div class="container nav-bar">
+      <a href="#" class="logo"><img src="../images/logo.png" alt="FODMAPP logo"> FODMAPP</a>
+      <nav>
+        <a href="#features" data-i18n="nav_features">คุณสมบัติ</a>
+        <a href="#how" data-i18n="nav_how">วิธีใช้งาน</a>
+        <a href="#dagbok" data-i18n="web_f80_nav_dagbok">บันทึก</a>
+        <a href="#demo" data-i18n="nav_demo">สาธิต</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" data-i18n="nav_contact">ติดต่อ</a>
+        <a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a>
+        <a href="manual.html" data-i18n="nav_manual">คู่มือ</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-btn" onclick="openLangModal()" title="เลือกภาษา">🌐</div>
+        <a href="#cta" class="btn-nav" data-i18n="nav_download">ดาวน์โหลดแอป ↓</a>
+        <a href="#cta" class="btn-mobile-download" title="ดาวน์โหลดแอป"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-6l-5 5-5-5m5-5v10"/></svg></a>
+        <div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div id="mobileNav" class="mobile-nav">
+      <a href="#features" onclick="closeMobileNav()" data-i18n="nav_features">คุณสมบัติ</a>
+      <a href="#how" onclick="closeMobileNav()" data-i18n="nav_how">วิธีใช้งาน</a>
+      <a href="#dagbok" onclick="closeMobileNav()" data-i18n="web_f80_nav_dagbok">บันทึก</a>
+      <a href="#demo" onclick="closeMobileNav()" data-i18n="nav_demo">สาธิต</a>
+      <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+      <a href="#contact" onclick="closeMobileNav()" data-i18n="nav_contact">ติดต่อ</a>
+      <a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a>
+      <a href="manual.html" data-i18n="nav_manual">คู่มือ</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <div class="hero-wrap">
+    <section class="container hero">
+      <div class="hero-content reveal">
+        <div class="hero-badge" data-i18n="hero_badge">🌿 ผู้ช่วย AI FODMAP ของคุณ</div>
+        <h1 data-i18n="hero_title">Low-FODMAP ง่ายขึ้นด้วย <em>AI</em></h1>
+        <p data-i18n="hero_p">ไม่ต้องค้นหา Google อีกต่อไป ไม่ต้องเผชิญกับความอึดอัดในร้านอาหาร เพียงถ่ายรูป สแกน หรือถาม แล้วรับคำตอบได้ภายในไม่กี่วินาที</p>
+        <div class="hero-buttons">
+          <a href="#cta" class="btn-primary" data-i18n="hero_btn1">ดาวน์โหลดฟรี ↓</a>
+          <a href="#demo" class="btn-secondary" data-i18n="hero_btn2">ดูสาธิต ▶</a>
+        </div>
+        <div class="hero-proof">
+          <span class="proof-pill"><span class="stars">★★★★★</span> <strong>5.0</strong> · Google Play</span>
+          <span class="proof-pill">🌍 <strong>23</strong>&nbsp;<span data-i18n="stat_lang">ภาษา</span></span>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-d2">
+        <div class="helt-tlf">
+          <figure class="tlf stlf" data-tlf="hjem" style="--tlf-topp:#FBF8F3"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="หน้าหลักของ FODMAPP พร้อมเคล็ดลับประจำวัน ปุ่มบันทึก และฟีเจอร์ต่างๆ"><img src="../images/app/th/hjem_kropp.webp" srcset="../images/app/th/hjem_kropp.webp 600w, ../images/app/th/hjem_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="hjem_kropp" data-stor data-alt="web_f80_alt_hjem" alt="หน้าหลักของ FODMAPP พร้อมเคล็ดลับประจำวัน ปุ่มบันทึก และฟีเจอร์ต่างๆ" width="600" height="1965" loading="eager" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure>
+          <figure class="tlf stlf" data-tlf="analyse" data-start="0.373" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การวิเคราะห์ AI ใน FODMAPP: สิ่งที่ปรากฏบ่อยที่สุดก่อนมีอาการ"><img src="../images/app/th/analyse_kropp.webp" srcset="../images/app/th/analyse_kropp.webp 600w, ../images/app/th/analyse_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="analyse_kropp" data-stor data-alt="web_f80_alt_analyse" alt="การวิเคราะห์ AI ใน FODMAPP: สิ่งที่ปรากฏบ่อยที่สุดก่อนมีอาการ" width="600" height="3480" loading="eager" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure>
+        </div>
+        <div class="hero-chip chip-db" aria-hidden="true">
+          <div class="chip-icon">🏷️</div>
+          <div class="chip-body">
+            <div class="chip-title">4.4M+</div>
+            <div class="chip-sub" data-i18n="stat_products">สินค้าในฐานข้อมูล</div>
+          </div>
+        </div>
+        <div class="hero-chip chip-lang" aria-hidden="true">
+          <div class="chip-icon">🤖</div>
+          <div class="chip-body">
+            <div class="chip-title">AI · 24/7</div>
+            <div class="chip-sub" data-i18n="stat_avail">พร้อมใช้งานตลอดเวลา</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="lightbox" class="lightbox" onclick="closeFullscreen()"><img id="lightbox-img" src="" alt=""></div>
+  <!-- r82:fullskjerm -->
+  <div id="tlfFull" class="tlf-full" role="dialog" aria-modal="true" aria-label="" hidden><div class="tlf-full-bak"></div><button type="button" class="tlf-full-lukk" data-i18n-aria="web_f82_lukk" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="tlf-full-plass"></div></div>
+  <!-- /r82:fullskjerm -->
+
+  <!-- ── Language marquee ── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span>🇬🇧</span>English</span><span class="marquee-item"><span>🇳🇴</span>Norsk</span><span class="marquee-item"><span>🇸🇪</span>Svenska</span><span class="marquee-item"><span>🇩🇰</span>Dansk</span><span class="marquee-item"><span>🇫🇮</span>Suomi</span><span class="marquee-item"><span>🇩🇪</span>Deutsch</span><span class="marquee-item"><span>🇫🇷</span>Français</span><span class="marquee-item"><span>🇪🇸</span>Español</span><span class="marquee-item"><span>🇮🇹</span>Italiano</span><span class="marquee-item"><span>🇵🇹</span>Português</span><span class="marquee-item"><span>🇳🇱</span>Nederlands</span><span class="marquee-item"><span>🇵🇱</span>Polski</span><span class="marquee-item"><span>🇷🇺</span>Русский</span><span class="marquee-item"><span>🇹🇷</span>Türkçe</span><span class="marquee-item"><span>🇯🇵</span>日本語</span><span class="marquee-item"><span>🇰🇷</span>한국어</span><span class="marquee-item"><span>🇨🇳</span>中文</span><span class="marquee-item"><span>🇮🇳</span>हिन्दी</span><span class="marquee-item"><span>🇮🇩</span>Bahasa Indonesia</span><span class="marquee-item"><span>🇱🇹</span>Lietuvių</span><span class="marquee-item"><span>🇹🇭</span>ไทย</span><span class="marquee-item"><span>🇸🇦</span>العربية</span>
+      <span class="marquee-item"><span>🇬🇧</span>English</span><span class="marquee-item"><span>🇳🇴</span>Norsk</span><span class="marquee-item"><span>🇸🇪</span>Svenska</span><span class="marquee-item"><span>🇩🇰</span>Dansk</span><span class="marquee-item"><span>🇫🇮</span>Suomi</span><span class="marquee-item"><span>🇩🇪</span>Deutsch</span><span class="marquee-item"><span>🇫🇷</span>Français</span><span class="marquee-item"><span>🇪🇸</span>Español</span><span class="marquee-item"><span>🇮🇹</span>Italiano</span><span class="marquee-item"><span>🇵🇹</span>Português</span><span class="marquee-item"><span>🇳🇱</span>Nederlands</span><span class="marquee-item"><span>🇵🇱</span>Polski</span><span class="marquee-item"><span>🇷🇺</span>Русский</span><span class="marquee-item"><span>🇹🇷</span>Türkçe</span><span class="marquee-item"><span>🇯🇵</span>日本語</span><span class="marquee-item"><span>🇰🇷</span>한국어</span><span class="marquee-item"><span>🇨🇳</span>中文</span><span class="marquee-item"><span>🇮🇳</span>हिन्दी</span><span class="marquee-item"><span>🇮🇩</span>Bahasa Indonesia</span><span class="marquee-item"><span>🇱🇹</span>Lietuvių</span><span class="marquee-item"><span>🇹🇭</span>ไทย</span><span class="marquee-item"><span>🇸🇦</span>العربية</span>
+    </div>
+  </div>
+
+  <!-- ── Stats ── -->
+  <div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item reveal"><div class="stat-number">23</div><div class="stat-label" data-i18n="stat_lang">ภาษา</div></div>
+    <div class="stat-item reveal reveal-d1"><div class="stat-number">iOS & Android</div><div class="stat-label" data-i18n="stat_plat">ทั้งสองแพลตฟอร์ม</div></div>
+    <div class="stat-item reveal reveal-d2"><div class="stat-number">4.4M+</div><div class="stat-label" data-i18n="stat_products">สินค้าในฐานข้อมูล</div></div>
+    <div class="stat-item reveal reveal-d3"><div class="stat-number">24/7</div><div class="stat-label" data-i18n="stat_avail">พร้อมใช้งานตลอดเวลา</div></div>
+  </div></div></div>
+
+  <!-- ── Features ── -->
+  <section id="features" class="features-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag" data-i18n="feat_tag">✦ คุณสมบัติ</span><h2 class="section-title" data-i18n="feat_title">ทุกอย่างที่คุณต้องการในกระเป๋า</h2><p class="section-sub" data-i18n="feat_sub">สแกนและถามเรื่องอาหาร บันทึกอาการท้อง และดูภาพรวมบันทึกของคุณ ทั้งหมดในแอปเดียว</p></div>
+    <div class="features-grid f80 karusell">
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h3 data-i18n="f2h">AI กล้อง</h3>
+        <p data-i18n="f2p">ถ่ายรูปจานอาหาร เมนู บุฟเฟ่ต์ หรือตู้เย็น แล้วดูระดับ FODMAP ของส่วนผสม อาหาร และสินค้าทุกอย่าง</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('camera')" data-i18n="web_f80_lenke_kamera">ดูเครื่องมือกล้อง</a>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5v14"/><path d="M8 5v14"/><path d="M12 5v14"/><path d="M17 5v14"/><path d="M21 5v14"/></svg></div>
+        <h3 data-i18n="f3h">สแกนบาร์โค้ด</h3>
+        <p data-i18n="f3p">สแกนรหัสแท่งของสินค้าใดก็ได้และรับการวิเคราะห์ FODMAP ที่ขับเคลื่อนด้วย AI ได้ทันที แอปใช้ Open Food Facts – ฐานข้อมูลที่มีสินค้ากว่า 4.4 ล้านชิ้นจากทั่วโลก</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('barcode')" data-i18n="web_f80_lenke_strekkode">ดูเครื่องสแกนบาร์โค้ด</a>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></div>
+        <h3 data-i18n="f1h">AI แชท</h3>
+        <p data-i18n="f1p">รับคำตอบเรื่องอาหาร low FODMAP สูตรอาหาร และเมนูรายสัปดาห์ แชทยังแนะนำคำถามจากการสแกนและมื้ออาหารของคุณด้วย</p>
+        <a class="feature-link" href="#features-detail" onclick="visFane('chat')" data-i18n="web_f80_lenke_chat">ดูแชท</a>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 data-i18n="web_f80_f_toalett_h">แผนที่ห้องน้ำ</h3>
+        <p data-i18n="web_f80_f_toalett_p">หาห้องน้ำใกล้ตัว กรองได้ทั้งฟรี รองรับรถเข็น มีห้องเปลี่ยนผ้าอ้อม และเปิดอยู่ตอนนี้ แล้วบันทึกห้องน้ำโปรดของคุณไว้ ข้อมูลห้องน้ำจาก OpenStreetMap</p>
+        <a class="feature-link" href="#toalettkart" data-i18n="web_f80_lenke_toalett">ดูแผนที่ห้องน้ำ</a>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17.5" rx="2"/><path d="M9 3.5v2h6v-2"/><path d="M9 11h6"/><path d="M9 15h4"/></svg></div>
+        <h3 data-i18n="web_f80_f_logg_h">การบันทึก</h3>
+        <p data-i18n="web_f80_f_logg_p">บันทึกอาการพร้อมระดับอาการปวดและความเครียดตั้งแต่ 0 ถึง 10 การเข้าห้องน้ำด้วยสเกล Bristol และมื้ออาหารของคุณ ใช้เวลาแค่ไม่กี่นาที</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_logg">ดูการบันทึก</a>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg></div>
+        <h3 data-i18n="web_f80_f_dagbok_h">บันทึกอาการปวด</h3>
+        <p data-i18n="web_f80_f_dagbok_p">ดูอาการปวดและความเครียดรายสัปดาห์ รายเดือน หรือรายปี พร้อมกราฟ ปฏิทินอาการปวด และจำนวนวันที่บันทึกต่อเนื่อง</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_dagbok">ดูบันทึกอาการปวด</a>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3.5-3.5 3 3L19 8"/></svg></div>
+        <h3 data-i18n="web_f80_f_monster_h">การวิเคราะห์ AI</h3>
+        <p data-i18n="web_f80_f_monster_p">การวิเคราะห์ AI สรุปบันทึกของคุณ และแอปจะนับว่าอะไรปรากฏบ่อยที่สุดก่อนมีอาการ</p>
+        <a class="feature-link" href="#dagbok" data-i18n="web_f80_lenke_monster">ดูการวิเคราะห์ AI</a>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-medallion"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3 data-i18n="web_f80_f_rapport_h">รายงานสำหรับแพทย์</h3>
+        <p data-i18n="web_f80_f_rapport_p">สร้างรายงาน PDF จากสิ่งที่คุณบันทึกไว้เอง พร้อมนำไปให้แพทย์ประจำตัว แพทย์ระบบทางเดินอาหาร หรือนักโภชนาการดู</p>
+        <a class="feature-link" href="#rapport" data-i18n="web_f80_lenke_rapport">ดูตัวอย่างรายงาน</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ── How it works ── -->
+  <section id="how" class="how-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag" data-i18n="how_tag">✦ วิธีใช้งาน</span><h2 class="section-title" data-i18n="how_title">พร้อมในไม่กี่วินาที</h2><p class="section-sub" data-i18n="how_sub">สี่ขั้นตอนง่ายๆ ตั้งแต่ดาวน์โหลดจนถึงการเลือกอาหารที่ง่ายขึ้น</p></div>
+    <div class="steps-grid karusell">
+      <div class="step-card reveal reveal-d1"><div class="step-number">1</div><h3 data-i18n="s1h">ดาวน์โหลดแอป</h3><p data-i18n="s1p">ติดตั้ง FODMAPP จาก App Store หรือ Google Play – พร้อมใช้งานทันที</p></div>
+      <div class="step-card reveal reveal-d2"><div class="step-number">2</div><h3 data-i18n="s2h">ใช้กล้อง แชท หรือบาร์โค้ด</h3><p data-i18n="s2p">ถ่ายรูป สแกนบาร์โค้ด หรือถามคำถาม รับความช่วยเหลือเมื่อคุณต้องการ</p></div>
+      <div class="step-card reveal reveal-d3"><div class="step-number">3</div><h3 data-i18n="s3h">รับคำแนะนำที่ชัดเจน</h3><p data-i18n="s3p">แอปประเมินเนื้อหาและแสดงให้เห็นอย่างชัดเจนว่าสิ่งใดมี FODMAP ต่ำ ปานกลาง หรือสูง</p></div>
+      <div class="step-card reveal reveal-d4"><div class="step-number">4</div><h3 data-i18n="s4h">ทานอาหารได้อย่างสบายใจยิ่งขึ้น</h3><p data-i18n="s4p">ลดความเครียดในการเลือกอาหาร ได้ตัวช่วยกิน low FODMAP ในชีวิตประจำวันมากขึ้น</p></div>
+    </div>
+  </div></section>
+
+  <!-- ── Feature tabs ── -->
+  <section id="features-detail" class="features-tab-section"><div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag" data-i18n="feat_tab_tag">✦ สำรวจคุณสมบัติ</span>
+      <h2 class="section-title" data-i18n="feat_tab_title">กล้อง บาร์โค้ด และแชท</h2>
+      <p class="section-sub" data-i18n="feat_tab_sub">เลือกฟีเจอร์เพื่อดูว่ามันสามารถทำอะไรให้คุณได้บ้าง</p>
+    </div>
+    <div class="feature-tabs-wrap reveal">
+      <div class="feature-tabs">
+        <button class="feature-tab active" data-fane="camera" onclick="switchTab('camera',this)"><span class="tab-icon">📸</span> <span data-i18n="f2h">AI กล้อง</span></button>
+        <button class="feature-tab" data-fane="barcode" onclick="switchTab('barcode',this)"><span class="tab-icon">🏷️</span> <span data-i18n="f3h">สแกนบาร์โค้ด</span></button>
+        <button class="feature-tab" data-fane="chat" onclick="switchTab('chat',this)"><span class="tab-icon">💬</span> <span data-i18n="f1h">AI แชท</span></button>
+      </div>
+    </div>
+    <div id="tab-chat" class="tab-panel">
+      <p class="tab-desc" data-i18n="chat_sub">ถามคำถามและรับคำตอบในไม่กี่วินาที – ปรับแต่งสำหรับคุณ</p>
+      <div class="fane-oppsett">
+        <div class="fane-scene"><figure class="tlf stlf" data-tlf="chat" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="../images/app/th/chat_topp.webp" srcset="../images/app/th/chat_topp.webp 600w, ../images/app/th/chat_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="แชท AI ใน FODMAPP: บทสนทนาเรื่องอาหารและ FODMAP"><img src="../images/app/th/chat_kropp.webp" srcset="../images/app/th/chat_kropp.webp 600w, ../images/app/th/chat_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_kropp" data-stor data-alt="web_f80_alt_chat_forslag" alt="แชท AI ใน FODMAPP: บทสนทนาเรื่องอาหารและ FODMAP" width="600" height="1026" loading="lazy" decoding="async"></div><div class="tlf-bunn"><img src="../images/app/th/chat_bunn.webp" srcset="../images/app/th/chat_bunn.webp 600w, ../images/app/th/chat_bunn_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="chat_bunn" data-stor alt="" width="600" height="148" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+      <div class="tab-grid karusell">
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_ch7h">💡 คำแนะนำสำหรับคุณ</h3><p data-i18n="web_f80_ch7p">แชทแนะนำคำถามจากการสแกนและมื้ออาหารของคุณ เช่น ทางเลือก low FODMAP แทนสิ่งที่คุณสแกน หรือสูตรอาหารของสิ่งที่คุณกินไป</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="web_f80_ch8h">🙋 รู้จักคุณตั้งแต่แรก</h3><p data-i18n="web_f80_ch8p">คำตอบที่คุณให้ตอนเริ่มใช้แอปจะใช้เป็นข้อมูลพื้นฐานในแชท คุณจึงไม่ต้องพูดซ้ำ และเปลี่ยนคำตอบได้ทุกเมื่อ</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="ch1h">🥦 ประเมินอาหารใด ๆ</h3><p data-i18n="ch1p">พิมพ์ชื่ออาหาร จานอาหาร หรือชื่อสินค้า แล้วรับการประเมิน FODMAP พร้อมคำอธิบาย คำแนะนำเรื่องปริมาณ และทางเลือก low FODMAP</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="ch2h">🍽️ วิเคราะห์จานอาหารที่ร้านอาหาร</h3><p data-i18n="ch2p">อธิบายอาหารจานหนึ่งในร้าน แล้ว AI จะประเมินส่วนผสมทุกอย่าง อธิบายปริมาณ FODMAP และแนะนำวิธีสั่งแบบ low FODMAP</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="ch3h">📅 แผนอาหารรายสัปดาห์</h3><p data-i18n="ch3p">ขอเมนูสัปดาห์ FODMAP ต่ำแบบสมบูรณ์พร้อมอาหารเช้า อาหารกลางวัน อาหารเย็น และของว่าง – AI จะสร้างแผนที่หลากหลายและสมดุลพร้อมสูตรอาหาร</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="ch4h">🛒 รายการช้อปปิ้ง</h3><p data-i18n="ch4p">หลังจากแผนอาหาร ขอรายการช้อปปิ้ง AI จะสร้างรายการตามเมนูเพื่อให้คุณมีส่วนประกอบที่ถูกต้องเสมอที่บ้าน</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="ch5h">❓ คำถามเกี่ยวกับ FODMAP</h3><p data-i18n="ch5p">ถามว่า FODMAP คืออะไร มีประเภทใดบ้าง (ฟรุกแตน แกแลกแตน โพลิออล ฟรุกโตส แลกโตส) อาหารทำงานอย่างไร หรืออะไรก็ตามที่เกี่ยวข้องกับ FODMAP</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="ch6h">🧘 การจัดการความเครียด</h3><p data-i18n="ch6p">ถาม AI เรื่องเทคนิคผ่อนคลาย การฝึกหายใจ และเคล็ดลับที่ใช้ได้จริงในการรับมือกับความเครียดในชีวิตประจำวัน</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_ch9h">🕒 ลบหลัง 24 ชั่วโมง</h3><p data-i18n="web_f80_ch9p">ข้อความจะอยู่ในแชท 24 ชั่วโมง แล้วจะถูกลบโดยอัตโนมัติ</p></div>
+      </div>
+      </div>
+    </div>
+    <div id="tab-camera" class="tab-panel active">
+      <p class="tab-desc" data-i18n="cam_sub">หันกล้องไปที่จานอาหาร เมนู บุฟเฟ่ต์ หรือตู้เย็น แล้วดูระดับ FODMAP ของส่วนผสม อาหาร และสินค้าทุกอย่าง</p>
+      <div class="fane-oppsett">
+        <!-- r210:kamera --><div class="fane-venstre"><div class="kam-valg" role="group" data-i18n-aria="web_f210_kam_valg" aria-label="เลือกการสแกน"><button type="button" data-vis="matrett" aria-pressed="true" data-i18n="web_f210_kam_matrett">จานอาหาร</button><button type="button" data-vis="meny" aria-pressed="false" data-i18n="web_f210_kam_meny">เมนู</button><button type="button" data-vis="kjoleskap" aria-pressed="false" data-i18n="web_f210_kam_kjoleskap">ตู้เย็น</button></div><!-- /r210:kamera --><div class="fane-scene"><figure class="tlf stlf" data-tlf="matrett" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การประเมิน FODMAP ของจานอาหารจากกล้อง AI"><img src="../images/app/th/matrett_kropp.webp" srcset="../images/app/th/matrett_kropp.webp 600w, ../images/app/th/matrett_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="matrett_kropp" data-stor data-alt="web_f80_alt_matrett" alt="การประเมิน FODMAP ของจานอาหารจากกล้อง AI" width="600" height="3271" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><!-- r210:kamera-tlf --><figure class="tlf stlf" data-tlf="meny" data-r210 hidden style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การวิเคราะห์เมนูใน FODMAPP: รายการอาหารพร้อมระดับ FODMAP และข้อความสำหรับพนักงานเสิร์ฟ"><img src="../images/app/th/meny_kropp.webp" srcset="../images/app/th/meny_kropp.webp 600w, ../images/app/th/meny_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="meny_kropp" data-stor data-alt="web_f210_alt_meny" alt="การวิเคราะห์เมนูใน FODMAPP: รายการอาหารพร้อมระดับ FODMAP และข้อความสำหรับพนักงานเสิร์ฟ" width="600" height="5016" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf stlf" data-tlf="kjoleskap" data-r210 hidden style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การวิเคราะห์ตู้เย็นใน FODMAPP: วัตถุดิบพร้อมระดับ FODMAP และสูตรอาหารแนะนำ"><img src="../images/app/th/kjoleskap_kropp.webp" srcset="../images/app/th/kjoleskap_kropp.webp 600w, ../images/app/th/kjoleskap_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kjoleskap_kropp" data-stor data-alt="web_f210_alt_kjoleskap" alt="การวิเคราะห์ตู้เย็นใน FODMAPP: วัตถุดิบพร้อมระดับ FODMAP และสูตรอาหารแนะนำ" width="600" height="5487" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><!-- /r210:kamera-tlf --></div><!-- r210:kamera-slutt --></div><!-- /r210:kamera-slutt -->
+      <div class="tab-grid karusell">
+        <div class="tab-card reveal"><h3 data-i18n="cam1h">🍲 จานอาหาร</h3><p data-i18n="cam1p">ถ่ายรูปจานอาหาร สแกนเนอร์อาหารจะระบุส่วนผสม ประมาณปริมาณ และบอกว่าอย่างไหนมี FODMAP ต่ำ ปานกลาง หรือสูง พร้อมแนะนำสิ่งที่ใช้แทนได้เพื่อให้ระดับต่ำลง</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam3h">📋 เมนูร้านอาหาร</h3><p data-i18n="cam3p">ถ่ายรูปเมนูภาษาอะไรก็ได้ รายการอาหารจะแสดงเป็นภาษาของคุณพร้อมระดับ FODMAP และในส่วน “ถึงพนักงานเสิร์ฟ” คุณจะได้ข้อความสำเร็จรูปเป็นภาษาของเมนูไว้เปิดให้ดู</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="cam4h">🧊 ตู้เย็น</h3><p data-i18n="cam4p">ถ่ายรูปตู้เย็น FODMAPP จะหาวัตถุดิบ และคุณเพิ่มสิ่งที่ AI มองไม่เห็นได้เอง จากนั้นคุณจะได้สูตรอาหารที่ใช้เฉพาะวัตถุดิบ low FODMAP ปรับตามจำนวนที่เสิร์ฟ</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="cam6h">🔢 ระดับและกลุ่ม FODMAP</h3><p data-i18n="cam6p">ทุกการสแกนแสดงระดับด้วยสีและขีดสามขีด: ต่ำ ปานกลาง หรือสูง คุณยังเห็นปริมาณและกลุ่ม FODMAP ที่ทำให้เป็นระดับนั้นด้วย เช่น ฟรุกแทน</p></div>
+        <div class="tab-card reveal"><h3 data-i18n="web_f80_cam7h">🥗 บุฟเฟ่ต์และอาหารจานเย็น</h3><p data-i18n="web_f80_cam7p">ถ่ายรูปโต๊ะบุฟเฟ่ต์ทั้งโต๊ะเพียงรูปเดียว AI จะหาอาหารแต่ละจานและแสดงว่าจานไหนมี FODMAP ต่ำ ปานกลาง หรือสูง คุณจึงเห็นภาพรวมได้อย่างรวดเร็ว</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="web_f80_cam8h">🍽️ บันทึกสิ่งที่คุณกิน</h3><p data-i18n="web_f80_cam8p">แตะ “บันทึกว่ากิน” เมื่อคุณกินสิ่งที่สแกนไปแล้ว เลือกปริมาณได้ภายหลัง และมื้อนั้นจะเข้าไปอยู่ในบันทึกของคุณทันที</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="web_f80_cam9h">🗂️ ผลการสแกนของฉัน</h3><p data-i18n="web_f80_cam9p">การสแกนทั้งหมดของคุณรวมอยู่ในที่เดียว พร้อมการค้นหา กรองตามจานอาหาร เมนู บุฟเฟ่ต์ ตู้เย็น หรือบาร์โค้ด แล้วเปิดผลลัพธ์เก่าดูอีกครั้งได้</p></div>
+      </div>
+      </div>
+    </div>
+    <div id="tab-barcode" class="tab-panel">
+      <p class="tab-desc" data-i18n="man_bc_sub">ชี้กล้องไปที่บาร์โค้ดของผลิตภัณฑ์ใด ๆ และรับการประเมิน FODMAP แบบสมบูรณ์ในไม่กี่วินาที</p>
+      <div class="fane-oppsett">
+        <div class="fane-scene"><figure class="tlf stlf" data-tlf="strekkode" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การประเมิน FODMAP ของสินค้าจากเครื่องสแกนบาร์โค้ด"><img src="../images/app/th/strekkode_kropp.webp" srcset="../images/app/th/strekkode_kropp.webp 600w, ../images/app/th/strekkode_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="strekkode_kropp" data-stor data-alt="web_f80_alt_strekkode" alt="การประเมิน FODMAP ของสินค้าจากเครื่องสแกนบาร์โค้ด" width="600" height="2714" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+      <div class="tab-grid karusell">
+        <div class="tab-card reveal"><h3 data-i18n="bc1h">🌍 กว่า 4.4 ล้านผลิตภัณฑ์</h3><p data-i18n="bc1p">สแกนเนอร์รหัสแท่งใช้ประโยชน์จาก Open Food Facts – หนึ่งในฐานข้อมูลอาหารแบบเปิดที่ใหญ่ที่สุดในโลก มีสินค้ากว่า 4.4 ล้านชิ้นจากประเทศทั่วโลก ไม่ว่าคุณจะอยู่บ้านหรือเดินทางไปต่างประเทศ สินค้านั้นอาจมีอยู่ในฐานข้อมูลแล้ว</p></div>
+        <div class="tab-card reveal reveal-d1"><h3 data-i18n="bc2h">📊 การวิเคราะห์ส่วนประกอบที่ขับเคลื่อนด้วย AI</h3><p data-i18n="bc2p">เมื่อคุณสแกนบาร์โค้ด แอปจะดึงรายการส่วนผสมบนบรรจุภัณฑ์มาและประเมินส่วนผสมทุกอย่าง พร้อมขนาดหนึ่งหน่วยบริโภคและตัวเลือกที่มีระดับต่ำกว่า</p></div>
+        <div class="tab-card reveal reveal-d2"><h3 data-i18n="bc3h">✅ ช้อปปิ้งง่ายขึ้น</h3><p data-i18n="bc3p">ใช้สแกนเนอร์ก่อนใส่สิ่งใดลงในตะกร้า มันทำงานกับผลิตภัณฑ์บรรจุภัณฑ์จากประเทศใด ๆ – ดีเมื่อเดินทางหรือช้อปปิ้งที่ร้านค้านานาชาติ</p></div>
+      </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ── Dagbok og oversikt (runde 80) ── -->
+  <section id="dagbok" class="dagbok-section"><div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag" data-i18n="web_f80_dag_tag">✦ บันทึกและภาพรวม</span>
+      <h2 class="section-title" data-i18n="web_f80_dag_title">บันทึกทุกวัน แล้วดู<em>รูปแบบ</em>ของคุณ</h2>
+      <p class="section-sub" data-i18n="web_f80_dag_sub">จดบันทึกอาการ การเข้าห้องน้ำ และมื้ออาหาร FODMAPP รวบรวมสิ่งที่คุณบันทึกเป็นกราฟ ปฏิทิน และภาพรวมของสิ่งที่ปรากฏซ้ำบ่อยที่สุด</p>
+    </div>
+    <div class="dagbok-grid karusell">
+      <article class="dagbok-kort reveal reveal-d1" id="dagbok-logg">
+        <div class="dagbok-scene to"><figure class="tlf stlf tlf-bak" data-tlf="toalett" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="../images/app/th/toalett_topp.webp" srcset="../images/app/th/toalett_topp.webp 600w, ../images/app/th/toalett_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="toalett_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="บันทึกการเข้าห้องน้ำใน FODMAPP ด้วยสเกล Bristol"><img src="../images/app/th/toalett_kropp.webp" srcset="../images/app/th/toalett_kropp.webp 600w, ../images/app/th/toalett_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="toalett_kropp" data-stor data-alt="web_f80_alt_toalett" alt="บันทึกการเข้าห้องน้ำใน FODMAPP ด้วยสเกล Bristol" width="600" height="1173" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf stlf tlf-foran" data-tlf="logg" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="บันทึกอาการใน FODMAPP พร้อมอาการปวด ความเครียด และอาการต่างๆ"><img src="../images/app/th/logg_kropp.webp" srcset="../images/app/th/logg_kropp.webp 600w, ../images/app/th/logg_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="logg_kropp" data-stor data-alt="web_f80_alt_logg" alt="บันทึกอาการใน FODMAPP พร้อมอาการปวด ความเครียด และอาการต่างๆ" width="600" height="1973" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_logg_merke">การบันทึก</span>
+        <h3 data-i18n="web_f80_logg_h">เสร็จในไม่กี่นาที</h3>
+        <p data-i18n="web_f80_logg_p">บันทึกอาการท้องได้ด้วยการแตะไม่กี่ครั้ง วันที่ดีบันทึกได้ด้วย “วันนี้ไม่มีอาการ” และคุณคัดลอกบันทึกก่อนหน้าได้</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_logg_l1">อาการปวดและความเครียด 0 ถึง 10 อาการ การนอน และยา</li>
+          <li data-i18n="web_f80_logg_l2">การเข้าห้องน้ำด้วยสเกล Bristol</li>
+          <li data-i18n="web_f80_logg_l3">มื้ออาหาร พิมพ์เองหรือจากการสแกน</li>
+        </ul>
+        </div>
+      </article>
+      <article class="dagbok-kort reveal reveal-d2" id="dagbok-smerte">
+        <div class="dagbok-scene"><figure class="tlf stlf" data-tlf="dagbok" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="บันทึกอาการปวดใน FODMAPP พร้อมค่าเฉลี่ยอาการปวด จำนวนวันที่บันทึกต่อเนื่อง และกราฟ"><img src="../images/app/th/dagbok_kropp.webp" srcset="../images/app/th/dagbok_kropp.webp 600w, ../images/app/th/dagbok_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="dagbok_kropp" data-stor data-alt="web_f80_alt_dagbok" alt="บันทึกอาการปวดใน FODMAPP พร้อมค่าเฉลี่ยอาการปวด จำนวนวันที่บันทึกต่อเนื่อง และกราฟ" width="600" height="4288" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_dagbok_merke">บันทึกอาการปวด</span>
+        <h3 data-i18n="web_f80_dagbok_h">บันทึกของคุณในพริบตา</h3>
+        <p data-i18n="web_f80_dagbok_p">ติดตามความเปลี่ยนแปลงรายสัปดาห์ รายเดือน หรือรายปี และรับการแจ้งเตือนให้บันทึกทุกวันได้ถ้าต้องการ</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_dagbok_l1">กราฟอาการปวดและความเครียด</li>
+          <li data-i18n="web_f80_dagbok_l2">ปฏิทินอาการปวดที่แสดงสีแต่ละวัน</li>
+          <li data-i18n="web_f80_dagbok_l3">จำนวนวันที่บันทึกต่อเนื่องและอาการที่พบบ่อยที่สุด</li>
+        </ul>
+        </div>
+      </article>
+      <article class="dagbok-kort reveal reveal-d3" id="dagbok-monster">
+        <div class="dagbok-scene"><figure class="tlf stlf" data-tlf="analyse" data-start="0.373" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="การวิเคราะห์ AI ใน FODMAPP: สิ่งที่ปรากฏบ่อยที่สุดก่อนมีอาการ"><img src="../images/app/th/analyse_kropp.webp" srcset="../images/app/th/analyse_kropp.webp 600w, ../images/app/th/analyse_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="analyse_kropp" data-stor data-alt="web_f80_alt_analyse" alt="การวิเคราะห์ AI ใน FODMAPP: สิ่งที่ปรากฏบ่อยที่สุดก่อนมีอาการ" width="600" height="3480" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+        <div class="dagbok-tekst">
+        <span class="dagbok-merke" data-i18n="web_f80_monster_merke">การวิเคราะห์ AI</span>
+        <h3 data-i18n="web_f80_monster_h">ดูรูปแบบของคุณ</h3>
+        <p data-i18n="web_f80_monster_p">เลือก 14 หรือ 30 วันล่าสุด เมื่อบันทึกครบอย่างน้อย 10 วัน คุณจะได้สรุปบันทึกและภาพรวมของสิ่งที่ปรากฏซ้ำ</p>
+        <ul class="dagbok-liste">
+          <li data-i18n="web_f80_monster_l1">สิ่งที่ปรากฏบ่อยที่สุดก่อนมีอาการ</li>
+          <li data-i18n="web_f80_monster_l2">พร้อมตัวเลข เช่น “กินก่อนเกิดอาการ 9 จาก 14 ครั้งที่บันทึกไว้”</li>
+          <li data-i18n="web_f80_monster_l3">อาการปวดและความเครียดรายวันในกราฟเดียวกัน</li>
+        </ul>
+        <a class="feature-link" href="#rapport" data-i18n="web_f80_monster_lenke">แชร์รายงานกับแพทย์</a>
+        </div>
+      </article>
+    </div>
+    <div class="toalett-panel reveal" id="toalettkart">
+      <div class="toalett-tekst">
+        <span class="section-tag" data-i18n="web_f80_toa_tag">✦ แผนที่ห้องน้ำ</span>
+        <h2 class="section-title" data-i18n="web_f80_toa_title">หาห้องน้ำ<em>ใกล้ตัว</em></h2>
+        <p data-i18n="web_f80_toa_p">แผนที่ห้องน้ำแสดงห้องน้ำรอบตัวคุณ ทั้งบนแผนที่และในรายการพร้อมระยะทาง กรองตามสิ่งที่คุณต้องการ รับเส้นทาง และบันทึกห้องน้ำโปรดไว้ในบัญชีของคุณ</p>
+        <ul class="toalett-filtre"><li><span aria-hidden="true">🆓</span> <span data-i18n="web_f80_toa_f1">ฟรี</span></li><li><span aria-hidden="true">♿</span> <span data-i18n="web_f80_toa_f2">รถเข็น</span></li><li><span aria-hidden="true">🚼</span> <span data-i18n="web_f80_toa_f3">ห้องเปลี่ยนผ้าอ้อม</span></li><li><span aria-hidden="true">🕒</span> <span data-i18n="web_f80_toa_f4">เปิดอยู่</span></li><li><span aria-hidden="true">★</span> <span data-i18n="web_f80_toa_f5">รายการโปรด</span></li></ul>
+        <p class="toalett-kilde"><span data-i18n="web_f80_toa_kilde_html">ข้อมูลห้องน้ำ: © ผู้ร่วมให้ข้อมูล <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></span><span class="kilde-skille" aria-hidden="true"> · </span><span data-i18n="web_f82_kart_kilde">แผนที่: Google</span></p>
+      </div>
+      <div class="toalett-scene"><figure class="tlf stlf" data-tlf="kart" data-start-bunn="0.2342" style="--tlf-topp:#F8F0EA"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="tlf-topp"><img src="../images/app/th/kart_topp.webp" srcset="../images/app/th/kart_topp.webp 600w, ../images/app/th/kart_topp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kart_topp" data-stor alt="" width="600" height="116" loading="lazy" decoding="async"></div><div class="tlf-kropp" tabindex="0" role="region" aria-label="แผนที่ห้องน้ำใน FODMAPP พร้อมตัวกรองและห้องน้ำใกล้ตัว"><img src="../images/app/th/kart_kropp.webp" srcset="../images/app/th/kart_kropp.webp 600w, ../images/app/th/kart_kropp_860.webp 860w" sizes="(max-width:600px) 200px, 250px" data-app-bilde="kart_kropp" data-stor data-alt="web_f80_alt_kart" alt="แผนที่ห้องน้ำใน FODMAPP พร้อมตัวกรองและห้องน้ำใกล้ตัว" width="600" height="4267" loading="lazy" decoding="async"></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure></div>
+    </div>
+  </div></section>
+
+  <!-- ── Rapport til legen (runde 77C) ── -->
+  <section id="rapport" class="rapport-section"><div class="container">
+    <div class="rapport-grid">
+      <div class="rapport-tekst reveal">
+        <span class="section-tag" data-i18n="web_rap_tag">✦ รายงานสำหรับแพทย์</span>
+        <h2 class="section-title" data-i18n="web_rap_title">แชร์บันทึกประจำวันของคุณกับแพทย์</h2>
+        <p class="section-sub" data-i18n="web_rap_sub">สร้างรายงานที่เป็นระเบียบจากสิ่งที่คุณบันทึกไว้ ได้แก่ อาการ การขับถ่าย มื้ออาหาร และยา พร้อมนำไปให้แพทย์ประจำตัว แพทย์ระบบทางเดินอาหาร หรือนักโภชนาการดู</p>
+        <ul class="rapport-liste">
+          <li data-i18n="web_rap_p1">สรุปและตัวเลขสำคัญในหน้าแรก</li>
+          <li data-i18n="web_rap_p2">กราฟ ปฏิทิน และภาพรวมรายวัน</li>
+          <li data-i18n="web_rap_p3">คุณเลือกช่วงเวลาและภาษาได้ แล้วแชร์รายงานเป็นไฟล์ PDF</li>
+        </ul>
+        <div data-i18n="web_rap_knapp_html"><a class="btn-rapport" href="../rapport/fodmapp-eksempelrapport-en.pdf" target="_blank" rel="noopener">ดูรายงานตัวอย่าง (PDF) ↗</a></div>
+        <p class="rapport-plus" data-i18n="web_rap_plus">รวมอยู่ใน FODMAPP Plus</p>
+        <p class="rapport-note" data-i18n="web_rap_note">ตัวอย่างนี้สร้างจากข้อมูลสมมติ รายงานเป็นการรวบรวมสิ่งที่คุณบันทึกเอง และไม่ได้ให้การวินิจฉัยหรือคำแนะนำในการรักษา</p>
+      </div>
+      <div class="rapport-bilde reveal reveal-d1" data-i18n="web_rap_bilde_html"><img src="../rapport/side1-en.webp" alt="หน้าแรกของรายงานตัวอย่างจาก FODMAPP" loading="lazy" width="620" height="877"></div>
+    </div>
+  </div></section>
+
+  <!-- ── Demo ── -->
+  <section id="demo" class="demo-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag" data-i18n="demo_tag">▶ สาธิต</span><h2 class="section-title" data-i18n="demo_title">ดู FODMAPP ใช้งานจริง</h2></div>
+    <!-- r82:demo -->
+    <!-- Den gamle demovideoen (videos/demo.mp4, «EAT WITHOUT PAIN», MDR) er skjult i runde 82; fila er ikke slettet. Legg en ny video i videos/demo-ny.mp4, så vises bryteren «Animasjon / Video» (se dsl/r80_data/nettside/README.md). -->
+    <div class="demo-wrapper reveal reveal-d1">
+      <div class="demo-scene"><figure class="tlf stlf demo-tlf" data-tlf="demo" data-demo style="--tlf-topp:#FBF8F3"><div class="tlf-skjerm"><div class="tlf-status" aria-hidden="true"><span class="tlf-klokke">20:30</span><span class="tlf-ikoner"><svg class="tlf-dekning" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="4.6" y="5.1" width="3" height="6.9" rx="1"/><rect x="9.2" y="2.6" width="3" height="9.4" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg><svg class="tlf-wifi" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.4a9.3 9.3 0 0 1 13 0"/><path d="M4.2 7.1a5.4 5.4 0 0 1 7.6 0"/><circle cx="8" cy="10.2" r="1.45" fill="currentColor" stroke="none"/></svg><svg class="tlf-batteri" viewBox="0 0 27 13" fill="currentColor"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".4"/><rect x="2.3" y="2.3" width="17" height="8.4" rx="2.1"/><path d="M25 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" opacity=".45"/></svg></span></div><div class="demo-flate" role="img" data-i18n-aria="web_f82_demo_alt" aria-label="แอนิเมชันของ FODMAPP ด้วยตัวเลขตัวอย่าง: หน้าหลัก การสแกนผัดกระทะและซอสมะเขือเทศ บันทึกอาการปวด การวิเคราะห์ AI แผนที่ห้องน้ำ และแชท AI"><div class="demo-lerret"><div class="demo-skjerm" data-s="hjem"><div class="demo-kropp" style="top:0px;height:878px"><img src="../images/app/th/hjem_kropp.webp" srcset="../images/app/th/hjem_kropp.webp 600w, ../images/app/th/hjem_kropp_860.webp 860w" sizes="280px" data-app-bilde="hjem_kropp" data-stor alt="" width="600" height="1965" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="matrett"><div class="demo-kropp" style="top:0px;height:878px"><img src="../images/app/th/matrett_kropp.webp" srcset="../images/app/th/matrett_kropp.webp 600w, ../images/app/th/matrett_kropp_860.webp 860w" sizes="280px" data-app-bilde="matrett_kropp" data-stor alt="" width="600" height="3271" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="strekkode"><div class="demo-kropp" style="top:0px;height:878px"><img src="../images/app/th/strekkode_kropp.webp" srcset="../images/app/th/strekkode_kropp.webp 600w, ../images/app/th/strekkode_kropp_860.webp 860w" sizes="280px" data-app-bilde="strekkode_kropp" data-stor alt="" width="600" height="2714" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="dagbok"><div class="demo-kropp" style="top:0px;height:878px"><img src="../images/app/th/dagbok_kropp.webp" srcset="../images/app/th/dagbok_kropp.webp 600w, ../images/app/th/dagbok_kropp_860.webp 860w" sizes="280px" data-app-bilde="dagbok_kropp" data-stor alt="" width="600" height="4288" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="analyse"><div class="demo-kropp" style="top:0px;height:878px"><img src="../images/app/th/analyse_kropp.webp" srcset="../images/app/th/analyse_kropp.webp 600w, ../images/app/th/analyse_kropp_860.webp 860w" sizes="280px" data-app-bilde="analyse_kropp" data-stor alt="" width="600" height="3480" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="kart"><div class="demo-topp"><img src="../images/app/th/kart_topp.webp" srcset="../images/app/th/kart_topp.webp 600w, ../images/app/th/kart_topp_860.webp 860w" sizes="280px" data-app-bilde="kart_topp" data-stor alt="" width="600" height="116" loading="lazy" decoding="async"></div><div class="demo-kropp" style="top:83px;height:795px"><img src="../images/app/th/kart_kropp.webp" srcset="../images/app/th/kart_kropp.webp 600w, ../images/app/th/kart_kropp_860.webp 860w" sizes="280px" data-app-bilde="kart_kropp" data-stor alt="" width="600" height="4267" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-skjerm" data-s="chat"><div class="demo-topp"><img src="../images/app/th/chat_topp.webp" srcset="../images/app/th/chat_topp.webp 600w, ../images/app/th/chat_topp_860.webp 860w" sizes="280px" data-app-bilde="chat_topp" data-stor alt="" width="600" height="127" loading="lazy" decoding="async"></div><div class="demo-kropp" style="top:91px;height:681px"><img src="../images/app/th/chat_kropp.webp" srcset="../images/app/th/chat_kropp.webp 600w, ../images/app/th/chat_kropp_860.webp 860w" sizes="280px" data-app-bilde="chat_kropp" data-stor alt="" width="600" height="1026" loading="lazy" decoding="async"></div><div class="demo-bunn"><img src="../images/app/th/chat_bunn.webp" srcset="../images/app/th/chat_bunn.webp 600w, ../images/app/th/chat_bunn_860.webp 860w" sizes="280px" data-app-bilde="chat_bunn" data-stor alt="" width="600" height="148" loading="lazy" decoding="async"></div><div class="demo-skygge"></div></div><div class="demo-trykk"></div></div></div></div><button type="button" class="tlf-vis" data-i18n-aria="web_f82_aapne" aria-label="แสดงแบบเต็มหน้าจอ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9 7M6.5 13.5h-4v-4M2.5 13.5L7 9"/></svg></button></figure><figure class="tlf demo-video-tlf" hidden><div class="tlf-skjerm"><video muted playsinline controls loop preload="none" data-src="../videos/demo-ny.mp4"></video></div></figure></div>
+      <div class="demo-kontroller"><button type="button" class="demo-knapp demo-pause" aria-pressed="false" data-tekst-pause="web_f82_demo_pause" data-tekst-spill="web_f82_demo_spill"><svg class="ikon-pause" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="2" width="3.2" height="10" rx="1"/><rect x="8.3" y="2" width="3.2" height="10" rx="1"/></svg><svg class="ikon-spill" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true" style="display:none"><path d="M3.5 1.8v10.4c0 .5.6.8 1 .5l8-5.2a.6.6 0 0 0 0-1L4.5 1.3c-.4-.3-1 0-1 .5z"/></svg><span>Pause</span></button><div class="demo-valg" role="group" hidden><button type="button" aria-pressed="true" data-demo-vis="anim" data-i18n="web_f82_demo_anim">แอนิเมชัน</button><button type="button" aria-pressed="false" data-demo-vis="video" data-i18n="web_f82_demo_video">วิดีโอ</button></div></div>
+    </div>
+    <!-- /r82:demo -->
+  </div></section>
+
+  <!-- ── FAQ ── -->
+  <section id="faq" class="faq-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag">✦ FAQ</span><h2 class="section-title" data-i18n="faq_title">คำถามที่พบบ่อย</h2></div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q1q">อาหาร FODMAP ต่ำคืออะไร?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q1a">วิธีการรับประทานอาหารตามงานวิจัยเพื่อลดปัญหาการย่อยอาหารใน IBS โดยจำกัดคาร์โบไฮเดรตบางชนิด</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q2q">คุณจัดการความเป็นส่วนตัวอย่างไร?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q2a">บทสนทนากับแชต AI ของคุณจะถูกลบโดยอัตโนมัติหลังจาก 24 ชั่วโมง และบันทึกอาหารและอาการที่คุณจดไว้จะเก็บไว้ในบัญชีของคุณเพื่อให้คุณมีประวัติ &ndash; คุณลบได้ในแอปทุกเมื่อ รูปภาพที่คุณถ่ายเพื่อการวิเคราะห์จะเก็บไว้กับเราเพียงชั่วคราวระหว่างที่ AI วิเคราะห์ และถูกลบโดยอัตโนมัติภายในหนึ่งชั่วโมง โดยจะไม่ถูกบันทึกไว้ในประวัติการสแกนของคุณ ข้อความและรูปภาพจะถูกประมวลผลโดยโมเดล AI Gemini จาก Google และ Claude จาก Anthropic โดยอาศัยความยินยอมโดยชัดแจ้งของคุณ เราไม่เคยขายข้อมูลของคุณ และไม่เคยใช้ข้อมูลนั้นเพื่อกำหนดเป้าหมายโฆษณา</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q3q">แอปมีให้ใช้งานบน iOS และ Android หรือไม่?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q3a">ใช่ FODMAPP มีให้ใช้งานบนทั้ง iPhone และ Android</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q4q">AI แม่นยำแค่ไหน?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q4a">FODMAPP ใช้ AI ขั้นสูงที่ประเมินปริมาณ FODMAP โดยอ้างอิงจากงานวิจัยที่ได้รับการยอมรับ AI อาจผิดพลาดได้ และควรใช้ควบคู่กับคำแนะนำจากผู้เชี่ยวชาญ ไม่ใช่ใช้แทน</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q5q">แอปฟรีหรือไม่?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q5a">ผู้ใช้ใหม่ทุกคนจะได้รับช่วงทดลองใช้ฟรี 14 วัน พร้อมการเข้าถึงฟีเจอร์ทั้งหมดอย่างเต็มรูปแบบ หลังช่วงทดลองใช้ การเข้าถึงฟีเจอร์ AI ต่อไปจำเป็นต้องมีการสมัครสมาชิก FODMAPP Plus ซึ่งมีให้เลือกแบบรายเดือนหรือรายปี ราคาที่ใช้บังคับจะแสดงในแอปก่อนที่คุณจะซื้อเสมอ</p></div></div>
+      <div class="faq-item reveal"><div class="faq-question"><h3 data-i18n="q6q">รองรับภาษาใดบ้าง?</h3><span class="faq-arrow">▶</span></div><div class="faq-answer"><p data-i18n="q6a">FODMAPP มีให้ใช้งานใน 23+ ภาษา รวมถึงไทย อังกฤษ นอร์เวย์ สวีเดน เดนมาร์ก ฟินแลนด์ เยอรมัน ฝรั่งเศส สเปน อิตาลี โปรตุเกส ดัตช์ โปแลนด์ รัสเซีย ตุรกี ญี่ปุ่น เกาหลี จีน ฮินดี อินโดนีเซีย ลิทัวเนีย และอาหรับ</p></div></div>
+    </div>
+  </div></section>
+
+  <!-- ── Reviews ── -->
+  <section class="reviews-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag" data-i18n="rev_tag">⭐ รีวิว</span><h2 class="section-title" data-i18n="rev_title">ผู้ใช้พูดอะไร</h2><p class="section-sub" data-i18n="rev_sub">รีวิวจริงจาก App Store และ Google Play</p></div>
+    <div class="reveal"><div class="reviews-score"><span class="big-stars">★★★★★</span><span class="snitt-tekst" data-i18n="web_f210_rev_snitt">5.0 จาก 5 ใน App Store นอร์เวย์</span></div></div>
+    <div class="reviews-grid r210 karusell">
+      <div class="review-card reveal reveal-d1" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="rev_q1">ประทับใจตั้งแต่แรกเห็น – แอปนี้ฉันจะใช้บ่อยแน่นอน!</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb">แปลจากภาษานอร์เวย์</span>
+        <div class="review-foot">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-author">Christoffer S.</div>
+            <div class="review-meta">Samsung Galaxy S24</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Google Play</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="rev_q2">ฉันชอบแอปนี้มาก! ใช้งานง่าย</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb">แปลจากภาษานอร์เวย์</span>
+        <div class="review-foot">
+          <div class="review-avatar">G</div>
+          <div>
+            <div class="review-author">Gouled Y.</div>
+            <div class="review-meta">Motorola moto e13</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Google Play</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d1" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q3">แอปสำหรับ ibs ที่ดีที่สุดที่ฉันเคยเจอ เข้าใจง่ายและใช้งานในชีวิตประจำวันได้สะดวก แนะนำอย่างยิ่ง! :)</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb">แปลจากภาษานอร์เวย์</span>
+        <div class="review-foot">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-author">Karnekj</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">นอร์เวย์</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q4">ฉันไม่ค่อยรู้เรื่องโภชนาการเท่าไร แต่แอปนี้ทำให้ควบคุมได้ง่ายขึ้นมากว่าฉันกินอะไรได้บ้าง ฉันแค่สแกนสินค้าในร้านแล้วได้คำตอบทันที ฉันใช้แทบทุกวันตั้งแต่ดาวน์โหลดมา</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en">แปลจากภาษาอังกฤษ</span>
+        <div class="review-foot">
+          <div class="review-avatar">U</div>
+          <div>
+            <div class="review-author">uskeivys</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_gb">สหราชอาณาจักร</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d3" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q5">การใช้ชีวิตกับอาหาร FODMAP ก็ยากพออยู่แล้ว แต่แอปนี้ทำให้รับมือได้จริงๆ เหมาะทั้งกับมือใหม่และผู้ใช้ที่มีประสบการณ์ เป็นเครื่องมือที่แนะนำอย่างยิ่ง!</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en">แปลจากภาษาอังกฤษ</span>
+        <div class="review-foot">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-author">Meddern</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">นอร์เวย์</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d4" data-orig="en">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q6">ในที่สุดก็มีเครื่องมือ AI สำหรับคนที่มีปัญหาระบบทางเดินอาหาร</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_en">แปลจากภาษาอังกฤษ</span>
+        <div class="review-foot">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-author">chrbo86</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">นอร์เวย์</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d1" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q7">แอปยอดเยี่ยม ตรงกับที่ฉันต้องการเพื่อดูแลการย่อยอาหาร</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb">แปลจากภาษานอร์เวย์</span>
+        <div class="review-foot">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-author">Sannegilsen</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">นอร์เวย์</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2" data-orig="nb">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote" data-i18n="web_f210_rev_q8">เป็นความช่วยเหลือแบบที่ฉันต้องการพอดีเลย 👍👍👍</p><span class="review-ovs" data-i18n="web_f210_rev_ovs_nb">แปลจากภาษานอร์เวย์</span>
+        <div class="review-foot">
+          <div class="review-avatar">T</div>
+          <div>
+            <div class="review-author">Terje7755</div>
+            <div class="review-meta" data-i18n="web_f210_rev_land_no">นอร์เวย์</div>
+          </div>
+          <div class="review-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> App Store</div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ── CTA ── -->
+  <div class="cta-outer"><div class="container">
+    <section id="cta" class="cta-section reveal" style="padding-left:2rem;padding-right:2rem">
+      <h2 data-i18n="cta_title">หยุดใช้ชีวิตวนเวียนกับลำไส้ของคุณ</h2>
+      <p data-i18n="cta_p">ดาวน์โหลดฟรี iOS และ Android รองรับ 23 ภาษา</p>
+      <div class="store-buttons">
+        <a href="https://apps.apple.com/th/app/id6761849984"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" loading="lazy"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp&amp;hl=th&amp;gl=TH"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" loading="lazy"></a>
+      </div>
+    </section>
+  </div></div>
+
+  <!-- ── Contact ── -->
+  <section id="contact" class="contact-section"><div class="container text-center">
+    <div class="reveal"><span class="section-tag" data-i18n="contact_tag">✉ ติดต่อ</span><h2 class="section-title" data-i18n="contact_title">ติดต่อเรา</h2></div>
+    <div class="contact-card reveal reveal-d1">
+      <form class="contact-form" id="contactForm" onsubmit="sendContactEmail(event)">
+        <input type="text" name="name" id="cf-name" data-i18n-ph="ph_name" placeholder="ชื่อ" required>
+        <input type="email" name="email" id="cf-email" data-i18n-ph="ph_email" placeholder="อีเมล" required>
+        <textarea name="message" rows="5" id="cf-msg" data-i18n-ph="ph_msg" placeholder="ข้อความของคุณ…" required></textarea>
+        <button type="submit" data-i18n="form_btn">ส่งข้อความ →</button>
+      </form>
+    </div>
+  </div></section>
+
+  <div class="disclaimer" data-i18n="discl">FODMAPP เป็นเครื่องมือด้านไลฟ์สไตล์สำหรับผู้ที่ต้องการรับประทานอาหารแบบ FODMAP ต่ำ แอปนี้ไม่ใช่เครื่องมือแพทย์: ไม่วินิจฉัยโรค ไม่ประเมินอาการ และไม่ให้คำแนะนำด้านการรักษา โปรดปรึกษาผู้เชี่ยวชาญด้านสุขภาพเสมอสำหรับความต้องการด้านอาหารเฉพาะบุคคล</div>
+
+  <div class="lang-overlay" id="langOverlay" onclick="closeLangModal(event)"><div class="lang-modal" onclick="event.stopPropagation()"><button class="lang-modal-close" onclick="closeLangModalForce()">✕</button><h3 data-i18n="lang_title">เลือกภาษา</h3><div class="lang-grid" id="langGrid"><a class="lang-option" href="../id/" hreflang="id" lang="id" data-kode="id"><span class="lang-flag">🇮🇩</span>Bahasa Indonesia</a><a class="lang-option" href="../da/" hreflang="da" lang="da" data-kode="da"><span class="lang-flag">🇩🇰</span>Dansk</a><a class="lang-option" href="../de/" hreflang="de" lang="de" data-kode="de"><span class="lang-flag">🇩🇪</span>Deutsch</a><a class="lang-option" href="../" hreflang="en" lang="en" data-kode="en"><span class="lang-flag">🇬🇧</span>English</a><a class="lang-option" href="../es/" hreflang="es" lang="es" data-kode="es"><span class="lang-flag">🇪🇸</span>Español</a><a class="lang-option" href="../fr/" hreflang="fr" lang="fr" data-kode="fr"><span class="lang-flag">🇫🇷</span>Français</a><a class="lang-option" href="../it/" hreflang="it" lang="it" data-kode="it"><span class="lang-flag">🇮🇹</span>Italiano</a><a class="lang-option" href="../lt/" hreflang="lt" lang="lt" data-kode="lt"><span class="lang-flag">🇱🇹</span>Lietuvių kalba</a><a class="lang-option" href="../nl/" hreflang="nl" lang="nl" data-kode="nl"><span class="lang-flag">🇳🇱</span>Nederlands</a><a class="lang-option" href="../no/" hreflang="nb" lang="nb" data-kode="nb"><span class="lang-flag">🇳🇴</span>Norsk bokmål</a><a class="lang-option" href="../pl/" hreflang="pl" lang="pl" data-kode="pl"><span class="lang-flag">🇵🇱</span>Polski</a><a class="lang-option" href="../pt/" hreflang="pt" lang="pt" data-kode="pt"><span class="lang-flag">🇵🇹</span>Português</a><a class="lang-option" href="../fi/" hreflang="fi" lang="fi" data-kode="fi"><span class="lang-flag">🇫🇮</span>Suomi</a><a class="lang-option" href="../sv/" hreflang="sv" lang="sv" data-kode="sv"><span class="lang-flag">🇸🇪</span>Svenska</a><a class="lang-option" href="../tr/" hreflang="tr" lang="tr" data-kode="tr"><span class="lang-flag">🇹🇷</span>Türkçe</a><a class="lang-option" href="../ru/" hreflang="ru" lang="ru" data-kode="ru"><span class="lang-flag">🇷🇺</span>Русский</a><a class="lang-option" href="../ar/" hreflang="ar" lang="ar" data-kode="ar"><span class="lang-flag">🇸🇦</span>العربية</a><a class="lang-option" href="../hi/" hreflang="hi" lang="hi" data-kode="hi"><span class="lang-flag">🇮🇳</span>हिन्दी</a><a class="lang-option active" href="../th/" hreflang="th" lang="th" data-kode="th"><span class="lang-flag">🇹🇭</span>ไทย</a><a class="lang-option" href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans" data-kode="zh-Hans"><span class="lang-flag">🇨🇳</span>中文 (简体)</a><a class="lang-option" href="../zh-hant/" hreflang="zh-Hant" lang="zh-Hant" data-kode="zh-Hant"><span class="lang-flag">🇹🇼</span>中文 (繁體)</a><a class="lang-option" href="../ja/" hreflang="ja" lang="ja" data-kode="ja"><span class="lang-flag">🇯🇵</span>日本語</a><a class="lang-option" href="../ko/" hreflang="ko" lang="ko" data-kode="ko"><span class="lang-flag">🇰🇷</span>한국어</a></div></div></div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo-footer"><img src="../images/logo.png" alt="FODMAPP"> FODMAPP</div><p data-i18n="ft_desc">ผู้ช่วย AI ที่ทำให้การกินแบบ low FODMAP ในชีวิตประจำวันง่ายขึ้น</p></div>
+      <div class="footer-col"><h4 data-i18n="ft_pages">หน้า</h4><a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a><a href="manual.html" data-i18n="nav_manual">คู่มือ</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">ติดต่อ</a></div>
+      <div class="footer-col"><h4 data-i18n="ft_legal">กฎหมาย</h4><a href="privacypolicy.html" data-i18n="ft_priv">นโยบายความเป็นส่วนตัว</a><a href="termsandconditions.html" data-i18n="ft_terms">ข้อกำหนดการใช้งาน</a><a href="delete.html" data-i18n="ft_del">ลบบัญชี</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 FODMAPP · Telemark Software Solutions AS</span><a href="mailto:post@fodmapp.com">post@fodmapp.com</a></div>
+  </footer>
+
+  <div id="mobileCta" class="mobile-cta-bar">
+    <div class="mobile-cta-inner">
+      <a href="#cta" class="mobile-cta-btn" data-i18n="hero_btn1">ดาวน์โหลดฟรี ↓</a>
+    </div>
+  </div>
+
+  <!-- rSpraak:kjoretid --><script>var currentLang="th",T={"th":{"web_f82_rull_hint":"เลื่อนเพื่อดูเพิ่มเติม","web_f82_demo_pause":"หยุดชั่วคราว","web_f82_demo_spill":"เล่น","web_f210_karusell_kort":"การ์ด","web_f210_karusell_neste":"ถัดไป","web_f210_karusell_forrige":"ก่อนหน้า"}};</script><script src="../js/spraak.js"></script><!-- /rSpraak:kjoretid -->
+  <script>/* r82:tlf */
+    // Runde 82: scroll-telefoner med helsides app-skjermbilder og fullskjerm. Kilde:
+    // dsl/r80_data/nettside/r82.js (lag_nettside_82.py limer den inn og fyller inn språklista).
+    // Bildene ligger i images/app/<kode>/<skjerm>_<del>.webp (600 px) og <skjerm>_<del>_860.webp;
+    // språk uten egen komplett mappe bruker reservemappa. Erstatter runde 80-skriptet (r80:appbilder).
+    // Del 2: demoanimasjonen (figure[data-demo], r82:demo) kan også åpnes i fullskjerm; da tegner
+    // animasjonen i kopien (window.fodmappDemo.vis/skjul).
+    var APP_BILDE_SPRAAK=["ar", "da", "de", "en", "es", "fi", "fr", "hi", "id", "it", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "th", "tr", "zh-Hans", "zh-Hant"],APP_BILDE_RESERVE="nb";
+    function settAppBilder(lang){var k=APP_BILDE_SPRAAK.indexOf(lang)>=0?lang:APP_BILDE_RESERVE;var t=(typeof T==='object'&&T[lang])||{};
+      document.querySelectorAll('img[data-app-bilde]').forEach(function(img){var b='../images/app/'+k+'/'+img.getAttribute('data-app-bilde');
+        if(img.hasAttribute('data-stor')){var ss=b+'.webp 600w, '+b+'_860.webp 860w';if(img.getAttribute('srcset')!==ss)img.setAttribute('srcset',ss)}
+        if(img.getAttribute('src')!==b+'.webp')img.setAttribute('src',b+'.webp');var a=img.getAttribute('data-alt');if(a&&t[a])img.alt=t[a]});
+      document.querySelectorAll('[data-i18n-aria]').forEach(function(el){var a=t[el.getAttribute('data-i18n-aria')];if(a)el.setAttribute('aria-label',a)});
+      document.querySelectorAll('figure.stlf').forEach(function(f){var r=f.querySelector('.tlf-kropp'),i=r&&r.querySelector('img');if(i)r.setAttribute('aria-label',i.alt)});
+      var full=document.getElementById('tlfFull'),fi=full&&full.querySelector('.tlf-kropp img'),fd=full&&full.querySelector('.demo-flate');
+      if(full&&!full.hidden){if(fi)full.setAttribute('aria-label',fi.alt);else if(fd)full.setAttribute('aria-label',fd.getAttribute('aria-label')||'')}
+      if(window.fodmappDemo)window.fodmappDemo.spraak()}
+    function visFane(n){var b=document.querySelector('.feature-tab[data-fane="'+n+'"]');if(b&&typeof switchTab==='function')switchTab(n,b)}
+    (function(){if(typeof applyLang==='function'){var opprinnelig=applyLang;applyLang=function(l){opprinnelig(l);settAppBilder(l)}}settAppBilder(typeof currentLang==='string'?currentLang:'en')})();
+    (function(){
+      var KLIPP='.hero-wrap,.fane-scene,.dagbok-scene,.toalett-scene,.demo-scene',STOR='(max-width:600px) 92vw, 440px';
+      var full=null,aapen=null,klon=null,forrigeFokus=null,iHistorikk=false,planlagt=false;
+      function kropp(f){return f&&f.querySelector('.tlf-kropp')}
+      function bilde(f){return f&&f.querySelector('.tlf-kropp img')}
+      function rullUten(el,y){var s=el.style.scrollBehavior;el.style.scrollBehavior='auto';el.scrollTop=y;el.style.scrollBehavior=s}
+      // Startposisjon: data-start = andel av kroppen øverst; data-start-bunn = andel av kroppen som skal stå
+      // ved underkanten av det synlige (beholderens underkant, eller telefonens i fullskjerm).
+      function startY(f,k,c){var i=bilde(f),h=i?i.offsetHeight:0,sb=parseFloat(f.getAttribute('data-start-bunn')||'0');
+        if(sb>0){var kb=k.getBoundingClientRect(),u=c?Math.min(kb.bottom,c.getBoundingClientRect().bottom):kb.bottom;return Math.max(0,sb*h-(u-kb.top))}
+        return parseFloat(f.getAttribute('data-start')||'0')*h}
+      // Hvor mye av rullefeltet som ligger under beholderens underkant (telefonen går ut av bildet),
+      // og startposisjonen (mønsteroversikten ved lista, toalettkartet med kartets underkant synlig).
+      // Hele piksler: kroppens høyde og innholdets høyde rundes slik at enden av rullefeltet er et helt tall.
+      // Ellers blir en brøkdel av en piksel igjen å rulle, og nettleseren lar ikke en ny bevegelse gå
+      // videre til siden når telefonen er rullet helt ned.
+      function tilpass(){planlagt=false;
+        document.querySelectorAll('figure.stlf').forEach(function(f){if(f.closest('#tlfFull'))return;var k=kropp(f);if(!k||!k.getClientRects().length)return;
+          k.style.flex='';var kh=k.getBoundingClientRect().height,khi=Math.floor(kh+.001);if(kh-khi>.001)k.style.flex='0 0 '+khi+'px';
+          var c=f.closest(KLIPP),s=0;if(c){s=k.getBoundingClientRect().bottom-c.getBoundingClientRect().bottom;s=s>0?Math.ceil(s+16):0}
+          var ib=bilde(f),ih=ib?ib.getBoundingClientRect().height:0;s=+(s+(Math.ceil(ih-.001)-ih)).toFixed(4);
+          if(k.style.getPropertyValue('--tlf-skjult')!==s+'px')k.style.setProperty('--tlf-skjult',s+'px');
+          var i=bilde(f),h=i?i.offsetHeight:0;
+          if(f.hasAttribute('data-startet')&&f._h&&h&&Math.abs(h-f._h)>1){var r=h/f._h;rullUten(k,k.scrollTop*r);f.setAttribute('data-startet',String(Math.round(parseFloat(f.getAttribute('data-startet'))*r)))}
+          if(h)f._h=h; // ny bredde (f.eks. snudd nettbrett): samme sted i appen, ikke samme antall piksler
+          if(!f.hasAttribute('data-startet')&&k.clientHeight>0){var y=startY(f,k,c);if(y>0)rullUten(k,y);f.setAttribute('data-startet',String(Math.round(k.scrollTop)))}})}
+      function planlegg(){if(planlagt)return;planlagt=true;requestAnimationFrame(tilpass)}
+      function fokuserbare(){return Array.prototype.filter.call(full.querySelectorAll('button,[tabindex="0"]'),function(el){return el.getClientRects().length>0})}
+      function aapne(f){full=full||document.getElementById('tlfFull');if(aapen||!full)return;
+        forrigeFokus=document.activeElement;var erDemo=f.hasAttribute('data-demo');
+        var k0=kropp(f),i0=bilde(f),andel=(k0&&i0&&i0.offsetHeight)?k0.scrollTop/i0.offsetHeight:0;
+        var urort=!k0||Math.abs(k0.scrollTop-parseFloat(f.getAttribute('data-startet')||'0'))<2; // ikke rullet: start som i appen
+        klon=f.cloneNode(true);klon.classList.remove('tlf-bak','tlf-foran');klon.removeAttribute('data-startet');
+        var vis=klon.querySelector('.tlf-vis');if(vis)vis.remove();
+        klon.querySelectorAll('img').forEach(function(i){i.setAttribute('loading','eager');if(i.hasAttribute('srcset'))i.setAttribute('sizes',STOR)});
+        var plass=full.querySelector('.tlf-full-plass');plass.innerHTML='';plass.appendChild(klon);
+        var etikett=(i0&&i0.alt)||'';if(erDemo){var fd=f.querySelector('.demo-flate');etikett=(fd&&fd.getAttribute('aria-label'))||''}
+        full.setAttribute('aria-label',etikett);full.hidden=false;document.documentElement.classList.add('tlf-full-aapen');aapen=f;
+        if(erDemo){if(window.fodmappDemo)window.fodmappDemo.vis(klon);var lk=full.querySelector('.tlf-full-lukk');if(lk)lk.focus({preventScroll:true})}
+        else{var k1=kropp(klon);k1.style.removeProperty('--tlf-skjult');k1.style.flex='';var i1=bilde(klon);rullUten(k1,urort?startY(klon,k1,null):andel*(i1?i1.offsetHeight:0));k1.focus({preventScroll:true})}
+        try{history.pushState({tlfFull:1},'');iHistorikk=true}catch(e){iHistorikk=false}}
+      function lukk(fraTilbake){if(!aapen)return;var f=aapen;aapen=null;
+        if(klon&&klon.hasAttribute('data-demo')&&window.fodmappDemo)window.fodmappDemo.skjul(klon);
+        full.hidden=true;document.documentElement.classList.remove('tlf-full-aapen');full.querySelector('.tlf-full-plass').innerHTML='';klon=null;
+        if(iHistorikk){iHistorikk=false;if(!fraTilbake){try{history.back()}catch(e){}}}
+        var m=(forrigeFokus&&forrigeFokus!==document.body&&document.contains(forrigeFokus))?forrigeFokus:(kropp(f)||f.querySelector('.tlf-vis'));if(m&&m.focus)m.focus({preventScroll:true})}
+      window.tlfAapne=aapne;window.tlfLukk=function(){lukk(false)};
+      document.addEventListener('click',function(e){var t=e.target;if(!t||!t.closest)return;
+        if(t.closest('#tlfFull')){if(!t.closest('figure.stlf'))lukk(false);return}
+        var f=t.closest('figure.stlf');if(f){e.preventDefault();aapne(f)}});
+      document.addEventListener('keydown',function(e){if(!aapen)return;
+        if(e.key==='Escape'||e.key==='Esc'){e.preventDefault();lukk(false);return}
+        if(e.key==='Tab'){var l=fokuserbare();if(!l.length)return;var i=l.indexOf(document.activeElement);e.preventDefault();
+          l[e.shiftKey?(i<=0?l.length-1:i-1):(i<0||i>=l.length-1?0:i+1)].focus()}});
+      document.addEventListener('focusin',function(e){if(aapen&&full&&!full.contains(e.target)){var l=fokuserbare();if(l.length)l[0].focus()}});
+      window.addEventListener('popstate',function(){if(aapen){iHistorikk=false;lukk(true)}});
+      // Musehjul: når en liten telefon er rullet til enden (eller toppen), går hjulet videre til siden med
+      // en gang, også midt i en bevegelse (nettleseren holder ellers bevegelsen låst til telefonen).
+      // Ikke i fullskjerm (der stopper telefonen ved enden).
+      function hjul(e){var k=e.currentTarget;if(e.ctrlKey||k.closest('#tlfFull'))return;var dy=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);
+        if(!dy||Math.abs(e.deltaX)>Math.abs(dy))return;var maks=k.scrollHeight-k.clientHeight;
+        if(dy>0?k.scrollTop>=maks-1:k.scrollTop<=1){e.preventDefault();window.scrollBy({top:dy,left:0,behavior:'instant'})}}
+      document.querySelectorAll('figure.stlf .tlf-kropp').forEach(function(k){k.addEventListener('wheel',hjul,{passive:false})});
+      // Klippebeholderne skal aldri rulle (r82.css: overflow:clip). Reserve for nettlesere uten clip: når en
+      // telefonkropp eller ⤢ får tastaturfokus, setter vi beholderen tilbake, så telefonen beholder toppen.
+      document.querySelectorAll(KLIPP).forEach(function(c){c.addEventListener('scroll',function(){if(c.scrollTop||c.scrollLeft){c.scrollTop=0;c.scrollLeft=0}})});
+      if('ResizeObserver' in window){var ro=new ResizeObserver(planlegg);document.querySelectorAll('figure.stlf .tlf-kropp').forEach(function(k){ro.observe(k)});document.querySelectorAll(KLIPP).forEach(function(c){ro.observe(c)})}
+      window.addEventListener('resize',planlegg);window.addEventListener('load',planlegg);
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(planlegg);
+      planlegg();
+    })();
+    // Runde 89 (Fredrik 5. okt): hint om at bildet i telefonen kan scrolles. En liten merkelapp midt på hver
+    // scroll-telefon (ikke demoen, ikke fullskjerm-kopien) som forsvinner når brukeren ruller, drar eller trykker
+    // i den telefonen. Bare brukerhandlinger teller: startposisjonene (data-start) settes med scrollTop.
+    (function(){
+      var N="web_f82_rull_hint";  // doble anførselstegn: lag_nettside_82.py sjekker at nøkkelen brukes
+      function tekst(){var l=typeof currentLang==='string'?currentLang:'nb',t=(typeof T==='object'&&(T[l]||T.nb))||{};return t[N]||'Scroll for å se mer'}
+      var PIL='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v11M4.8 5.7 8 2.5l3.2 3.2M4.8 10.3 8 13.5l3.2-3.2"/></svg>';
+      document.querySelectorAll('figure.stlf').forEach(function(f){
+        if(f.closest('#tlfFull')||f.hasAttribute('data-demo'))return;
+        var s=f.querySelector('.tlf-skjerm'),k=f.querySelector('.tlf-kropp');if(!s||!k||s.querySelector('.tlf-rull-hint'))return;
+        var h=document.createElement('span');h.className='tlf-rull-hint';h.setAttribute('aria-hidden','true');
+        h.innerHTML=PIL+'<span data-i18n="'+N+'"></span>';h.lastChild.textContent=tekst();s.appendChild(h);
+        function skjul(){h.classList.add('skjult')}
+        ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){k.addEventListener(ev,skjul,{passive:true,once:true})});
+        f.addEventListener('click',skjul);
+      });
+    })();
+  </script>
+  <script>/* r82:demo */
+    // Runde 82 del 2: demoanimasjon av appen i «Se FODMAPP i aksjon» (erstatter den gamle demovideoen
+    // videos/demo.mp4 med «EAT WITHOUT PAIN», som er skjult; fila er ikke slettet). Kilde:
+    // dsl/r80_data/nettside/r82_demo.js (lag_nettside_82.py limer den inn og fyller inn KONF).
+    // Lett, skriptet JS/CSS-animasjon av helsidesbildene (images/app/<kode>/<skjerm>_<del>.webp) i samme
+    // telefonramme med statuslinje som de andre telefonene: Hjem -> trykk på woken (matrettsresultatet)
+    // -> tilbake -> trykk på ketchupen (strekkoderesultatet) -> smertedagbok -> mønsteroversikt ->
+    // toalettkart -> AI-chat, og i løkke (ca. 40 s). Står stille når seksjonen ikke er synlig, når fanen
+    // er skjult og ved prefers-reduced-motion (da vises et stillbilde; «Spill av» starter den likevel).
+    // Pauseknappen under telefonen (WCAG 2.2.2). Telefonen kan åpnes i fullskjerm som de andre (r82.js
+    // kaller fodmappDemo.vis/skjul med kopien). Finnes videos/demo-ny.mp4 (fetch HEAD), vises bryteren
+    // «Animasjon / Video», og videoen spilles i en telefon nr. 2 på samme sted.
+    // Koordinatene i MANUS er appens logiske px (430 bred; appflaten er 878 høy, under statuslinja).
+    // 20. okt 2026 (2.1.0): «Dagens skanninger» har woken øverst (y 632) og ketchupen under (702) når Hjem
+    // er rullet til bunnen (530); analysen rulles til «Går oftest igjen før plager» (900).
+    (function(){
+      var KONF={"video": "../videos/demo-ny.mp4", "skjermer": {"hjem": {"farge": "#FBF8F3", "topp": 0, "kropp": 1408.0, "bunn": 0}, "matrett": {"farge": "#F8F0EA", "topp": 0, "kropp": 2344.0, "bunn": 0}, "strekkode": {"farge": "#F8F0EA", "topp": 0, "kropp": 1945.0, "bunn": 0}, "dagbok": {"farge": "#F8F0EA", "topp": 0, "kropp": 3073.0, "bunn": 0}, "analyse": {"farge": "#F8F0EA", "topp": 0, "kropp": 2494.0, "bunn": 0}, "kart": {"farge": "#F8F0EA", "topp": 83.0, "kropp": 3058.33, "bunn": 0}, "chat": {"farge": "#F8F0EA", "topp": 91.0, "kropp": 735.0, "bunn": 106.0}}};
+      var fig=document.querySelector('figure[data-demo]');if(!fig)return;
+      var B=430,H=878,S=KONF.skjermer;
+      // [handling, ...]: vis <skjerm> <y> | vent <s> | rull <s> <y> | trykk <x> <y> | inn <skjerm> <y> | ut | tone <skjerm> <y>
+      var MANUS=[
+        ['vis','hjem',0],['vent',1.2],['rull',2.2,760],['vent',.4],
+        ['trykk',215,632],['inn','matrett',0],['vent',1.5],['rull',2.2,640],['vent',1.6],['ut'],
+        ['vent',.3],['trykk',215,702],['inn','strekkode',0],['vent',1.4],['rull',2.0,560],['vent',1.4],['ut'],
+        ['rull',1.1,300],['trykk',314,132],['inn','dagbok',0],['vent',.9],['rull',1.8,600],['vent',1.2],['ut'],
+        ['rull',.7,420],['trykk',215,576],['inn','analyse',0],['vent',.8],['rull',2.2,900],['vent',2.0],['ut'],
+        ['trykk',314,431],['inn','kart',0],['vent',1.0],['rull',1.8,560],['vent',1.6],['ut'],
+        ['trykk',115,431],['inn','chat',0],['vent',2.2],['tone','hjem',0]];
+      var VAR={trykk:.55,inn:.45,ut:.4,tone:.7};
+      function maksY(s){var k=S[s];return Math.max(0,k.kropp-(H-k.topp-k.bunn))}
+      function kopi(st){return st.map(function(e){return {s:e.s,y:e.y}})}
+      // Segmenter med starttid, varighet og tilstanden før (stabelen av skjermer)
+      var SEG=[],T0=0,stabel=[];
+      MANUS.forEach(function(m){var g={h:m[0],t0:T0,d:0,foer:kopi(stabel),m:m};
+        if(m[0]==='vis'){stabel=[{s:m[1],y:Math.min(m[2],maksY(m[1]))}]}
+        else if(m[0]==='vent'){g.d=m[1]}
+        else if(m[0]==='rull'){g.d=m[1];g.fra=stabel[stabel.length-1].y;g.til=Math.min(m[2],maksY(stabel[stabel.length-1].s));stabel[stabel.length-1].y=g.til}
+        else if(m[0]==='trykk'){g.d=VAR.trykk}
+        else if(m[0]==='inn'){g.d=VAR.inn;stabel.push({s:m[1],y:Math.min(m[2],maksY(m[1]))})}
+        else if(m[0]==='ut'){g.d=VAR.ut;stabel.pop()}
+        else if(m[0]==='tone'){g.d=VAR.tone;stabel=[{s:m[1],y:m[2]}]}
+        g.etter=kopi(stabel);T0+=g.d;SEG.push(g)});
+      var TOT=T0,STILL=0;
+      for(var i=0;i<SEG.length;i++){if(SEG[i].h==='inn'&&SEG[i].m[1]==='matrett'){STILL=SEG[i].t0+SEG[i].d+.6;break}}
+      function myk(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}       // inn og ut
+      function ut3(p){return 1-Math.pow(1-p,3)}
+      function tilstand(t){var g=SEG[SEG.length-1];for(var i=0;i<SEG.length;i++){if(t<SEG[i].t0+SEG[i].d||(SEG[i].d===0&&t<=SEG[i].t0)){g=SEG[i];break}}
+        var p=g.d?Math.min(1,Math.max(0,(t-g.t0)/g.d)):1,st={stabel:kopi(g.foer.length?g.foer:g.etter),o:null,ring:null};
+        if(g.h==='vis'){st.stabel=kopi(g.etter)}
+        else if(g.h==='rull'){st.stabel[st.stabel.length-1].y=g.fra+(g.til-g.fra)*myk(p)}
+        else if(g.h==='trykk'){st.ring={x:g.m[1],y:g.m[2],p:p}}
+        else if(g.h==='inn'){st.stabel=kopi(g.etter);st.o={h:'inn',p:ut3(p)}}
+        else if(g.h==='ut'){st.o={h:'ut',p:myk(p)}}
+        else if(g.h==='tone'){st.o={h:'tone',p:p,til:kopi(g.etter)}}
+        else if(g.h==='vent'){}
+        return st}
+      // Instanser: telefonen på siden, og kopien i fullskjerm
+      var inst=[];
+      function lagInstans(f){var i={f:f,flate:f.querySelector('.demo-flate'),lerret:f.querySelector('.demo-lerret'),ring:f.querySelector('.demo-trykk'),sk:{}};
+        f.querySelectorAll('.demo-skjerm').forEach(function(el){i.sk[el.getAttribute('data-s')]={el:el,img:el.querySelector('.demo-kropp img'),skygge:el.querySelector('.demo-skygge')}});
+        skaler(i);if('ResizeObserver' in window){i.ro=new ResizeObserver(function(){skaler(i)});i.ro.observe(i.flate)}return i}
+      function skaler(i){var w=i.flate.clientWidth;if(w)i.lerret.style.setProperty('--demo-k',String(w/B))}
+      function sett(e,x,y,z,o){e.el.style.visibility='visible';e.el.style.transform='translate3d('+x.toFixed(2)+'px,0,0)';e.el.style.zIndex=z;e.el.style.opacity=o;
+        if(e.img)e.img.style.transform='translate3d(0,'+(-y).toFixed(2)+'px,0)'}
+      function tegnI(i,st){var vist={},topp=st.stabel[st.stabel.length-1],under=st.stabel[st.stabel.length-2],farge=S[topp.s].farge;
+        Object.keys(i.sk).forEach(function(n){i.sk[n].skygge.style.opacity=0});
+        if(st.o&&st.o.h==='inn'){var p=st.o.p;sett(i.sk[topp.s],B*(1-p),topp.y,2,1);vist[topp.s]=1;
+          if(under){sett(i.sk[under.s],-.28*B*p,under.y,1,1);i.sk[under.s].skygge.style.opacity=(.12*p).toFixed(3);vist[under.s]=1;if(p<.5)farge=S[under.s].farge}}
+        else if(st.o&&st.o.h==='ut'){var q=st.o.p;sett(i.sk[topp.s],B*q,topp.y,2,1);vist[topp.s]=1;
+          if(under){sett(i.sk[under.s],-.28*B*(1-q),under.y,1,1);i.sk[under.s].skygge.style.opacity=(.12*(1-q)).toFixed(3);vist[under.s]=1;if(q>=.5)farge=S[under.s].farge}}
+        else if(st.o&&st.o.h==='tone'){var ny=st.o.til[0];sett(i.sk[topp.s],0,topp.y,1,1);vist[topp.s]=1;
+          if(ny.s!==topp.s){sett(i.sk[ny.s],0,ny.y,2,st.o.p.toFixed(3));vist[ny.s]=1}else{i.sk[topp.s].img.style.transform='translate3d(0,'+(-(topp.y*(1-st.o.p)+ny.y*st.o.p)).toFixed(2)+'px,0)'}
+          if(st.o.p>=.5)farge=S[ny.s].farge}
+        else{sett(i.sk[topp.s],0,topp.y,1,1);vist[topp.s]=1}
+        Object.keys(i.sk).forEach(function(n){if(!vist[n])i.sk[n].el.style.visibility='hidden'});
+        if(i.f.style.getPropertyValue('--tlf-topp')!==farge)i.f.style.setProperty('--tlf-topp',farge);
+        var r=i.ring;if(st.ring){var p2=st.ring.p,o=p2<.18?p2/.18:Math.max(0,1-(p2-.18)/.82);r.style.left=st.ring.x+'px';r.style.top=st.ring.y+'px';
+          r.style.transform='scale('+(.55+.7*p2).toFixed(3)+')';r.style.opacity=(.95*o).toFixed(3)}else if(r.style.opacity!=='0')r.style.opacity='0'}
+      var t=0,siste=null,spiller=false,raf=0,synlig=false,fullAapen=false,brukerPause=false,brukerStart=false,video=false;
+      function tegn(){var st=tilstand(t);inst.forEach(function(i){tegnI(i,st)})}
+      function ramme(ts){if(siste!==null)t=(t+Math.min(.1,(ts-siste)/1000))%TOT;siste=ts;tegn();raf=requestAnimationFrame(ramme)}
+      var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+      function redusert(){return !!(mq&&mq.matches)}
+      var knapp=document.querySelector('.demo-pause');
+      function tekst(k,s){var l=(typeof currentLang==='string'&&typeof T==='object'&&T[currentLang])||{};return l[k]||s}
+      function oppdaterKnapp(){if(!knapp)return;var sp=knapp.querySelector('span'),k=spiller?knapp.getAttribute('data-tekst-pause'):knapp.getAttribute('data-tekst-spill');
+        sp.textContent=tekst(k,spiller?'Pause':'Spill av');knapp.setAttribute('aria-pressed',spiller?'false':'true');
+        knapp.querySelector('.ikon-pause').style.display=spiller?'':'none';knapp.querySelector('.ikon-spill').style.display=spiller?'none':''}
+      function oppdater(){var skal=!video&&!brukerPause&&(!redusert()||brukerStart)&&!document.hidden&&(synlig||fullAapen);
+        if(skal&&!spiller){spiller=true;siste=null;raf=requestAnimationFrame(ramme)}
+        else if(!skal&&spiller){spiller=false;cancelAnimationFrame(raf)}
+        fig.setAttribute('data-spiller',spiller?'1':'0');oppdaterKnapp()}
+      inst.push(lagInstans(fig));
+      if(redusert())t=STILL;
+      tegn();
+      if(knapp)knapp.addEventListener('click',function(){if(spiller){brukerPause=true}else{brukerPause=false;if(redusert())brukerStart=true}oppdater()});
+      if(mq){var lytt=function(){if(redusert()&&!brukerStart){t=STILL;tegn()}oppdater()};if(mq.addEventListener)mq.addEventListener('change',lytt);else if(mq.addListener)mq.addListener(lytt)}
+      document.addEventListener('visibilitychange',oppdater);
+      if('IntersectionObserver' in window){new IntersectionObserver(function(e){synlig=e[e.length-1].isIntersecting;oppdater()},{threshold:.2}).observe(fig)}else{synlig=true;oppdater()}
+      // Ny video (valgfri): bryteren vises bare hvis videos/demo-ny.mp4 finnes
+      var valg=document.querySelector('.demo-valg'),vt=document.querySelector('.demo-video-tlf'),ve=vt&&vt.querySelector('video'),sjekket=false;
+      function sjekkVideo(){if(sjekket||!valg||!ve||!window.fetch)return;sjekket=true;
+        fetch(KONF.video,{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok)valg.hidden=false}).catch(function(){})}
+      function velg(v){video=v==='video';valg.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-demo-vis')===v?'true':'false')});
+        fig.hidden=video;vt.hidden=!video;if(knapp)knapp.hidden=video;
+        if(video){if(!ve.getAttribute('src'))ve.setAttribute('src',ve.getAttribute('data-src'));var pr=ve.play();if(pr&&pr.catch)pr.catch(function(){})}else{ve.pause()}
+        oppdater()}
+      if(valg){valg.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button[data-demo-vis]');if(b)velg(b.getAttribute('data-demo-vis'))});
+        if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[e.length-1].isIntersecting){io.disconnect();sjekkVideo()}},{rootMargin:'600px 0px'});io.observe(fig)}else sjekkVideo()}
+      window.fodmappDemo={
+        vis:function(k){inst.push(lagInstans(k));fullAapen=true;tegn();oppdater()},
+        skjul:function(k){inst=inst.filter(function(i){if(i.f===k){if(i.ro)i.ro.disconnect();return false}return true});fullAapen=false;oppdater()},
+        spraak:oppdaterKnapp,
+        tid:function(){return t},spiller:function(){return spiller},varighet:TOT,still:STILL,
+        sett:function(x){t=((+x||0)%TOT+TOT)%TOT;tegn()},   // for kontroll og forhåndsvisning
+        pause:function(){brukerPause=true;oppdater()}};
+      oppdaterKnapp();
+    })();
+  </script>
+  <script>
+    function switchTab(name,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.feature-tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');btn.classList.add('active')}
+    // Lightbox
+    function openFullscreen(img){document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox').style.display='flex'}
+    function closeFullscreen(){document.getElementById('lightbox').style.display='none'}
+    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('active')});item.classList.toggle('active')})});
+    // Scroll reveal. threshold MUST stay 0: it is the ratio of the visible area
+    // to the ELEMENT's own area, so a wrapper taller than the viewport can never
+    // reach a non-zero threshold and would sit at opacity:0 forever. That blanked
+    // privacypolicy/termsandconditions, whose entire body is one tall wrapper.
+    (function(){const els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));const show=function(el){el.classList.add('visible')};
+    if(!('IntersectionObserver' in window)){els.forEach(show);return}
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)show(e.target)})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>obs.observe(el));
+    // Failsafe: text must never stay invisible if the observer never fires.
+    const sweep=function(){els.forEach(function(el){const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)show(el)})};
+    // Sweep again as layout settles: at parse time the rects can still be
+    // empty, and 'load' alone waits on slow third-party images.
+    sweep();document.addEventListener('DOMContentLoaded',sweep);window.addEventListener('load',sweep);
+    window.addEventListener('scroll',sweep,{passive:true});window.addEventListener('resize',sweep);
+    setTimeout(sweep,200);setTimeout(sweep,1000);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sweep);})();
+    // Header scroll state
+    (function(){const h=document.getElementById('siteHeader');window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>10),{passive:true})})();
+    // Mobile nav
+    function toggleMobileNav(){const n=document.getElementById('mobileNav');n.style.display=n.style.display==='flex'?'none':'flex'}
+    function closeMobileNav(){document.getElementById('mobileNav').style.display='none'}
+    // Contact form mailto
+    function sendContactEmail(e){e.preventDefault();const name=document.getElementById('cf-name').value;const email=document.getElementById('cf-email').value;const msg=document.getElementById('cf-msg').value;const subject=encodeURIComponent('FODMAPP contact: '+name);const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);window.location.href='mailto:post@fodmapp.com?subject='+subject+'&body='+body}
+    // Sticky mobile CTA
+    (function(){const b=document.getElementById('mobileCta');if(!b)return;window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>380),{passive:true})})();
+  </script>
+
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-inner">
+      <p class="cookie-text" data-i18n="cookie_msg">เราใช้คุกกี้เฉพาะที่จำเป็นต่อการทำงานของเว็บไซต์ ไม่มีการติดตามหรือโฆษณา <a href="privacypolicy.html">นโยบายความเป็นส่วนตัว</a></p>
+      <div class="cookie-btns">
+        <button class="cookie-accept" id="cookieAccept" data-i18n="cookie_accept">ยอมรับ</button>
+        <button class="cookie-decline" id="cookieDecline" data-i18n="cookie_decline">ปฏิเสธ</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Cookie consent
+    (function(){
+      var b=document.getElementById('cookieBanner');
+      if(!b)return;
+      try{if(localStorage.getItem('cookieConsent'))return;}catch(e){}
+      // r82:cookie-spraak: oversetter banneret (i18n.js kjører applyLang før banneret finnes i DOM-en)
+      try{var t=(typeof T==='object'&&typeof currentLang==='string'&&currentLang!=='en')?T[currentLang]:null;if(t)b.querySelectorAll('[data-i18n]').forEach(function(el){var v=t[el.getAttribute('data-i18n')];if(v)el.innerHTML=v})}catch(e){}
+      b.classList.add('show');
+      document.getElementById('cookieAccept').addEventListener('click',function(){
+        try{localStorage.setItem('cookieConsent','accepted');}catch(e){}
+        b.classList.remove('show');
+      });
+      document.getElementById('cookieDecline').addEventListener('click',function(){
+        try{localStorage.setItem('cookieConsent','declined');}catch(e){}
+        b.classList.remove('show');
+      });
+    })();
+  </script>
+  <script src="../js/r210.js"></script>
+</body>
+</html>

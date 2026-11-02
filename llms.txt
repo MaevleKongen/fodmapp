@@ -1,0 +1,53 @@
+# FODMAPP
+
+> The AI assistant that makes the low-FODMAP diet easier in everyday life.
+
+FODMAPP helps you scan your food, log your gut and see what keeps coming up. Here you'll find everything the app can do and how to use it.
+
+Everything is unlocked for the first 14 days. After that, FODMAPP Plus keeps every feature open. The subscription renews automatically and can be canceled in the App Store or Google Play.
+
+- Platforms: iOS and Android
+- Languages: 23
+- Publisher: Telemark Software Solutions AS
+- App Store: https://apps.apple.com/us/app/low-fodmap-ibs-app-fodmapp/id6761849984
+- Google Play: https://play.google.com/store/apps/details?id=com.telemarksoftwaresolutions.fodmapp
+
+## Pages in English
+
+- [Home](https://fodmapp.com/): Scan food and ask about it, log how your gut is doing, and get an overview of your diary. All in one app.
+- [Manual](https://fodmapp.com/manual.html): FODMAPP helps you scan your food, log your gut and see what keeps coming up. Here you'll find everything the app can do and how to use it.
+- [About](https://fodmapp.com/about.html): FODMAPP was created to make the low-FODMAP diet easier and faster to follow in everyday life 🌿 – whether you're completely new to the diet or have been following it for a while.
+- [Delete account and data](https://fodmapp.com/delete.html): Here you'll find information about how to request deletion of your account, what data we store, and how it's processed.
+- [Privacy policy](https://fodmapp.com/privacypolicy.html): Here we explain how we process personal data when you use the FODMAPP app.
+- [Terms and conditions](https://fodmapp.com/termsandconditions.html): Terms of use for the FODMAPP app.
+
+## Every language
+
+Each language has the same six pages as complete HTML in that language, for example https://fodmapp.com/no/manual.html.
+
+- [Bahasa Indonesia](https://fodmapp.com/id/)
+- [Dansk](https://fodmapp.com/da/)
+- [Deutsch](https://fodmapp.com/de/)
+- [Español](https://fodmapp.com/es/)
+- [Français](https://fodmapp.com/fr/)
+- [Italiano](https://fodmapp.com/it/)
+- [Lietuvių kalba](https://fodmapp.com/lt/)
+- [Nederlands](https://fodmapp.com/nl/)
+- [Norsk bokmål](https://fodmapp.com/no/)
+- [Polski](https://fodmapp.com/pl/)
+- [Português](https://fodmapp.com/pt/)
+- [Suomi](https://fodmapp.com/fi/)
+- [Svenska](https://fodmapp.com/sv/)
+- [Türkçe](https://fodmapp.com/tr/)
+- [Русский](https://fodmapp.com/ru/)
+- [العربية](https://fodmapp.com/ar/)
+- [हिन्दी](https://fodmapp.com/hi/)
+- [ไทย](https://fodmapp.com/th/)
+- [中文 (简体)](https://fodmapp.com/zh-hans/)
+- [中文 (繁體)](https://fodmapp.com/zh-hant/)
+- [日本語](https://fodmapp.com/ja/)
+- [한국어](https://fodmapp.com/ko/)
+
+## Sitemap
+
+- https://fodmapp.com/sitemap.xml

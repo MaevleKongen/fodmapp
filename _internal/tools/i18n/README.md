@@ -30,8 +30,24 @@ Laster `js/i18n.js` i et funksjonsscope med stubbet `localStorage` og `document`
 Uten argument brukes `req_keys.json`, som lister nøklene fra vilkårene,
 personvernerklæringen og de delte sidetekstene. Exit-kode 1 ved feil.
 
+## `bygg_spraak.py`
+
+Bygger de statiske språksidene. `js/i18n.js` og de engelske rotsidene er kilden. Hver side finnes ferdig oversatt som
+`/<språk>/<side>.html` (`/no/`, `/pl/`, `/zh-hans/` ...), med `lang`, `dir`, title, beskrivelse, canonical, hreflang og
+butikklenker per land, og teksten står i HTML-en uten JavaScript. Sidene laster bare `js/spraak.js`, ikke `js/i18n.js`.
+
+```
+python -X utf8 _internal/tools/i18n/bygg_spraak.py           # idempotent
+python -X utf8 _internal/tools/i18n/bygg_spraak.py --sjekk   # exit 1 hvis noe er utdatert
+python -X utf8 _internal/tools/i18n/kontroll_spraak.py       # alle språk x alle sider
+```
+
+Etter enhver tekstendring: `inject.py` (eller ditt eget skript) → den statiske engelske HTML-en → `validate.js` →
+`bygg_spraak.py` → `kontroll_spraak.py`, og publiser språkmappene sammen med endringen. Rediger aldri filene i
+språkmappene for hånd. Ikke legg til `.nojekyll`: da blir `_internal/` synlig på nettet (se `_config.yml`).
+
 ## Merk
 
-`applyLang()` setter `el.innerHTML`, ikke `textContent`. HTML i verdiene er derfor tilsiktet
+Verdiene legges inn som HTML i språksidene (`bygg_spraak.py`), ikke som ren tekst. HTML i verdiene er derfor tilsiktet
 — og betyr at ubalanserte tagger ødelegger sidestrukturen. Kjør `validate.js` etter enhver
 endring i `js/i18n.js`.
