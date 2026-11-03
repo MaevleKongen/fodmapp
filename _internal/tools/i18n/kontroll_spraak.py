@@ -28,7 +28,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 # Lik engelsk med vilje: navn og ord som er like på språket. Hver linje er en vurdering, ikke et unntak for hele språket.
 LIK_OK_ALLE = {
     # merkenavn, firma, adresse, personer og enheter i anmeldelsene
-    'FODMAPP', 'FODMAP', 'FODMAPP logo', 'FODMAPP Plus', '⭐ FODMAPP Plus', 'App Store', 'Google Play', '· Google Play', 'iOS', 'Android',
+    'FODMAPP', 'FODMAP', 'FODMAPP logo', 'FODMAPP Plus', '⭐ FODMAPP Plus', 'App Store', 'Google Play', 'iOS', 'Android',
     'iOS & Android', 'AI', 'AI · 24/7', 'OpenStreetMap', 'OpenStreetMap / Overpass', 'Open Food Facts', '© 2026 FODMAPP · Telemark Software Solutions AS',
     'Telemark Software Solutions AS', 'post@fodmapp.com', 'www.fodmapp.com', 'www.datatilsynet.no', 'Østli 15, 3718 Skien', 'Gemini', 'Claude',
     'Anthropic', 'Google', 'Google Firebase', 'Google Maps', 'Google (Google Cloud Vertex AI)', 'RevenueCat', 'Resend', 'Christoffer S.', 'Gouled Y.',
@@ -416,6 +416,9 @@ for k in KODER:
     for s_ in SIDER:
         if 'EAT WITHOUT' in (les(fil(k, s_)) or ''):
             F(f'{fil(k, s_)}: det gamle videoslagordet står i kildekoden')
+        # Play viste ingen vurdering 3. nov 2026. Vurderingen på forsiden er App Store Norge (web_f210_rev_snitt), sjekket mot iTunes lookup.
+        if re.search(r'proof-pill[^\n]*Google Play|5[.,]0[^\n]{0,30}Google Play', les(fil(k, s_)) or ''):
+            F(f'{fil(k, s_)}: vurdering oppgitt for Google Play')
 # Automatisk språkvalg er av: ingen side skal lese nettleserspråk eller user-agent (ser ut som cloaking, jf. bygg_spraak.py).
 if 'AUTO_SPRAAK = False' in (les('_internal/tools/i18n/bygg_spraak.py') or ''):
     for k in KODER:
