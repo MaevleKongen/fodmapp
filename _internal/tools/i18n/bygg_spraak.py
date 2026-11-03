@@ -333,6 +333,9 @@ def rens_rot(s, side, langs, t):
     s = re.sub(r'<html\b[^>]*>', '<html lang="en" dir="ltr">', s, count=1)
     # Interne merknader i kildekoden skal ikke gjenta det gamle videoslagordet på 23 språksider (roboter leser kildekoden).
     s = s.replace('(videos/demo.mp4, «EAT WITHOUT PAIN», MDR)', '(videos/demo.mp4)').replace('videos/demo.mp4 med «EAT WITHOUT PAIN», som', 'videos/demo.mp4, som')
+    # Den gamle videoen er slettet (rStjerner, 3. nov 2026): kommentarene skal ikke peke på den.
+    s = s.replace('Den gamle demovideoen (videos/demo.mp4) er skjult i runde 82; fila er ikke slettet. ', '')
+    s = re.sub(r'\(erstatter den gamle demovideoen\r?\n\s*// videos/demo\.mp4, som er skjult; fila er ikke slettet\)', '(erstatter den gamle demovideoen)', s)
     s = gjengi(s, 'en', t, bare_attr=True)
     # Hodet: enten markørene fra forrige bygg, eller de gamle canonical/hreflang-linjene.
     if HODE_A in s:
